@@ -1,0 +1,10 @@
+.idea/
+.DS_Store
+.cache
+.netlify
+node_modules
+package-lock.json
+yarn-error.log
+yarn.lock
+public
+tmp/
