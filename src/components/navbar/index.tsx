@@ -8,15 +8,25 @@ import {
 	NavbarBrand,
 	NavbarToggler,
 	Nav,
-	NavItem,
-	NavLink
+  NavItem,
+  NavLink
 } from 'reactstrap';
+import MenuItem from './MenuItem';
 
 // Scss
 import '../../styles/components/navbar.scss';
 
 // Utils
 import classnames from 'classnames';
+
+// Constants
+import {
+    SCROLL_DATACENTERS,
+    SCROLL_FEATURES,
+    SCROLL_PRICING,
+    SCROLL_SUPPORT,
+    SITE_URL
+} from '../../constants';
 
 interface Props {
 
@@ -59,7 +69,7 @@ class NavBar extends React.Component<Props, State> {
         });
     }
 
-	render() {
+    render() {
         const { scrollY } = this.state;
         const navClasses = classnames("justify-content-center", scrollY > 250 ? "top-fixed" : "");
 
@@ -72,30 +82,22 @@ class NavBar extends React.Component<Props, State> {
                     </NavbarBrand>
                     <NavbarToggler onClick={this.toggleNav} />
                     <Collapse isOpen={this.state.isOpen} navbar>
-                        <Nav className="mx-auto fill-flex justify-content-center" navbar>
-                            <NavItem>
-                                <NavLink href="/" className="text-uppercase">Pricing</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href="/" className="text-uppercase">Features</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href="/" className="text-uppercase">Datacenters</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href="/" className="text-uppercase">Support</NavLink>
-                            </NavItem>
+                        <Nav className="mx-auto fill-flex justify-content-center text-uppercase" navbar>
+                            <MenuItem scrollComponent={SCROLL_PRICING} text="Pricing" />
+                            <MenuItem scrollComponent={SCROLL_FEATURES} text="Features" />
+                            <MenuItem scrollComponent={SCROLL_DATACENTERS} text="Datacenters" />
+                            <MenuItem scrollComponent={SCROLL_SUPPORT} text="Support" />
                         </Nav>
                         <Nav className="ml-auto justify-content-end align-items-start align-items-lg-center" navbar>
                             <NavItem>
-                                <NavLink href="/" className="text-uppercase nav-link__cta rounded">Buy now</NavLink>
+                                <NavLink href={SITE_URL} className="text-uppercase nav-link__cta rounded">Buy now</NavLink>
                             </NavItem>
                         </Nav>
                     </Collapse>
                 </Container>
             </Navbar>
         );
-	}
+    }
 }
 
 export default NavBar;

@@ -6,6 +6,7 @@ import {
     Container,
     Row
 } from 'reactstrap';
+import { Element } from 'react-scroll';
 
 // Scss
 import '../../styles/components/pricing.scss';
@@ -13,6 +14,9 @@ import '../../styles/components/pricing.scss';
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-regular-svg-icons';
+
+// Constants
+import { SCROLL_PRICING } from '../../constants';
 
 interface Props {
 
@@ -29,18 +33,20 @@ class Pricing extends React.Component<Props, State> {
                 <Container>
                     <Row>
                         <Col xs={{ size: 12 }}>
-                            <div className="pricing-card pricing-card__first">
-                                <h5 className="pricing-card__title mb-4">2 years</h5>
-                                <h3 className="pricing-card__value"><span className="pricing-currency">$</span><span
-                                    className="pricing-cost">2.99</span><span className="pricing-period">/mo</span></h3>
-                                <footer className="pricing-card__footer">
-                                    <p className="mb-1 pt-4">Billed $79.99 every two years</p>
-                                    <h5 className="mb-0">Save 40%</h5>
-                                </footer>
-                                <div className="text-center mt-4">
-                                    <a href="#" className="btn btn--green">Get Started</a>
+                            <Element name={SCROLL_PRICING}>
+                                <div className="pricing-card pricing-card__first">
+                                    <h5 className="pricing-card__title mb-4">2 years</h5>
+                                    <h3 className="pricing-card__value"><span className="pricing-currency">$</span><span
+                                        className="pricing-cost">2.99</span><span className="pricing-period">/mo</span></h3>
+                                    <footer className="pricing-card__footer">
+                                        <p className="mb-1 pt-4">Billed $79.99 every two years</p>
+                                        <h5 className="mb-0">Save 40%</h5>
+                                    </footer>
+                                    <div className="text-center mt-4">
+                                        <a href="#" className="btn btn--green">Get Started</a>
+                                    </div>
                                 </div>
-                            </div>
+                            </Element>
                         </Col>
                     </Row>
                     <Row className="pricing-features justify-content-center">

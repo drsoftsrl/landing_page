@@ -10,6 +10,9 @@ import {
 // Scss
 import '../../styles/components/hero.scss';
 
+// Constants
+import { SITE_URL } from '../../constants';
+
 // Images & icons
 import heroImage from '../../images/hero-illustration-4.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -34,7 +37,7 @@ const Hero = () => (
                         (shared or dedicated) starting at just $0.7
                     </p>
                     <a
-                        href="#"
+                        href={SITE_URL}
                         className="btn btn--green btn--lg mb-0 mt-4 d-inline-flex align-items-center">
                         Members
                         <FontAwesomeIcon icon={faArrowRight} className="ml-2" />

@@ -24,6 +24,7 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "@types/classnames": "^2.2.7",
     "@types/react": "^16.7.20",
+    "@types/react-scroll": "^1.5.4",
     "@types/reactstrap": "^6.4.4",
     "classnames": "^2.2.6",
     "gatsby": "^2.0.76",
@@ -41,6 +42,7 @@
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-helmet": "^5.2.0",
+    "react-scroll": "^1.7.10",
     "reactstrap": "^7.1.0"
   },
   "devDependencies": {

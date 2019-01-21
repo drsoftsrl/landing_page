@@ -8,6 +8,15 @@ import Datacenters from '../datacenters';
 import Features from '../features';
 import Reviews from '../reviews';
 import Footer from '../footer';
+import { Element } from 'react-scroll';
+
+// Constants
+import {
+  SCROLL_DATACENTERS,
+  SCROLL_FEATURES,
+  SCROLL_PRICING,
+  SCROLL_SUPPORT
+} from '../../constants';
 
 const IndexPage = () => (
 	<React.Fragment>
@@ -15,10 +24,19 @@ const IndexPage = () => (
 			<NavBar />
 			<Hero />
 		</main>
+
 		<Pricing />
-		<Datacenters />
-		<Features />
+
+		<Element name={SCROLL_DATACENTERS}>
+			<Datacenters />
+		</Element>
+
+		<Element name={SCROLL_FEATURES}>
+			<Features />
+		</Element>
+
 		<Reviews />
+
 		<Footer />
 	</React.Fragment>
 );
