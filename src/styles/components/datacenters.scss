@@ -1,0 +1,103 @@
+// Styling for components/datacenters
+
+@import '../modules/variables';
+
+#datacenters {
+  .map {
+    width: 100%;
+
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
+
+  .nav {
+
+    li {
+
+      @media (max-width: 767px) {
+        flex: 100%;
+      }
+
+      a {
+        padding-bottom: 50px;
+        border-bottom: 1px solid darken($body-bg, 3%);
+
+        @media (max-width: 767px) {
+          padding: 20px 0;
+        }
+
+        &:hover {
+
+          .icon {
+            color: $blue-2;
+          }
+
+          span {
+            color: $blue-2;
+          }
+        }
+
+        &.active {
+          position: relative;
+          border-color: $blue-2;
+
+          &:before {
+            position: absolute;
+            bottom: -1px;
+            height: 0;
+            width: 0;
+            border: 10px solid transparent;
+            border-bottom: 7px solid #fafcfd;
+            visibility: visible;
+            z-index: 1;
+            content: " ";
+          }
+
+          &:after {
+            position: absolute;
+            bottom: 0;
+            height: 0;
+            width: 0;
+            margin-top: 28px;
+            border: 10px solid transparent;
+            border-bottom: 7px solid $blue-2;
+            transition: left .5s;
+            content: "";
+          }
+
+          .icon {
+            color: $blue-2;
+          }
+
+          span {
+            color: $blue-2;
+          }
+        }
+
+        .icon {
+          color: darken($body-bg, 30%);
+          opacity: .5;
+          transition: .2s ease-in;
+        }
+
+        span {
+          color: $text-color;
+          transition: .2s ease-in;
+        }
+      }
+    }
+  }
+
+  .tab-pane {
+    margin-top: 80px;
+
+    @media (max-width: 991px) {
+      margin-top: 60px;
+    }
+
+    p:not(.lead):last-child {
+      margin-bottom: 0;
+    }
+  }
+}

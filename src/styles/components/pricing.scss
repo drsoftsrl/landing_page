@@ -1,0 +1,113 @@
+// Styling for components/pricing
+
+@import '../modules/variables';
+
+#pricing {
+  position: relative;
+  background: linear-gradient(-180deg, $body-bg 60%, #FFFFFF 100%);
+  z-index: 99;
+
+  .pricing-card {
+    padding: 40px 30px;
+    margin-top: -20%;
+    text-align: center;
+    transform: scale(1);
+    background: $white;
+    border-radius: $border-radius;
+    box-shadow: 0 4px 9px 0 rgba(23, 28, 33, .06);
+
+    @media (max-width: 991px) {
+      margin-bottom: 40px;
+      margin-top: 0;
+    }
+
+    &__first {
+
+      @media (max-width: 991px) {
+        margin-top: -100px
+      }
+    }
+
+    &__value {
+      margin-bottom: 0;
+      text-align: center;
+
+      .pricing-currency {
+        margin-top: -14px;
+        margin-right: 4px;
+        display: inline-block;
+        vertical-align: top;
+        font-size: 18px;
+      }
+
+      .pricing-cost {
+        margin-top: -5px;
+        font-size: 56px;
+        font-weight: 600;
+      }
+
+      .pricing-period {
+        margin-left: 5px;
+        margin-top: 13px;
+        display: inline-block;
+        font-weight: 400;
+        font-size: 18px;
+        opacity: .6;
+        vertical-align: top;
+      }
+    }
+
+    &__footer {
+
+      &:before {
+        position: relative;
+        margin: 18px auto 0 auto;
+        width: 50%;
+        height: 1px;
+        display: block;
+        background: #e0e0e0;
+        content: "";
+      }
+    }
+
+    .btn {
+      padding: 12px 40px;
+      margin: 10px auto 0 auto;
+      width: 75%;
+    }
+  }
+
+  .pricing-features {
+    margin-top: 60px;
+
+    @media (max-width: 991px) {
+      margin-top: 20px;
+    }
+
+    @media (max-width: 767px) {
+      margin-top: 0;
+    }
+
+    .pricing-feature {
+
+      .icon {
+        margin-right: 0.5rem;
+        color: $green;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      p {
+        margin-bottom: 0;
+
+        @media (max-width: 1199px) {
+          font-size: 12px;
+        }
+
+        @media (max-width: 991px) {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}

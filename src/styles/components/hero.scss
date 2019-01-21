@@ -1,0 +1,65 @@
+// Styling for components/hero
+
+@import '../modules/variables';
+
+#main {
+  position: relative;
+  background: linear-gradient(to right bottom, #131c47, #192152, #474c9a, #ac93d2);
+  overflow: hidden;
+
+  .main-content {
+    position: relative;
+    padding: 160px 0 0;
+    height: 1200px;
+    text-align: center;
+    z-index: 1;
+
+    @media (max-width: 1599px) {
+      height: 1000px;
+    }
+
+    @media (max-width: 991px) {
+      padding-top: 120px;
+      height: 800px;
+    }
+
+    @media (max-width: 767px) {
+      height: 800px;
+    }
+
+    &__title {
+      color: $white;
+    }
+
+    &__lead {
+      color: rgba(255,255,255,.85);
+    }
+
+    &__img {
+      margin-left: -40px;
+      transform: translateY(4%);
+      max-width: 80%;
+      height: auto;
+
+      @media (max-width: 991px) {
+        transform: translateY(8%);
+        max-width: 100%;
+      }
+
+      @media (max-width: 767px) {
+        transform: translate(-8%, 8%);
+        max-width: 130%;
+      }
+
+      @media (max-width: 600px) {
+        transform: translate(-11%, 10%);
+        max-width: 140%;
+      }
+
+      @media (max-width: 460px) {
+        transform: translate(-18%, 17%);
+        max-width: 180%;
+      }
+    }
+  }
+}
