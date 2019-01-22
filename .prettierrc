@@ -1,7 +1,7 @@
 {
   "arrowParens": "avoid",
   "parser": "typescript",
-  "trailingComma": "es5",
+  "trailingComma": false,
   "singleQuote": true,
   "tabWidth": 4,
   "printWidth": 80,

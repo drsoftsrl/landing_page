@@ -11,7 +11,7 @@ import {
   NavItem,
   NavLink
 } from 'reactstrap';
-import MenuItem from './MenuItem';
+import MenuItem from './menuItem';
 
 // Scss
 import '../../styles/components/navbar.scss';

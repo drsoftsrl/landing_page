@@ -1,0 +1,38 @@
+// Styling for components/datacenters
+
+@import '../../modules/variables';
+
+.list {
+  list-style: none;
+  display: inline-block;
+  text-transform: uppercase;
+  padding: 0.3rem;
+  border: 2px solid $light-blue;
+  border-radius: 1.5rem;
+  margin: 0 5px;
+
+  @media (max-width: 767px) {
+    display: block;
+    border-radius: 0.5rem;
+  }
+
+  li {
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    cursor: pointer;
+    border-radius: 1.5rem;
+    transition: all 200ms;
+    background-color: transparent;
+    color: $blue-2;
+
+    @media (max-width: 767px) {
+      display: block;
+      border-radius: 0.5rem;
+    }
+
+    &.selected {
+      background-color: $blue-2;
+      color: $white;
+    }
+  }
+}

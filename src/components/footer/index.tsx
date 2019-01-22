@@ -10,7 +10,7 @@ import {
     Row
 } from 'reactstrap';
 import Preamble from '../generic/preamble';
-import FooterColumn from './FooterColumn';
+import FooterColumn from './footerColumn';
 
 // Scss
 import '../../styles/components/footer.scss';
@@ -26,7 +26,7 @@ const Reviews = () => (
                     title="Our products"
                     links={[
                         'HTTP Proxy',
-                        'HTTP Proxy',
+                        'SOCKSv5 Proxy',
                         'Dedicated Proxy',
                         'Shared Proxy'
                     ]}
