@@ -11,10 +11,10 @@ import requestHandler from '../utils/request';
 import { PRICES_URL } from '../constants';
 
 // Actions
-import { setPricingData } from './actions';
+import { setPricingData } from '../actions';
 
 // Interfaces
-import { IPricingResponse } from './interfaces';
+import { IPricingResponse } from '../interfaces';
 
 interface Props {
 	doSetPrices(): void

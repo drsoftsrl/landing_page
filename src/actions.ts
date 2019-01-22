@@ -1,6 +1,6 @@
 import {
 	SET_PRICING_DATA
-} from '../constants';
+} from './constants';
 
 // Interfaces
 import { IPricingResponse } from './interfaces';
