@@ -5,6 +5,7 @@ export const SITE_NAME = "Site name goes here";
 // Api config
 export const BACKEND_URL = 'http://localhost:8000';
 export const PRICES_URL = `${BACKEND_URL}/affiliate/prices/`;
+export const LOCATIONS_URL = `${BACKEND_URL}/datacenters/locations/`;
 
 // App config
 export const SCROLL_DATACENTERS = 'datacenters';
@@ -21,3 +22,4 @@ export const BILLING_CYCLES = {
 
 // Actions
 export const SET_PRICING_DATA = 'SET_PRICING_DATA';
+export const SET_LOCATIONS_DATA = 'SET_LOCATIONS_DATA';

@@ -29,13 +29,16 @@ class MainPage extends React.Component<Props, State> {
 		const { doSetPrices } = this.props;
 
 		// TODO handle typescript definition for request
-		requestHandler(PRICES_URL).then(({ data, error }) => {
-			if (error) {
-				return;
-			}
+		requestHandler(PRICES_URL)
+			.then(({ data, error }) => {
+				if (error) {
+					console.error(error);
+					return;
+				}
 
-			doSetPrices(data);
-		});
+				doSetPrices(data);
+			})
+			.catch(console.error);
 	}
 
 	render() {

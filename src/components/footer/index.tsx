@@ -1,7 +1,6 @@
 import React from 'react';
 
 // Constants
-// TODO how to handle this ???
 import { SITE_NAME } from '../../constants';
 
 // Components

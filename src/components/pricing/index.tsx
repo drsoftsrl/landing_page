@@ -275,8 +275,8 @@ class Pricing extends React.Component<Props, State> {
 }
 
 const mapStateToProps = (state) => ({
-	discounts: get(state, 'discounts', {}),
-	prices: get(state, 'prices', {})
+	discounts: get(state, 'core.discounts', {}),
+	prices: get(state, 'core.prices', {})
 });
 
 export default connect(mapStateToProps, null)(Pricing);
