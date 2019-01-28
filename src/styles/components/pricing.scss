@@ -8,7 +8,7 @@
   z-index: 99;
 
   .pricing-card {
-    padding: 40px 30px;
+    padding: 2.5rem 4rem;
     margin-top: -20%;
     text-align: center;
     transform: scale(1);
@@ -16,64 +16,101 @@
     border-radius: $border-radius;
     box-shadow: 0 4px 9px 0 rgba(23, 28, 33, .06);
 
+    .slider {
+      padding: 3rem 0;
+
+      .rc-slider-rail,
+      .rc-slider-step,
+      .rc-slider-track {
+        height: 8px;
+      }
+
+      .rc-slider-track {
+        background-color: $blue-2;
+      }
+
+      .rc-slider-handle {
+        margin-top: -7px;
+        width: 22px;
+        height: 22px;
+      }
+    }
+
+    .billing-cycle-switch {
+      margin-top: 1.5rem;
+    }
+
     @media (max-width: 991px) {
       margin-bottom: 40px;
-      margin-top: 0;
+      margin-top: -100px
     }
 
-    &__first {
+    @media (max-width: 767px) {
+      ul {
+        margin-bottom: 1rem;
 
-      @media (max-width: 991px) {
-        margin-top: -100px
-      }
-    }
-
-    &__value {
-      margin-bottom: 0;
-      text-align: center;
-
-      .pricing-currency {
-        margin-top: -14px;
-        margin-right: 4px;
-        display: inline-block;
-        vertical-align: top;
-        font-size: 18px;
-      }
-
-      .pricing-cost {
-        margin-top: -5px;
-        font-size: 56px;
-        font-weight: 600;
-      }
-
-      .pricing-period {
-        margin-left: 5px;
-        margin-top: 13px;
-        display: inline-block;
-        font-weight: 400;
-        font-size: 18px;
-        opacity: .6;
-        vertical-align: top;
+        &.billing-cycle-switch {
+          margin-bottom: 0 !important;
+          margin-top: 0;
+        }
       }
     }
 
     &__footer {
 
-      &:before {
-        position: relative;
-        margin: 18px auto 0 auto;
-        width: 50%;
-        height: 1px;
-        display: block;
-        background: #e0e0e0;
-        content: "";
+      > div {
+        flex: 1;
       }
-    }
 
-    .btn {
-      padding: 12px 40px;
-      margin: 10px auto 0 auto;
-      width: 75%;
+      &-value {
+        font-size: 1.5rem;
+        line-height: 2rem;
+
+        &.pricing-total {
+          color: $blue-2;
+        }
+      }
+
+      &-label {
+        color: lighten($text-color, 30%);
+        font-size: 0.9rem;
+      }
+
+      &-total {
+        justify-content: flex-end;
+        align-items: center;
+      }
+
+      .btn {
+        padding: 12px 40px;
+        margin-left: 20px;
+        white-space: nowrap;
+      }
+
+      @media (max-width: 767px) {
+        flex-flow: column;
+
+        > div {
+          padding: 0.5rem 0;
+          width: 100%;
+        }
+
+        &-total {
+          flex-flow: column;
+          justify-content: center;
+
+          .btn {
+            margin-top: 1rem;
+            margin-left: 0;
+            width: 100%;
+          }
+        }
+
+        &-value,
+        &-label {
+          text-align: center !important;
+        }
+      }
     }
   }
 

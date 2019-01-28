@@ -13,7 +13,7 @@ export const SCROLL_FEATURES = 'features';
 export const SCROLL_SUPPORT = 'support';
 
 export const BILLING_CYCLES = {
-	1: 'Monthly Payment',
+	1: 'Monthly',
 	3: 'Quarterly',
 	6: 'Bi-annually',
 	12: 'Yearly'

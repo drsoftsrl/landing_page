@@ -1,6 +1,3 @@
-// Fetch
-import 'whatwg-fetch';
-
 // Response Handler
 const createResponse = (
 	error = null,

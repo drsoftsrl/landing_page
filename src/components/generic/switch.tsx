@@ -2,6 +2,7 @@ import React from 'react';
 
 // Styling
 import styles from '../../styles/components/generic/switch.module.scss';
+import classnames from 'classnames';
 
 interface Props {
 	options: {
@@ -10,7 +11,8 @@ interface Props {
 	onChange(value: string): void,
 	selectedOption: string,
 	labelField?: string,
-	valueField?: string
+	valueField?: string,
+	className?: string
 }
 
 interface State {
@@ -23,11 +25,11 @@ class Switch extends React.Component<Props, State> {
 	}
 
 	render() {
-		const { options, selectedOption, displayField, valueField } = this.props;
+		const { options, selectedOption, displayField, valueField, className = '', ...other } = this.props;
 
 
 		return options.length ? (
-			<ul className={styles.list}>
+			<ul className={classnames(styles.list, className)} {...other}>
 				{
 					options.map((opt, index) => (
 						<li

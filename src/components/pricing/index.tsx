@@ -7,15 +7,19 @@ import isEmpty from 'lodash/isEmpty';
 
 // Components
 import {
+	Button,
     Col,
     Container,
     Row
 } from 'reactstrap';
+import Slider from 'rc-slider';
 import { Element } from 'react-scroll';
 import Switch from '../generic/switch';
 
 // Scss
 import '../../styles/components/pricing.scss';
+import 'rc-slider/assets/index.css';
+import 'rc-tooltip/assets/bootstrap.css';
 
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -25,81 +29,144 @@ import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import { SCROLL_PRICING, BILLING_CYCLES } from '../../constants';
 
 interface Props {
-    discounts?: object
+    discounts?: object,
+	prices?: object
 }
 
 interface State {
 	selectedBillingCycle: string|number,
 	selectedProduct: string,
-	selectedProductType: string
+	selectedProductType: string,
+	selectedQuantity: number
 }
 
-const getDefaultBillingCycle = (discountsByInterval) => (discountsByInterval ? Object.keys(discountsByInterval)[0] : null);
+const products = [{
+	value: 'proxy',
+	label: 'proxy'
+}, {
+	value: 'socks',
+	label: 'socksv5'
+}];
+
+const productTypes = [{
+	value: 'dedicated',
+	label: 'dedicated'
+}, {
+	value: 'shared',
+	label: 'shared'
+}];
 
 class Pricing extends React.Component<Props, State> {
 	constructor(props: Props) {
 		super(props);
 
 		this.state = {
-			selectedBillingCycle: getDefaultBillingCycle(props.discounts.interval),
+			selectedBillingCycle: 1,
 			selectedProduct: 'proxy',
-			selectedProductType: 'dedicated'
+			selectedProductType: 'dedicated',
+			selectedQuantity: 10
 		};
 	}
 
-	static getDerivedStateFromProps(props, state) {
-		if (!state.selectedBillingCycle && !isEmpty(props.discounts)) {
-			return {
-				selectedBillingCycle: getDefaultBillingCycle(props.discounts.interval),
-			};
+	handleChange(field, value) {
+		this.setState({
+			[field]: value
+		});
+	}
+
+	get basePrice(): number {
+		const { prices } = this.props;
+		const {
+			selectedProductType,
+			selectedProduct
+		} = this.state;
+		const selectedProductKey = selectedProductType === 'shared' ? `shared_${selectedProduct}` : selectedProduct;
+		const selectedProductBasePrice = prices[selectedProductKey] && prices[selectedProductKey].price || 0;
+
+		return parseFloat(selectedProductBasePrice);
+	}
+
+	get quantityDiscount(): number {
+		const { discounts: { quantity: quantityDiscounts } } = this.props;
+		const { selectedQuantity } = this.state;
+		let qtyDiscount: string = '0';
+
+		if (quantityDiscounts) {
+			const quantities = Object.keys(quantityDiscounts);
+			for (let i = 0; i < quantities.length; i++) {
+				const qty = parseInt(quantities[i]);
+				if (qty <= selectedQuantity) {
+					qtyDiscount = quantityDiscounts[qty];
+				} else {
+					break;
+				}
+			}
 		}
 
-		return null;
+		return parseFloat(qtyDiscount);
 	}
 
-	handleProductChange(product) {
-		this.setState({
-			selectedProduct: product
-		});
+	get billingCycleDiscount(): number {
+		const { discounts: { interval: billingCycleDiscounts } } = this.props;
+		const { selectedBillingCycle } = this.state;
+
+		return parseFloat(selectedBillingCycle !== 1 && billingCycleDiscounts ? billingCycleDiscounts[selectedBillingCycle] : 0);
 	}
 
-	handleProductTypeChange(productType) {
-		this.setState({
-			selectedProductType: productType
-		});
+	get priceWithoutDiscount(): number {
+		const { selectedBillingCycle, selectedQuantity } = this.state;
+		return this.basePrice * selectedBillingCycle * selectedQuantity;
 	}
 
-	handleBillingCycleChange(opt) {
-		this.setState({
-			selectedBillingCycle: opt
-		});
+	get priceWithDiscount(): string {
+		const quantityDiscount = this.quantityDiscount / 100;
+		const billingCycleDiscount = this.billingCycleDiscount / 100;
+		// total without discount
+		let total = this.priceWithoutDiscount;
+		// total with quantity discount
+		total -= total * quantityDiscount;
+		// total with all discounts
+		total -= total * billingCycleDiscount;
+
+		return total.toFixed(2);
 	}
 
-	render() {
-	    const { discounts } = this.props;
-	    const { selectedBillingCycle, selectedProduct, selectedProductType } = this.state;
+	get totalDiscount() {
+		return ((this.priceWithoutDiscount - parseFloat(this.priceWithDiscount)) * 100 / this.priceWithoutDiscount).toFixed(1);
+	}
 
-	    // TODO maybe move this to the reducer
-	    const billingCycleValues = discounts.interval ? Object.keys(discounts.interval).map((key) => ({
-	    	label: BILLING_CYCLES[key],
+	get biggestQuantityDiscount() {
+		const { discounts } = this.props;
+		const quantityDiscountValues = discounts.quantity ? Object.keys(discounts.quantity) : [];
+
+		return quantityDiscountValues.length ? parseInt(quantityDiscountValues[quantityDiscountValues.length - 1]) : 0;
+	}
+
+	get billingCycleValues() {
+		const { discounts } = this.props;
+
+		// TODO maybe move this to the reducer
+		const billingCycleValues = discounts.interval ? Object.keys(discounts.interval).map((key) => ({
+			label: BILLING_CYCLES[key],
 			value: key
 		})) : [];
 
-	    const products = [{
-	    	value: 'proxy',
-			label: 'proxy'
-		}, {
-	    	value: 'socks',
-			label: 'socksv5'
-		}];
+		// Add monthly cycle
+		billingCycleValues.unshift({
+			label: BILLING_CYCLES[1],
+			value: 1
+		});
 
-	    const productTypes = [{
-			value: 'dedicated',
-			label: 'dedicated'
-		}, {
-			value: 'shared',
-			label: 'shared'
-		}];
+		return billingCycleValues;
+	}
+
+	render() {
+	    const {
+	    	selectedBillingCycle,
+			selectedProduct,
+			selectedProductType,
+			selectedQuantity
+	    } = this.state;
 
         return (
             <section id="pricing" className="section section--padding__bottom">
@@ -107,27 +174,60 @@ class Pricing extends React.Component<Props, State> {
                     <Row>
                         <Col xs={{ size: 12 }}>
                             <Element name={SCROLL_PRICING}>
-                                <div className="pricing-card pricing-card__first">
+                                <div className="pricing-card">
                                     <Switch
                                         selectedOption={selectedProduct}
                                         options={products}
-										onChange={this.handleProductChange.bind(this)}
+										onChange={this.handleChange.bind(this, 'selectedProduct')}
                                     />
 
                                     <Switch
                                         selectedOption={selectedProductType}
                                         options={productTypes}
-										onChange={this.handleProductTypeChange.bind(this)}
+										onChange={this.handleChange.bind(this, 'selectedProductType')}
                                     />
 
-									<br/>
-									<br/>
+									<div>
+										<Switch
+											className="billing-cycle-switch"
+											selectedOption={selectedBillingCycle}
+											options={this.billingCycleValues}
+											onChange={this.handleChange.bind(this, 'selectedBillingCycle')}
+										/>
+									</div>
 
-                                    <Switch
-                                        selectedOption={selectedBillingCycle}
-                                        options={billingCycleValues}
-										onChange={this.handleBillingCycleChange.bind(this)}
-                                    />
+									<br />
+
+									<div className="slider">
+										<Slider
+											value={selectedQuantity}
+											min={1}
+											max={this.biggestQuantityDiscount || 100}
+											onChange={this.handleChange.bind(this, 'selectedQuantity')}
+										/>
+									</div>
+
+									<footer className="pricing-card__footer d-flex">
+										<div>
+											<div className="pricing-card__footer-value text-left">{selectedQuantity}</div>
+											<div className="pricing-card__footer-label text-left">Quantity</div>
+										</div>
+										<div>
+											<div className="pricing-card__footer-value text-left">${this.basePrice}</div>
+											<div className="pricing-card__footer-label text-left">Base price</div>
+										</div>
+										<div>
+											<div className="pricing-card__footer-value text-left">{this.totalDiscount}%</div>
+											<div className="pricing-card__footer-label text-left">Discount</div>
+										</div>
+										<div className="d-flex pricing-card__footer-total">
+											<div>
+												<div className="pricing-card__footer-value pricing-total text-left">${this.priceWithDiscount}</div>
+												<div className="pricing-card__footer-label text-left">{BILLING_CYCLES[selectedBillingCycle]}</div>
+											</div>
+											<Button className="btn--green">Order now</Button>
+										</div>
+									</footer>
                                 </div>
                             </Element>
                         </Col>
@@ -175,7 +275,8 @@ class Pricing extends React.Component<Props, State> {
 }
 
 const mapStateToProps = (state) => ({
-	discounts: get(state, 'discounts', {})
+	discounts: get(state, 'discounts', {}),
+	prices: get(state, 'prices', {})
 });
 
 export default connect(mapStateToProps, null)(Pricing);

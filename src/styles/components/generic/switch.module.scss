@@ -24,6 +24,7 @@
     transition: all 200ms;
     background-color: transparent;
     color: $blue-2;
+    user-select: none;
 
     @media (max-width: 767px) {
       display: block;
