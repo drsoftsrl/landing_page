@@ -1,6 +1,7 @@
 import {
 	SET_PRICING_DATA,
-	SET_LOCATIONS_DATA
+	SET_LOCATIONS_DATA,
+	SET_SCROLL_ELEMENT
 } from './constants';
 
 // Interfaces
@@ -14,4 +15,9 @@ export const setPricingData = (pricing: IPricingResponse) => ({
 export const setLocationsData = (locations: ILocationsResponse) => ({
 	type: SET_LOCATIONS_DATA,
 	locations
+});
+
+export const setScrollElement = (el: any) => ({
+	type: SET_SCROLL_ELEMENT,
+	el
 });

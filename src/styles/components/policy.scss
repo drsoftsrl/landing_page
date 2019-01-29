@@ -1,0 +1,25 @@
+// Styling for policy pages
+
+@import '../modules/variables';
+
+.policy-hero {
+  background: $hero-gradient;
+
+  .preamble {
+    padding-top: 80px;
+
+    .subtitle {
+      font-weight: bold;
+      padding: 10px 0;
+      color: $blue-2;
+    }
+
+    .secondaryTitle {
+      padding-bottom: 1.5rem;
+    }
+
+    .lead {
+      text-align: left;
+    }
+  }
+}

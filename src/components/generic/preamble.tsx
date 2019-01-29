@@ -12,14 +12,16 @@ import classnames from 'classnames';
 interface Props {
     light?: boolean,
     title: any,
-    children: any
+    children: any,
+    secondaryTitle: any
 }
 
-const Preamble: React.FunctionComponent<Props> = ({ light = false, title, children }) => (
+const Preamble: React.FunctionComponent<Props> = ({ light = false, title, children, secondaryTitle }) => (
     <Row>
         <Col lg={{ size: 8, offset: 2 }} className={classnames('preamble', light ? 'preamble--light' : '')}>
             <h3 className="title">{title}</h3>
-            <p className="lead">{children}</p>
+            {secondaryTitle && <h5 className="secondaryTitle">{secondaryTitle}</h5>}
+            <div className="lead">{children}</div>
         </Col>
     </Row>
 );

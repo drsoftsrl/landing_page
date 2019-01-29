@@ -11,8 +11,20 @@ import {
 import Preamble from '../generic/preamble';
 import FooterColumn from './footerColumn';
 
+// Routes
+import {
+    HTTPS_PROXY_ROUTE,
+	SOCKS_PROXY_ROUTE,
+	DEDICATED_PROXY_ROUTE,
+	SHARED_PROXY_ROUTE,
+	TOS_ROUTE,
+	REFUNDS_ROUTE,
+	PRIVACY_ROUTE
+} from '../../constants';
+
 // Scss
 import '../../styles/components/footer.scss';
+import Refunds from '../../pages/refunds';
 
 const Reviews = () => (
     <footer className="footer section section--gradient__6">
@@ -24,27 +36,48 @@ const Reviews = () => (
                 <FooterColumn
                     title="Our products"
                     links={[
-                        'HTTP Proxy',
-                        'SOCKSv5 Proxy',
-                        'Dedicated Proxy',
-                        'Shared Proxy'
+                        {
+                            label: 'HTTP Proxy',
+                            url: HTTPS_PROXY_ROUTE
+                        }, {
+                            label: 'SOCKSv5 Proxy',
+                            url: SOCKS_PROXY_ROUTE
+                        }, {
+                            label: 'Dedicated Proxy',
+                            url: DEDICATED_PROXY_ROUTE
+                        }, {
+                            label: 'Shared Proxy',
+                            url: SHARED_PROXY_ROUTE
+                        }
                     ]}
                 />
                 <FooterColumn
                     title="Resources"
-                    links={[
-                        'Features',
-                        'Privacy policy',
-                        'Terms of Service',
-                        'Refunds',
-                        'Restrictions'
+                    links={[{
+							label: 'Privacy policy',
+							url: PRIVACY_ROUTE
+						}, {
+							label: 'Terms of Service',
+							url: TOS_ROUTE
+						}, {
+							label: 'Refunds',
+							url: REFUNDS_ROUTE
+						}, {
+							label: 'Restrictions',
+							url: REFUNDS_ROUTE
+						}
                     ]}
                 />
                 <FooterColumn
                     title="Support"
                     links={[
-                        'Contact Us',
-                        'Live Chat',
+						{
+							label: 'Contact Us',
+							url: '/'
+						}, {
+							label: 'Live Chat',
+							url: '/'
+						}
                     ]}
                 />
                 <img src="http://via.placeholder.com/350x150" alt="" className="footer__logo" />

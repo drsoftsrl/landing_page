@@ -4,7 +4,8 @@ import { reducer as tooltip } from '@tsiry/redux-tooltip';
 // Constants
 import {
 	SET_PRICING_DATA,
-	SET_LOCATIONS_DATA
+	SET_LOCATIONS_DATA,
+	SET_SCROLL_ELEMENT
 } from '../constants';
 
 // Utils
@@ -13,7 +14,8 @@ import uniq from 'lodash/uniq';
 const initialState = {
 	prices: {},
 	discounts: {},
-	countries: []
+	countries: [],
+	scrollElement: null
 };
 
 const reducer = (state = initialState, action) => {
@@ -76,6 +78,10 @@ const reducer = (state = initialState, action) => {
 
 			return Object.assign({}, state, {
 				countries
+			});
+		case SET_SCROLL_ELEMENT:
+			return Object.assign({}, state, {
+				scrollElement: action.el
 			});
 		default: return state;
 	}

@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+// Scroll
+import Scroll from 'react-scroll';
+
 // Components
 import MainRoute from '../components/pages/main';
 
@@ -11,13 +14,16 @@ import requestHandler from '../utils/request';
 import { PRICES_URL } from '../constants';
 
 // Actions
-import { setPricingData } from '../actions';
+import { setPricingData, setScrollElement } from '../actions';
 
 // Interfaces
 import { IPricingResponse } from '../interfaces';
+import get from 'lodash/get';
 
 interface Props {
-	doSetPrices(data: object): void
+	doSetPrices(data: object): void,
+	doClearScrollElement(): void,
+	scrollElement?: any
 }
 
 interface State {
@@ -27,6 +33,8 @@ interface State {
 class MainPage extends React.Component<Props, State> {
 	componentDidMount() {
 		const { doSetPrices } = this.props;
+
+		this.handleScroll();
 
 		requestHandler(PRICES_URL)
 			.then(({ data, error }) => {
@@ -40,6 +48,19 @@ class MainPage extends React.Component<Props, State> {
 			.catch(console.error);
 	}
 
+	handleScroll() {
+		const { doClearScrollElement, scrollElement } = this.props;
+
+		if (scrollElement) {
+			Scroll.scroller.scrollTo(scrollElement, {
+				smooth: true,
+				offset: -150
+			});
+
+			doClearScrollElement();
+		}
+	}
+
 	render() {
 		return (
 			<MainRoute />
@@ -47,8 +68,13 @@ class MainPage extends React.Component<Props, State> {
 	}
 }
 
-const mapDispatchToProps = (dispatch) => ({
-	doSetPrices: (pricing: IPricingResponse) => dispatch(setPricingData(pricing))
+const mapStateToProps = (state) => ({
+	scrollElement: get(state, 'core.scrollElement', null)
 });
 
-export default connect(null, mapDispatchToProps)(MainPage);
+const mapDispatchToProps = (dispatch) => ({
+	doSetPrices: (pricing: IPricingResponse) => dispatch(setPricingData(pricing)),
+	doClearScrollElement: () => dispatch(setScrollElement(null))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

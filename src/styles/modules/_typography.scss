@@ -149,11 +149,12 @@ h6, .h6 {
 
   &--light {
 
-    .title {
+    .title,
+    .secondaryTitle {
       color: $white;
     }
 
-    p {
+    p, div {
       color: rgba(255,255,255,.85);
     }
   }

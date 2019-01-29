@@ -1,0 +1,11 @@
+// Styling for product pages
+
+@import '../modules/variables';
+
+.products-hero {
+  background: $hero-gradient;
+
+  .preamble {
+    padding-top: 80px;
+  }
+}

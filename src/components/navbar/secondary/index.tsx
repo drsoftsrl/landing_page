@@ -11,22 +11,22 @@ import {
   NavItem,
   NavLink
 } from 'reactstrap';
-import MenuItem from './menuItem';
+import MenuItem from './secondaryMenuItem';
 
 // Scss
-import '../../styles/components/navbar.scss';
+import '../../../styles/components/navbar.scss';
 
 // Utils
 import classnames from 'classnames';
 
 // Constants
 import {
-    SCROLL_DATACENTERS,
-    SCROLL_FEATURES,
-    SCROLL_PRICING,
-    SCROLL_SUPPORT,
-    SITE_URL
-} from '../../constants';
+	SCROLL_PRICING,
+	SCROLL_FEATURES,
+	SCROLL_DATACENTERS,
+	SCROLL_SUPPORT,
+	SITE_URL
+} from '../../../constants';
 
 interface Props {
 
@@ -83,10 +83,10 @@ class NavBar extends React.Component<Props, State> {
                     <NavbarToggler onClick={this.toggleNav} />
                     <Collapse isOpen={isOpen} navbar>
                         <Nav className="mx-auto fill-flex justify-content-center text-uppercase" navbar>
-                            <MenuItem scrollComponent={SCROLL_PRICING} text="Pricing" />
-                            <MenuItem scrollComponent={SCROLL_FEATURES} text="Features" />
-                            <MenuItem scrollComponent={SCROLL_DATACENTERS} text="Datacenters" />
-                            <MenuItem scrollComponent={SCROLL_SUPPORT} text="Support" />
+                            <MenuItem url="/" scrollComponent={SCROLL_PRICING} text="Pricing" />
+                            <MenuItem url="/" scrollComponent={SCROLL_FEATURES} text="Features" />
+                            <MenuItem url="/" scrollComponent={SCROLL_DATACENTERS} text="Datacenters" />
+                            <MenuItem url="/" scrollComponent={SCROLL_SUPPORT} text="Support" />
                         </Nav>
                         <Nav className="ml-auto justify-content-end align-items-start align-items-lg-center" navbar>
                             <NavItem>
