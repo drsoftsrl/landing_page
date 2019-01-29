@@ -1,0 +1,19 @@
+// Styling for components/support
+
+.support {
+  padding-top: 80px;
+  padding-bottom: 80px;
+
+  textarea {
+    min-height: 100px;
+  }
+
+  input {
+    height: 49px;
+  }
+
+  input,
+  textarea {
+    border: none;
+  }
+}

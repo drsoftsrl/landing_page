@@ -38,7 +38,7 @@ const Hero = () => (
                     </p>
                     <a
                         href={SITE_URL}
-                        className="btn btn--green btn--lg mb-0 mt-4 d-inline-flex align-items-center">
+                        className="btn btn--green btn--lg mb-0 mt-4">
                         Members
                         <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
                     </a>

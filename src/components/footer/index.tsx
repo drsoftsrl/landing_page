@@ -15,7 +15,7 @@ import FooterColumn from './footerColumn';
 import '../../styles/components/footer.scss';
 
 const Reviews = () => (
-    <footer id="footer" className="section section--gradient__6">
+    <footer className="footer section section--gradient__6">
         <Container>
             <Preamble light title={SITE_NAME}>
                 We offer highly secure, (Dedicated or Shared) SOCKSv5 and Proxies.

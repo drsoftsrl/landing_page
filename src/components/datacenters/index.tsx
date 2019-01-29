@@ -54,7 +54,7 @@ const productTypes = [{
 }];
 
 interface Props {
-    doSetLocationsData(): void,
+    doSetLocationsData(data: object): void,
 	hide(): void,
 	show(any): void,
 	countries: ICountries
@@ -85,7 +85,6 @@ class Datacenters extends React.Component<Props, State> {
     componentDidMount() {
 		const { doSetLocationsData } = this.props;
 
-		// TODO handle typescript definition for request
 		requestHandler(LOCATIONS_URL)
 			.then(({ data, error }) => {
 				if (error) {
@@ -165,7 +164,7 @@ class Datacenters extends React.Component<Props, State> {
 		const self = this;
 
         return (
-            <section id="datacenters" className="section section--padding__bottom">
+            <section className="datacenters section section--padding__bottom">
                 <Container>
                     <Preamble title="Global Datacenter Coverage">
                         Fully anonymous private proxies

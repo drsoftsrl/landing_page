@@ -6,6 +6,7 @@ export const SITE_NAME = "Site name goes here";
 export const BACKEND_URL = 'http://localhost:8000';
 export const PRICES_URL = `${BACKEND_URL}/affiliate/prices/`;
 export const LOCATIONS_URL = `${BACKEND_URL}/datacenters/locations/`;
+export const SUPPORT_URL = `${BACKEND_URL}/support/`;
 
 // App config
 export const SCROLL_DATACENTERS = 'datacenters';

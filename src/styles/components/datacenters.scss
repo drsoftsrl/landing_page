@@ -1,8 +1,6 @@
 // Styling for components/datacenters
 
-@import '../modules/variables';
-
-#datacenters {
+.datacenters {
 
   @media (max-width: 767px) {
     ul {

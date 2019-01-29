@@ -2,7 +2,7 @@
 
 @import '../modules/variables';
 
-#pricing {
+.pricing {
   position: relative;
   background: linear-gradient(-180deg, $body-bg 60%, #FFFFFF 100%);
   z-index: 99;
@@ -15,6 +15,10 @@
     background: $white;
     border-radius: $border-radius;
     box-shadow: 0 4px 9px 0 rgba(23, 28, 33, .06);
+
+    .preamble {
+      margin-bottom: 50px;
+    }
 
     .slider {
       padding: 3rem 0;

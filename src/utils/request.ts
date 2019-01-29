@@ -1,9 +1,9 @@
 // Response Handler
 const createResponse = (
-	error = null,
-	data = null,
-	success = false,
-	status = 500
+	error: string = null,
+	data: object = null,
+	success: boolean = false,
+	status: number = 500
 ) => ({
 	data,
 	error,
@@ -11,7 +11,7 @@ const createResponse = (
 	status
 });
 
-const interpretResponse = (data) =>
+const interpretResponse = (data: Response) =>
 	data.text().then(text => {
 		try {
 			const json = JSON.parse(text);

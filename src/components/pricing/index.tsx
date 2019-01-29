@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 // Utils
 import get from 'lodash/get';
-import isEmpty from 'lodash/isEmpty';
 
 // Components
 import {
@@ -15,6 +14,7 @@ import {
 import Slider from 'rc-slider';
 import { Element } from 'react-scroll';
 import Switch from '../generic/switch';
+import Preamble from '../generic/preamble';
 
 // Scss
 import '../../styles/components/pricing.scss';
@@ -169,12 +169,17 @@ class Pricing extends React.Component<Props, State> {
 	    } = this.state;
 
         return (
-            <section id="pricing" className="section section--padding__bottom">
+            <section className="pricing section section--padding__bottom">
                 <Container>
                     <Row>
                         <Col xs={{ size: 12 }}>
                             <Element name={SCROLL_PRICING}>
                                 <div className="pricing-card">
+									<Preamble title="Lowest prices in the industry">
+										Our prices have always been competitive and we plan on keeping them that way.
+										On top of that, we always have discounts based on quantity or billing period so
+										make sure you play with our pricing calculator below to estimate your expenses.
+									</Preamble>
                                     <Switch
                                         selectedOption={selectedProduct}
                                         options={products}

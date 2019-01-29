@@ -17,7 +17,7 @@ import { setPricingData } from '../actions';
 import { IPricingResponse } from '../interfaces';
 
 interface Props {
-	doSetPrices(): void
+	doSetPrices(data: object): void
 }
 
 interface State {
@@ -28,7 +28,6 @@ class MainPage extends React.Component<Props, State> {
 	componentDidMount() {
 		const { doSetPrices } = this.props;
 
-		// TODO handle typescript definition for request
 		requestHandler(PRICES_URL)
 			.then(({ data, error }) => {
 				if (error) {
