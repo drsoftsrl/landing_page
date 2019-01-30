@@ -32,6 +32,7 @@
     "@types/react-scroll": "^1.5.4",
     "@types/react-simple-maps": "^0.12.1",
     "@types/reactstrap": "^6.4.4",
+    "@types/scriptjs": "0.0.2",
     "classnames": "^2.2.6",
     "country-iso-2-to-3": "^1.0.1",
     "gatsby": "^2.0.76",
@@ -56,6 +57,7 @@
     "react-simple-maps": "^0.12.1",
     "reactstrap": "^7.1.0",
     "redux": "^4.0.1",
+    "scriptjs": "^2.5.9",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {

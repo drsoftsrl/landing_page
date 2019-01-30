@@ -8,7 +8,8 @@ import {
 
 interface Link {
     label: string,
-    url: string
+    url: string,
+    children: any
 }
 
 interface Props {
@@ -16,16 +17,19 @@ interface Props {
     title: string
 }
 
-const FooterColumn: React.FunctionComponent<Props> = ({ title, links }) => (
+const FooterColumn: React.FunctionComponent<Props> = ({ title, links, children }) => (
     <Col md={{ size: 4 }} className="footer__column">
         <h5>{title}</h5>
-        <ul>
-            {links.map((link, index) => (
-                <li key={index}>
-                    <Link to={link.url}>{link.label}</Link>
-                </li>
-            ))}
-        </ul>
+        {children || (
+			<ul>
+				{links.map((link, index) => (
+					<li key={index}>
+						<Link to={link.url}>{link.label}</Link>
+					</li>
+				))}
+			</ul>
+        )}
+
     </Col>
 );
 

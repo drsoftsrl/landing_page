@@ -1,7 +1,8 @@
 import React from 'react';
 
 // Components
-import NavBar from '../navbar/secondary';
+import NavBar from '../navbar';
+import MenuItem from '../navbar/secondaryMenuItem';
 import Preamble from '../generic/preamble';
 
 // Constants
@@ -15,7 +16,7 @@ interface Props {
 
 const ProductsHero = ({ children, title, btnText }) => (
 	<main className="products-hero">
-		<NavBar />
+		<NavBar MenuItem={MenuItem} />
 
 		<section className="section section--padding">
 			<Preamble light title={title}>

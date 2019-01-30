@@ -5,7 +5,9 @@ import { reducer as tooltip } from '@tsiry/redux-tooltip';
 import {
 	SET_PRICING_DATA,
 	SET_LOCATIONS_DATA,
-	SET_SCROLL_ELEMENT
+	SET_SCROLL_ELEMENT,
+	SET_TAWK_TO_SCRIPT_LOADED,
+	SET_TAWK_STATUS
 } from '../constants';
 
 // Utils
@@ -15,7 +17,9 @@ const initialState = {
 	prices: {},
 	discounts: {},
 	countries: [],
-	scrollElement: null
+	scrollElement: null,
+	tawkToScriptLoaded: false,
+	tawkToStatus: ''
 };
 
 const reducer = (state = initialState, action) => {
@@ -82,6 +86,14 @@ const reducer = (state = initialState, action) => {
 		case SET_SCROLL_ELEMENT:
 			return Object.assign({}, state, {
 				scrollElement: action.el
+			});
+		case SET_TAWK_TO_SCRIPT_LOADED:
+			return Object.assign({}, state, {
+				tawkToScriptLoaded: true
+			});
+		case SET_TAWK_STATUS:
+			return Object.assign({}, state, {
+				tawkToStatus: action.status
 			});
 		default: return state;
 	}

@@ -54,7 +54,7 @@ class MainPage extends React.Component<Props, State> {
 		if (scrollElement) {
 			Scroll.scroller.scrollTo(scrollElement, {
 				smooth: true,
-				offset: -150
+				offset: -165
 			});
 
 			doClearScrollElement();

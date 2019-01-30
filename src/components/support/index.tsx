@@ -11,6 +11,7 @@ import {
 	Row
 } from 'reactstrap';
 import Preamble from '../generic/preamble';
+import ChatLink from '../generic/chatLink';
 
 // Scss
 import '../../styles/components/support.scss';
@@ -77,6 +78,13 @@ class Support extends React.Component<Props, State> {
 						<br />
 						Please pick one that is more appropriate to your needs.
 					</Preamble>
+
+					<div className="support-container text-center">
+						<ChatLink />
+
+						<div className="support-separator">or</div>
+					</div>
+
 					<Form>
 						<FormGroup row>
 							<Col sm={{ size: 12 }} lg={{ size: 10, offset: 1 }}>

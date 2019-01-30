@@ -1,7 +1,8 @@
 import React from 'react';
 
 // Components
-import NavBar from '../components/navbar/secondary';
+import NavBar from '../components/navbar';
+import MenuItem from '../components/navbar/secondaryMenuItem';
 import Footer from '../components/footer';
 import Extra from '../components/extra';
 import Preamble from '../components/generic/preamble';
@@ -12,7 +13,7 @@ import '../styles/components/policy.scss';
 const PrivacyPolicy = () => (
 	<React.Fragment>
 		<main className="policy-hero">
-			<NavBar />
+			<NavBar MenuItem={MenuItem} />
 
 			<section className="section section--padding">
 				<Preamble light title="Privacy Policy">

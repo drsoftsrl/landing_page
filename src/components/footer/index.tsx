@@ -10,8 +10,10 @@ import {
 } from 'reactstrap';
 import Preamble from '../generic/preamble';
 import FooterColumn from './footerColumn';
+import { Link } from 'react-scroll';
+import ChatLink from '../generic/chatLink';
 
-// Routes
+// Constants
 import {
     HTTPS_PROXY_ROUTE,
 	SOCKS_PROXY_ROUTE,
@@ -19,7 +21,8 @@ import {
 	SHARED_PROXY_ROUTE,
 	TOS_ROUTE,
 	REFUNDS_ROUTE,
-	PRIVACY_ROUTE
+	PRIVACY_ROUTE,
+	SCROLL_SUPPORT
 } from '../../constants';
 
 // Scss
@@ -68,18 +71,18 @@ const Reviews = () => (
 						}
                     ]}
                 />
-                <FooterColumn
-                    title="Support"
-                    links={[
-						{
-							label: 'Contact Us',
-							url: '/'
-						}, {
-							label: 'Live Chat',
-							url: '/'
-						}
-                    ]}
-                />
+				<FooterColumn title="Support">
+					<ul>
+						<li className="link">
+							<Link to={SCROLL_SUPPORT} smooth offset={-85}>
+								Support
+							</Link>
+						</li>
+						<li className="link">
+							<ChatLink />
+						</li>
+					</ul>
+				</FooterColumn>
                 <img src="http://via.placeholder.com/350x150" alt="" className="footer__logo" />
             </Row>
         </Container>

@@ -1,8 +1,27 @@
 // Styling for components/support
 
+@import '../modules/variables';
+
 .support {
   padding-top: 80px;
   padding-bottom: 80px;
+
+  &-container {
+    color: white;
+
+    .chat-link {
+      position: relative;
+      color: $blue-2 !important;
+
+      &:hover {
+        text-decoration: underline !important;
+      }
+    }
+
+    .support-separator {
+      padding: 2rem;
+    }
+  }
 
   textarea {
     min-height: 100px;

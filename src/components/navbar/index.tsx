@@ -11,7 +11,7 @@ import {
   NavItem,
   NavLink
 } from 'reactstrap';
-import MenuItem from './menuItem';
+import ChatLink from '../generic/chatLink';
 
 // Scss
 import '../../styles/components/navbar.scss';
@@ -29,7 +29,7 @@ import {
 } from '../../constants';
 
 interface Props {
-
+	MenuItem: any
 }
 
 interface State {
@@ -49,18 +49,18 @@ class NavBar extends React.Component<Props, State> {
         };
     }
 
-    handleScroll() {
-        this.setState({
-            scrollY: window.document.documentElement.scrollTop
-        });
-    }
-
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll, { passive: true });
     }
 
     componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
+    }
+
+    handleScroll() {
+        this.setState({
+            scrollY: window.document.documentElement.scrollTop
+        });
     }
 
     toggleNav() {
@@ -71,6 +71,7 @@ class NavBar extends React.Component<Props, State> {
 
     render() {
         const { scrollY, isOpen } = this.state;
+        const { MenuItem } = this.props;
         const navClasses = classnames("justify-content-center", scrollY > 250 ? "top-fixed" : "");
 
         return (
@@ -93,6 +94,8 @@ class NavBar extends React.Component<Props, State> {
                                 <NavLink href={SITE_URL} className="text-uppercase nav-link__cta rounded">Buy now</NavLink>
                             </NavItem>
                         </Nav>
+
+						<ChatLink hasIcon />
                     </Collapse>
                 </Container>
             </Navbar>

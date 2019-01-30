@@ -1,7 +1,9 @@
 import {
 	SET_PRICING_DATA,
 	SET_LOCATIONS_DATA,
-	SET_SCROLL_ELEMENT
+	SET_SCROLL_ELEMENT,
+	SET_TAWK_TO_SCRIPT_LOADED,
+	SET_TAWK_STATUS
 } from './constants';
 
 // Interfaces
@@ -20,4 +22,13 @@ export const setLocationsData = (locations: ILocationsResponse) => ({
 export const setScrollElement = (el: any) => ({
 	type: SET_SCROLL_ELEMENT,
 	el
+});
+
+export const setTawkToScriptLoaded = () => ({
+	type: SET_TAWK_TO_SCRIPT_LOADED
+});
+
+export const setTawkToStatus = (status: string) => ({
+	type: SET_TAWK_STATUS,
+	status
 });

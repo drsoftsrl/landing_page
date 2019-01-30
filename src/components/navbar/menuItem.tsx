@@ -14,7 +14,7 @@ interface Props {
 
 const MenuItem: React.FunctionComponent<Props> = ({ scrollComponent, text }) => (
   <NavItem>
-    <Link to={scrollComponent} smooth offset={-75}>
+    <Link to={scrollComponent} smooth offset={-85}>
       <NavLink tag="div" className="text-uppercase">
           {text}
       </NavLink>

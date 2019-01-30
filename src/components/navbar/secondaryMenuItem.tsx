@@ -9,11 +9,10 @@ import {
 } from 'reactstrap';
 
 // Actions
-import { setScrollElement } from '../../../actions';
+import { setScrollElement } from '../../actions';
 
 interface Props {
 	scrollComponent: any,
-	url: string,
 	text: string,
 	doSetScrollElement(el: any): void
 }
@@ -36,11 +35,11 @@ class MenuItem extends React.Component<Props, State> {
     }
 
 	render() {
-        const { url, text } = this.props;
+        const { text } = this.props;
 
 		return (
 			<NavItem>
-				<Link to={url} onClick={this.handleClick}>
+				<Link to="/" onClick={this.handleClick}>
 					<NavLink tag="div" className="text-uppercase">
 						{text}
 					</NavLink>
