@@ -167,10 +167,9 @@ class Datacenters extends React.Component<Props, State> {
             <section className="datacenters section section--padding__bottom">
                 <Container>
                     <Preamble title="Global Datacenter Coverage">
-                        Fully anonymous private proxies
-                        <br />
-                        (shared or dedicated) starting at just $0.7
-                    </Preamble>
+						Our datacenters are spread across the globe and we're constantly refreshing our lists to ensure
+						a rich set of countries and locations that you can chose from.
+					</Preamble>
                     <Row>
                         <Col lg={{ size: 12 }}>
 							<div ref={this.mapContainer}>

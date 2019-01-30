@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 // Components
 import {
@@ -17,8 +18,13 @@ import { SITE_URL } from '../../constants';
 import heroImage from '../../images/hero-illustration-4.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import get from 'lodash/get';
 
-const Hero = () => (
+interface Props {
+	minPrice: string
+}
+
+const Hero = ({ minPrice }: Props) => (
     <div className="main-content">
         <Container>
             <Row>
@@ -34,7 +40,7 @@ const Hero = () => (
                     <p className="main-content__lead lead mb-4">
                         Fully anonymous private proxies
                         <br />
-                        (shared or dedicated) starting at just $0.7
+                        (shared or dedicated) starting at just ${minPrice}
                     </p>
                     <a
                         href={SITE_URL}
@@ -53,4 +59,8 @@ const Hero = () => (
     </div>
 );
 
-export default Hero;
+const mapStateToProps = (state) => ({
+	minPrice: get(state, 'core.minPrice', ''),
+});
+
+export default connect(mapStateToProps)(Hero);

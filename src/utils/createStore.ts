@@ -12,6 +12,7 @@ import {
 
 // Utils
 import uniq from 'lodash/uniq';
+import minBy from 'lodash/minBy';
 
 const initialState = {
 	prices: {},
@@ -19,18 +20,28 @@ const initialState = {
 	countries: [],
 	scrollElement: null,
 	tawkToScriptLoaded: false,
-	tawkToStatus: ''
+	tawkToStatus: '',
+	minPrice: ''
 };
 
 const reducer = (state = initialState, action) => {
 	switch(action.type) {
 		case SET_PRICING_DATA:
-			const { pricing } = action;
-			const { discounts } = pricing;
+			const { pricing: { prices, discounts } } = action;
+
+			let minPrice = Number.MAX_SAFE_INTEGER;
+			Object.keys(prices).forEach((key) => {
+				const currentPrice = parseFloat(prices[key].price);
+
+				if (minPrice > currentPrice) {
+					minPrice = currentPrice;
+				}
+			});
 
 			return Object.assign({}, state, {
-				prices: pricing.prices,
-				discounts: discounts
+				prices: prices,
+				discounts: discounts,
+				minPrice: minPrice !== Number.MAX_SAFE_INTEGER ? minPrice.toFixed(1) : null
 			});
 		case SET_LOCATIONS_DATA:
 			const { locations: { continents } } = action;
