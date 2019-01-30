@@ -99,6 +99,6 @@ const reducer = (state = initialState, action) => {
 	}
 };
 
-const reduxDevExtension = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+const reduxDevExtension = typeof window !== 'undefined' ? window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() : undefined;
 const createStore = () => reduxCreateStore(combineReducers({ core: reducer, tooltip }), {}, reduxDevExtension);
 export default createStore;

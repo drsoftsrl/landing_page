@@ -75,7 +75,7 @@ const Reviews = () => (
 					<ul>
 						<li className="link">
 							<Link to={SCROLL_SUPPORT} smooth offset={-85}>
-								Support
+								Contact Us
 							</Link>
 						</li>
 						<li className="link">

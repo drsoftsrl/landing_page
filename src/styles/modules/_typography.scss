@@ -162,13 +162,13 @@ h6, .h6 {
 
 a,
 .link {
-  color: $blue-2;
+  color: $white;
   transition: .2s ease-in;
 }
 
 a:hover,
 .link:hover {
-  color: lighten($blue-2, 15%);
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
 }
 
