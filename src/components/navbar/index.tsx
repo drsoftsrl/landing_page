@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 
 // Components
 import {
@@ -8,8 +9,8 @@ import {
 	NavbarBrand,
 	NavbarToggler,
 	Nav,
-  NavItem,
-  NavLink
+	NavItem,
+	NavLink
 } from 'reactstrap';
 import ChatLink from '../generic/chatLink';
 
@@ -23,9 +24,9 @@ import classnames from 'classnames';
 import {
     SCROLL_DATACENTERS,
     SCROLL_FEATURES,
-    SCROLL_PRICING,
     SCROLL_SUPPORT,
-    SITE_URL
+    SITE_URL,
+	PRICING_ROUTE
 } from '../../constants';
 
 interface Props {
@@ -84,9 +85,16 @@ class NavBar extends React.Component<Props, State> {
                     <NavbarToggler onClick={this.toggleNav} />
                     <Collapse isOpen={isOpen} navbar>
                         <Nav className="mx-auto fill-flex justify-content-center text-uppercase" navbar>
-                            <MenuItem scrollComponent={SCROLL_PRICING} text="Pricing" />
+							<NavItem>
+								<Link to={PRICING_ROUTE}>
+									<NavLink tag="div" className="text-uppercase">
+										Pricing
+									</NavLink>
+								</Link>
+							</NavItem>
+
+							<MenuItem scrollComponent={SCROLL_DATACENTERS} text="Datacenters" />
                             <MenuItem scrollComponent={SCROLL_FEATURES} text="Features" />
-                            <MenuItem scrollComponent={SCROLL_DATACENTERS} text="Datacenters" />
                             <MenuItem scrollComponent={SCROLL_SUPPORT} text="Support" />
                         </Nav>
                         <Nav className="ml-auto justify-content-end align-items-start align-items-lg-center" navbar>

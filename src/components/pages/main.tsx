@@ -3,7 +3,7 @@ import React from 'react';
 // Components
 import NavBar from '../navbar';
 import MenuItem from '../navbar/menuItem';
-import Hero from '../hero';
+import MainHero from '../hero/mainHero';
 import Pricing from '../pricing';
 import Datacenters from '../datacenters';
 import Features from '../features';
@@ -24,7 +24,7 @@ const IndexPage = () => (
 	<React.Fragment>
 		<main className="main">
 			<NavBar MenuItem={MenuItem} />
-			<Hero />
+			<MainHero />
 		</main>
 
 		<Pricing />

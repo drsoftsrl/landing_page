@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 
 // Components
 import {
@@ -51,6 +52,9 @@ class Support extends React.Component<Props, State> {
 
 	handleSendAction() {
 		const { email, message } = this.state;
+		const notifierOptions = {
+			position: toast.POSITION.BOTTOM_CENTER
+		};
 
 		requestHandler(SUPPORT_URL, {
 			method: 'POST',
@@ -58,13 +62,15 @@ class Support extends React.Component<Props, State> {
 		})
 			.then(({ data, error }) => {
 				if (error) {
-					console.error(error);
+					toast.error(error, notifierOptions);
 					return;
 				}
 
-				// TODO notify success
+				toast.success('Message sent!', notifierOptions);
 			})
-			.catch(console.error);
+			.catch((e) => {
+				toast.error('Sending the message failed. Please try again!', notifierOptions);
+			});
 	}
 
 	render() {

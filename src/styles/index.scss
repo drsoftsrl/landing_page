@@ -1,5 +1,6 @@
 // Third party styling
 @import '~bootstrap/dist/css/bootstrap';
+@import '~react-toastify/dist/ReactToastify.min';
 
 // Custom styling
 @import './modules/variables';
@@ -10,5 +11,13 @@
 .chat-link {
   cursor: pointer;
   transition: all 350ms;
+}
+
+.Toastify__toast--success {
+  background-color: $green;
+}
+
+.Toastify__toast--error {
+  background-color: $red;
 }
 

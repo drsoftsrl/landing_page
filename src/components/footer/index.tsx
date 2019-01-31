@@ -22,7 +22,8 @@ import {
 	TOS_ROUTE,
 	REFUNDS_ROUTE,
 	PRIVACY_ROUTE,
-	SCROLL_SUPPORT
+	SCROLL_SUPPORT,
+	PRICING_ROUTE
 } from '../../constants';
 
 // Scss
@@ -57,6 +58,9 @@ const Reviews = () => (
                 <FooterColumn
                     title="Resources"
                     links={[{
+							label: 'Pricing',
+							url: PRICING_ROUTE
+						}, {
 							label: 'Privacy policy',
 							url: PRIVACY_ROUTE
 						}, {

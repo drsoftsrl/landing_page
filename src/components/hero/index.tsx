@@ -1,56 +1,28 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 // Components
 import {
     Col,
-	Container,
-    Row
+	Container
 } from 'reactstrap';
 
 // Scss
 import '../../styles/components/hero.scss';
 
-// Constants
-import { SITE_URL } from '../../constants';
-
 // Images & icons
 import heroImage from '../../images/hero-illustration-4.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import get from 'lodash/get';
 
 interface Props {
-	minPrice: string
+	minPrice: string,
+	children: any
 }
 
-const Hero = ({ minPrice }: Props) => (
+const Hero = ({ minPrice, children }: Props) => (
     <div className="main-content">
         <Container>
-            <Row>
-                <Col
-                    xl={{ size: 8, offset: 2 }}
-                    lg={{ size: 10, offset: 1 }}
-                >
-                    <h1 className="main-content__title mb-3 mb-lg-4 h2">
-                        Anonymous
-                        <br />
-                        HTTP & SOCKSv5 Proxies
-                    </h1>
-                    <p className="main-content__lead lead mb-4">
-                        Fully anonymous private proxies
-                        <br />
-                        (shared or dedicated) starting at just ${minPrice}
-                    </p>
-                    <a
-                        href={SITE_URL}
-                        className="btn btn--green btn--lg mb-0 mt-4">
-                        Members
-                        <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
-                    </a>
-                </Col>
-            </Row>
+			{children}
         </Container>
+
         <Container fluid>
             <Col lg={{ size: 12 }}>
                 <img src={heroImage} alt="#" className="main-content__img" />
@@ -59,8 +31,4 @@ const Hero = ({ minPrice }: Props) => (
     </div>
 );
 
-const mapStateToProps = (state) => ({
-	minPrice: get(state, 'core.minPrice', ''),
-});
-
-export default connect(mapStateToProps)(Hero);
+export default Hero;

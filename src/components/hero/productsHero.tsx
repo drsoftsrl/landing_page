@@ -14,7 +14,7 @@ interface Props {
 	title: string
 }
 
-const ProductsHero = ({ children, title, btnText }) => (
+const ProductsHero = ({ children, title, btnText }: Props) => (
 	<main className="products-hero">
 		<NavBar MenuItem={MenuItem} />
 

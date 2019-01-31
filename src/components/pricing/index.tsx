@@ -1,9 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-// Utils
-import get from 'lodash/get';
-
 // Components
 import {
 	Button,
@@ -12,33 +9,29 @@ import {
     Row
 } from 'reactstrap';
 import Slider from 'rc-slider';
-import { Element } from 'react-scroll';
 import Switch from '../generic/switch';
 import Preamble from '../generic/preamble';
+import PricingFeatures from './pricingFeatures';
 
 // Scss
 import '../../styles/components/pricing.scss';
 import 'rc-slider/assets/index.css';
 import 'rc-tooltip/assets/bootstrap.css';
 
-// Icons
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircle } from '@fortawesome/free-regular-svg-icons';
-
 // Constants
-import { SCROLL_PRICING, BILLING_CYCLES } from '../../constants';
+import { BILLING_CYCLES, PRICES_URL } from '../../constants';
 
-interface Props {
-    discounts?: object,
-	prices?: object
-}
+// Interfaces
+import { IPricingResponse } from '../../interfaces';
 
-interface State {
-	selectedBillingCycle: string|number,
-	selectedProduct: string,
-	selectedProductType: string,
-	selectedQuantity: number
-}
+// Request
+import requestHandler from '../../utils/request';
+
+// Actions
+import { setPricingData } from '../../actions';
+
+// Utils
+import get from 'lodash/get';
 
 const products = [{
 	value: 'proxy',
@@ -56,6 +49,19 @@ const productTypes = [{
 	label: 'shared'
 }];
 
+interface Props {
+	doSetPrices(data: object): void,
+	discounts?: object,
+	prices?: object
+}
+
+interface State {
+	selectedBillingCycle: string|number,
+	selectedProduct: string,
+	selectedProductType: string,
+	selectedQuantity: number
+}
+
 class Pricing extends React.Component<Props, State> {
 	constructor(props: Props) {
 		super(props);
@@ -66,6 +72,21 @@ class Pricing extends React.Component<Props, State> {
 			selectedProductType: 'dedicated',
 			selectedQuantity: 10
 		};
+	}
+
+	componentDidMount() {
+		const { doSetPrices } = this.props;
+
+		requestHandler(PRICES_URL)
+			.then(({ data, error }) => {
+				if (error) {
+					console.error(error);
+					return;
+				}
+
+				doSetPrices(data);
+			})
+			.catch(console.error);
 	}
 
 	handleChange(field, value) {
@@ -173,106 +194,70 @@ class Pricing extends React.Component<Props, State> {
                 <Container>
                     <Row>
                         <Col xs={{ size: 12 }}>
-                            <Element name={SCROLL_PRICING}>
-                                <div className="pricing-card">
-									<Preamble title="Lowest prices in the industry">
-										Our prices have always been competitive and we plan on keeping them that way.
-										On top of that, we always have discounts based on quantity or billing period so
-										make sure you play with our pricing calculator below to estimate your expenses.
-									</Preamble>
-                                    <Switch
-                                        selectedOption={selectedProduct}
-                                        options={products}
-										onChange={this.handleChange.bind(this, 'selectedProduct')}
-                                    />
+							<div className="pricing-card">
+								<Preamble title="Lowest prices in the industry">
+									Our prices have always been competitive and we plan on keeping them that way.
+									On top of that, we always have discounts based on quantity or billing period so
+									make sure you play with our pricing calculator below to estimate your expenses.
+								</Preamble>
+								<Switch
+									selectedOption={selectedProduct}
+									options={products}
+									onChange={this.handleChange.bind(this, 'selectedProduct')}
+								/>
 
-                                    <Switch
-                                        selectedOption={selectedProductType}
-                                        options={productTypes}
-										onChange={this.handleChange.bind(this, 'selectedProductType')}
-                                    />
+								<Switch
+									selectedOption={selectedProductType}
+									options={productTypes}
+									onChange={this.handleChange.bind(this, 'selectedProductType')}
+								/>
 
+								<div>
+									<Switch
+										className="billing-cycle-switch"
+										selectedOption={selectedBillingCycle}
+										options={this.billingCycleValues}
+										onChange={this.handleChange.bind(this, 'selectedBillingCycle')}
+									/>
+								</div>
+
+								<br />
+
+								<div className="slider">
+									<Slider
+										value={selectedQuantity}
+										min={1}
+										max={this.biggestQuantityDiscount || 100}
+										onChange={this.handleChange.bind(this, 'selectedQuantity')}
+									/>
+								</div>
+
+								<footer className="pricing-card__footer d-flex">
 									<div>
-										<Switch
-											className="billing-cycle-switch"
-											selectedOption={selectedBillingCycle}
-											options={this.billingCycleValues}
-											onChange={this.handleChange.bind(this, 'selectedBillingCycle')}
-										/>
+										<div className="pricing-card__footer-value text-left">{selectedQuantity}</div>
+										<div className="pricing-card__footer-label text-left">Quantity</div>
 									</div>
-
-									<br />
-
-									<div className="slider">
-										<Slider
-											value={selectedQuantity}
-											min={1}
-											max={this.biggestQuantityDiscount || 100}
-											onChange={this.handleChange.bind(this, 'selectedQuantity')}
-										/>
+									<div>
+										<div className="pricing-card__footer-value text-left">${this.basePrice}</div>
+										<div className="pricing-card__footer-label text-left">Base price</div>
 									</div>
-
-									<footer className="pricing-card__footer d-flex">
+									<div>
+										<div className="pricing-card__footer-value text-left">{this.totalDiscount}%</div>
+										<div className="pricing-card__footer-label text-left">Discount</div>
+									</div>
+									<div className="d-flex pricing-card__footer-total">
 										<div>
-											<div className="pricing-card__footer-value text-left">{selectedQuantity}</div>
-											<div className="pricing-card__footer-label text-left">Quantity</div>
+											<div className="pricing-card__footer-value pricing-total text-left">${this.priceWithDiscount}</div>
+											<div className="pricing-card__footer-label text-left">{BILLING_CYCLES[selectedBillingCycle]}</div>
 										</div>
-										<div>
-											<div className="pricing-card__footer-value text-left">${this.basePrice}</div>
-											<div className="pricing-card__footer-label text-left">Base price</div>
-										</div>
-										<div>
-											<div className="pricing-card__footer-value text-left">{this.totalDiscount}%</div>
-											<div className="pricing-card__footer-label text-left">Discount</div>
-										</div>
-										<div className="d-flex pricing-card__footer-total">
-											<div>
-												<div className="pricing-card__footer-value pricing-total text-left">${this.priceWithDiscount}</div>
-												<div className="pricing-card__footer-label text-left">{BILLING_CYCLES[selectedBillingCycle]}</div>
-											</div>
-											<Button className="btn--green">Order now</Button>
-										</div>
-									</footer>
-                                </div>
-                            </Element>
+										<Button className="btn--green">Order now</Button>
+									</div>
+								</footer>
+							</div>
                         </Col>
                     </Row>
-                    <Row className="pricing-features justify-content-center">
-                        <Col lg={{ size: 11 }}>
-                            <Row className="row d-flex justify-content-center">
-                                <Col lg={{ size: 'auto' }} md={{ size: 4 }} sm={{ size: 6 }} className="mt-4 mt-md-0">
-                                    <div className="pricing-feature d-flex align-items-center justify-content-center">
-                                        <FontAwesomeIcon className="icon" icon={faCircle} />
-                                        <p>Fully anonymous</p>
-                                    </div>
-                                </Col>
-                                <Col lg={{ size: 'auto' }} md={{ size: 4 }} sm={{ size: 6 }} className="mt-4 mt-md-0">
-                                    <div className="pricing-feature d-flex align-items-center justify-content-center">
-                                        <FontAwesomeIcon className="icon" icon={faCircle} />
-                                        <p>24/7 Heroic support</p>
-                                    </div>
-                                </Col>
-                                <Col lg={{ size: 'auto' }} md={{ size: 4 }} sm={{ size: 6 }} className="mt-4 mt-md-0">
-                                    <div className="pricing-feature d-flex align-items-center justify-content-center">
-                                        <FontAwesomeIcon className="icon" icon={faCircle} />
-                                        <p>Multiple datacenters</p>
-                                    </div>
-                                </Col>
-                                <Col lg={{ size: 'auto' }} md={{ size: 4 }} sm={{ size: 6 }} className="mt-4 mt-lg-0">
-                                    <div className="pricing-feature d-flex align-items-center justify-content-center">
-                                        <FontAwesomeIcon className="icon" icon={faCircle} />
-                                        <p>Affordable pricing</p>
-                                    </div>
-                                </Col>
-                                <Col lg={{ size: 'auto' }} md={{ size: 4 }} sm={{ size: 6 }} className="mt-4 mt-lg-0">
-                                    <div className="pricing-feature d-flex align-items-center justify-content-center">
-                                        <FontAwesomeIcon className="icon" icon={faCircle} />
-                                        <p>Instant activation</p>
-                                    </div>
-                                </Col>
-                            </Row>
-                        </Col>
-                    </Row>
+
+					<PricingFeatures />
                 </Container>
             </section>
         );
@@ -284,4 +269,9 @@ const mapStateToProps = (state) => ({
 	prices: get(state, 'core.prices', {})
 });
 
-export default connect(mapStateToProps, null)(Pricing);
+
+const mapDispatchToProps = (dispatch) => ({
+	doSetPrices: (pricing: IPricingResponse) => dispatch(setPricingData(pricing))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Pricing);
