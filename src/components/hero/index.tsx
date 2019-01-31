@@ -19,7 +19,7 @@ interface Props {
 
 const Hero = ({ minPrice, children }: Props) => (
     <div className="main-content">
-        <Container>
+        <Container fluid>
 			{children}
         </Container>
 
