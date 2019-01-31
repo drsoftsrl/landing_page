@@ -31,6 +31,7 @@
     "@types/react-redux": "^7.0.0",
     "@types/react-scroll": "^1.5.4",
     "@types/react-simple-maps": "^0.12.1",
+    "@types/react-slick": "^0.23.3",
     "@types/react-toastify": "^4.0.1",
     "@types/reactstrap": "^6.4.4",
     "@types/scriptjs": "0.0.2",
@@ -46,6 +47,7 @@
     "gatsby-plugin-typescript": "^2.0.3",
     "gatsby-source-filesystem": "^2.0.8",
     "gatsby-transformer-sharp": "^2.1.8",
+    "jquery": "^3.3.1",
     "lodash": "^4.17.11",
     "node-sass": "^4.11.0",
     "prop-types": "^15.6.2",
@@ -56,10 +58,12 @@
     "react-redux": "^6.0.0",
     "react-scroll": "^1.7.10",
     "react-simple-maps": "^0.12.1",
+    "react-slick": "^0.23.2",
     "react-toastify": "^4.5.2",
     "reactstrap": "^7.1.0",
     "redux": "^4.0.1",
     "scriptjs": "^2.5.9",
+    "slick-carousel": "^1.8.1",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {

@@ -2,6 +2,7 @@ import React from 'react';
 
 // Components
 import Hero from './index';
+import Carousel from '../features/carousel';
 
 interface Props {
 
@@ -9,7 +10,7 @@ interface Props {
 
 const PricingHero = () => (
 	<Hero>
-		Pricing hero
+		<Carousel />
 	</Hero>
 );
 
