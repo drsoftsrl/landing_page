@@ -1,0 +1,65 @@
+// Overrides for react-select
+
+@import '../../modules/variables';
+
+.react-select {
+  display: inline-block;
+  min-width: 200px;
+  color: $blue-2;
+
+  .react-select__single-value {
+    color: $blue-2;
+  }
+
+  .react-select__option {
+
+    &--is-selected {
+      background-color: $blue-2 !important;
+    }
+
+    &--is-focused {
+      background-color: $light-blue;
+
+      &:active {
+        background-color: $light-blue;
+      }
+    }
+  }
+
+  .react-select__control {
+    border: 2px solid $light-blue !important;
+    padding: 0.8rem;
+    border-radius: 1.5rem !important;
+    margin: 0 5px;
+    text-transform: uppercase;
+    box-shadow: none !important;
+  }
+
+  .react-select__value-container {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    div {
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  .react-select__indicators {
+
+    .react-select__indicator-separator {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .react-select__dropdown-indicator,
+    .react-select__clear-indicator {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+}

@@ -24,6 +24,7 @@ import {
 } from 'reactstrap';
 import Preamble from '../generic/preamble';
 import Switch from '../generic/switch';
+import Select from '../generic/select';
 
 // Actions
 import { setLocationsData } from '../../actions';
@@ -57,12 +58,17 @@ interface Props {
     doSetLocationsData(data: object): void,
 	hide(): void,
 	show(any): void,
-	countries: ICountries
+	countries: ICountries,
+	allAvailableTags: Array<string>
 }
 
 interface State {
 	selectedProduct: string,
-	selectedProductType: string
+	selectedProductType: string,
+	selectedTag: {
+		value: string,
+		label: string
+	}
 }
 
 const mapBaseColor = shadeColor('#00b4ff', 0.2);
@@ -73,7 +79,8 @@ class Datacenters extends React.Component<Props, State> {
 
 		this.state = {
 			selectedProduct: 'proxy',
-			selectedProductType: 'dedicated'
+			selectedProductType: 'dedicated',
+			selectedTag: null
 		};
 
 		this.mapContainer = React.createRef();
@@ -99,17 +106,20 @@ class Datacenters extends React.Component<Props, State> {
 
 	countryHasSelectedProducts(iso3) {
 		const { countries } = this.props;
-		const { selectedProduct, selectedProductType } = this.state;
+		const { selectedProduct, selectedProductType, selectedTag } = this.state;
 
 		for (let i = 0; i < countries.length; i++) {
 			const cty = countries[i];
 
 			if (getCountryISO3(cty.iso.toUpperCase()) === iso3) {
-				const products = this.getCountryProducts(iso3);
-				const product = selectedProductType === 'shared' ? `shared_${selectedProduct}` : selectedProduct;
+				const countryData = this.getCountryData(iso3);
 
-				if (products.includes(product)) {
-					return true;
+				if (countryData) {
+					const product = selectedProductType === 'shared' ? `shared_${selectedProduct}` : selectedProduct;
+
+					if (countryData.products.includes(product) && (!selectedTag || countryData.tags.includes(selectedTag.value))) {
+						return true;
+					}
 				}
 
 			}
@@ -118,18 +128,18 @@ class Datacenters extends React.Component<Props, State> {
 		return false;
 	}
 
-	getCountryProducts(iso3) {
+	getCountryData(iso3) {
 		const { countries } = this.props;
 
 		for (let i = 0; i < countries.length; i++) {
 			const cty = countries[i];
 
 			if (getCountryISO3(cty.iso.toUpperCase()) === iso3) {
-				return cty.products;
+				return cty;
 			}
 		}
 
-		return [];
+		return null;
 	}
 
 	countryColor(v) {
@@ -160,8 +170,13 @@ class Datacenters extends React.Component<Props, State> {
 	}
 
 	render() {
-		const { selectedProduct, selectedProductType } = this.state;
+		const { selectedProduct, selectedProductType, selectedTag } = this.state;
+		const { allAvailableTags } = this.props;
 		const self = this;
+		const tagOptions = allAvailableTags.map((tag) => ({
+			value: tag,
+			label: tag
+		}));
 
         return (
             <section className="datacenters section section--padding__bottom">
@@ -233,6 +248,14 @@ class Datacenters extends React.Component<Props, State> {
 									options={productTypes}
 									onChange={this.handleChange.bind(this, 'selectedProductType')}
 								/>
+
+								<Select
+									value={selectedTag}
+									options={tagOptions}
+									onChange={this.handleChange.bind(this, 'selectedTag')}
+									isClearable
+									placeholder="All tags"
+								/>
 							</div>
                         </Col>
                     </Row>
@@ -244,6 +267,7 @@ class Datacenters extends React.Component<Props, State> {
 
 const mapStateToProps = (state) => ({
 	countries: get(state, 'core.countries', {}),
+	allAvailableTags: get(state, 'core.allAvailableTags', [])
 });
 
 const mapDispatchToProps = (dispatch) => ({

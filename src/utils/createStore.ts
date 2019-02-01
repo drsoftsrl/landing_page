@@ -7,7 +7,8 @@ import {
 	SET_LOCATIONS_DATA,
 	SET_SCROLL_ELEMENT,
 	SET_TAWK_TO_SCRIPT_LOADED,
-	SET_TAWK_STATUS
+	SET_TAWK_STATUS,
+	BILLING_CYCLES
 } from '../constants';
 
 // Utils
@@ -21,7 +22,9 @@ const initialState = {
 	scrollElement: null,
 	tawkToScriptLoaded: false,
 	tawkToStatus: '',
-	minPrice: ''
+	minPrice: '',
+	billingCycles: [],
+	allAvailableTags: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -38,14 +41,27 @@ const reducer = (state = initialState, action) => {
 				}
 			});
 
+			const billingCycleValues = discounts.interval ? Object.keys(discounts.interval).map((key) => ({
+				label: BILLING_CYCLES[key],
+				value: key
+			})) : [];
+
+			// Add monthly cycle
+			billingCycleValues.unshift({
+				label: BILLING_CYCLES[1],
+				value: 1
+			});
+
 			return Object.assign({}, state, {
 				prices: prices,
 				discounts: discounts,
-				minPrice: minPrice !== Number.MAX_SAFE_INTEGER ? minPrice.toFixed(1) : null
+				minPrice: minPrice !== Number.MAX_SAFE_INTEGER ? minPrice.toFixed(1) : null,
+				billingCycles: billingCycleValues
 			});
 		case SET_LOCATIONS_DATA:
 			const { locations: { continents } } = action;
 			let countries = [];
+			let allAvailableTags = [];
 
 			for (let continent in continents) {
 				if (continents.hasOwnProperty(continent)) {
@@ -80,19 +96,24 @@ const reducer = (state = initialState, action) => {
 								}
 							}
 
+							tags = uniq(tags);
+
 							countries.push({
 								iso: countryIso,
 								name: countryName,
 								products: uniq(services),
-								tags: uniq(tags)
-							})
+								tags: tags
+							});
+
+							allAvailableTags = allAvailableTags.concat(tags);
 						}
 					}
 				}
 			}
 
 			return Object.assign({}, state, {
-				countries
+				countries,
+				allAvailableTags: uniq(allAvailableTags)
 			});
 		case SET_SCROLL_ELEMENT:
 			return Object.assign({}, state, {

@@ -5,7 +5,7 @@ export const TOS_SITE_NAME = 'anonymous-proxies.net';
 export const TOS_LAST_UPDATE = 'Apr-27-2018';
 export const TAWK_TO_WIDGET_URL = 'https://embed.tawk.to/5b61937de21878736ba285c5/default';
 
-// Api config
+// API config
 export const BACKEND_URL = 'http://localhost:8000';
 export const PRICES_URL = `${BACKEND_URL}/affiliate/prices/`;
 export const LOCATIONS_URL = `${BACKEND_URL}/datacenters/locations/`;
@@ -26,6 +26,11 @@ export const PRICING_ROUTE = '/pricing';
 export const SCROLL_DATACENTERS = 'datacenters';
 export const SCROLL_FEATURES = 'features';
 export const SCROLL_SUPPORT = 'support';
+export const DEFAULT_TAG = {
+	label: 'No Tags',
+	value: 'No Tags',
+	multiplier: '1'
+};
 
 export const BILLING_CYCLES = {
 	1: 'Monthly',

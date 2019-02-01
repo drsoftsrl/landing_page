@@ -12,6 +12,7 @@ import Slider from 'rc-slider';
 import Switch from '../generic/switch';
 import Preamble from '../generic/preamble';
 import PricingFeatures from './pricingFeatures';
+import Select from '../generic/select';
 
 // Scss
 import '../../styles/components/pricing.scss';
@@ -19,7 +20,11 @@ import 'rc-slider/assets/index.css';
 import 'rc-tooltip/assets/bootstrap.css';
 
 // Constants
-import { BILLING_CYCLES, PRICES_URL } from '../../constants';
+import {
+	BILLING_CYCLES,
+	PRICES_URL,
+	DEFAULT_TAG
+} from '../../constants';
 
 // Interfaces
 import { IPricingResponse } from '../../interfaces';
@@ -52,14 +57,20 @@ const productTypes = [{
 interface Props {
 	doSetPrices(data: object): void,
 	discounts?: object,
-	prices?: object
+	prices?: object,
+	billingCycles: Array<object>
 }
 
 interface State {
 	selectedBillingCycle: string|number,
 	selectedProduct: string,
 	selectedProductType: string,
-	selectedQuantity: number
+	selectedQuantity: number,
+	selectedTag: {
+		value: string,
+		label: string,
+		multiplier: string
+	}
 }
 
 class Pricing extends React.Component<Props, State> {
@@ -70,7 +81,8 @@ class Pricing extends React.Component<Props, State> {
 			selectedBillingCycle: 1,
 			selectedProduct: 'proxy',
 			selectedProductType: 'dedicated',
-			selectedQuantity: 10
+			selectedQuantity: 10,
+			selectedTag: DEFAULT_TAG
 		};
 	}
 
@@ -92,6 +104,13 @@ class Pricing extends React.Component<Props, State> {
 	handleChange(field, value) {
 		this.setState({
 			[field]: value
+		});
+	}
+
+	handleProductChange(field, value) {
+		this.setState({
+			[field]: value,
+			selectedTag: DEFAULT_TAG
 		});
 	}
 
@@ -131,12 +150,12 @@ class Pricing extends React.Component<Props, State> {
 		const { discounts: { interval: billingCycleDiscounts } } = this.props;
 		const { selectedBillingCycle } = this.state;
 
-		return parseFloat(selectedBillingCycle !== 1 && billingCycleDiscounts ? billingCycleDiscounts[selectedBillingCycle] : 0);
+		return selectedBillingCycle !== 1 && billingCycleDiscounts ? parseFloat(billingCycleDiscounts[selectedBillingCycle]) : 0;
 	}
 
 	get priceWithoutDiscount(): number {
-		const { selectedBillingCycle, selectedQuantity } = this.state;
-		return this.basePrice * selectedBillingCycle * selectedQuantity;
+		const { selectedBillingCycle, selectedQuantity, selectedTag } = this.state;
+		return this.basePrice * selectedBillingCycle * selectedQuantity * parseFloat(selectedTag.multiplier);
 	}
 
 	get priceWithDiscount(): string {
@@ -153,6 +172,12 @@ class Pricing extends React.Component<Props, State> {
 	}
 
 	get totalDiscount() {
+		const priceWithoutDiscount = this.priceWithoutDiscount;
+
+		if (!priceWithoutDiscount) {
+			return '0.0';
+		}
+
 		return ((this.priceWithoutDiscount - parseFloat(this.priceWithDiscount)) * 100 / this.priceWithoutDiscount).toFixed(1);
 	}
 
@@ -163,22 +188,20 @@ class Pricing extends React.Component<Props, State> {
 		return quantityDiscountValues.length ? parseInt(quantityDiscountValues[quantityDiscountValues.length - 1]) : 0;
 	}
 
-	get billingCycleValues() {
-		const { discounts } = this.props;
+	get tagsByService() {
+		const { prices } = this.props;
+		const {
+			selectedProductType,
+			selectedProduct
+		} = this.state;
+		const selectedProductKey = selectedProductType === 'shared' ? `shared_${selectedProduct}` : selectedProduct;
+		const selectedProductTags = prices[selectedProductKey] && prices[selectedProductKey].tags;
 
-		// TODO maybe move this to the reducer
-		const billingCycleValues = discounts.interval ? Object.keys(discounts.interval).map((key) => ({
-			label: BILLING_CYCLES[key],
-			value: key
-		})) : [];
+		if (!selectedProductTags) {
+			return null;
+		}
 
-		// Add monthly cycle
-		billingCycleValues.unshift({
-			label: BILLING_CYCLES[1],
-			value: 1
-		});
-
-		return billingCycleValues;
+		return selectedProductTags.map(({ name, price_multiplier }) => ({ value: name, label: name, multiplier: price_multiplier })) || null;
 	}
 
 	render() {
@@ -186,8 +209,11 @@ class Pricing extends React.Component<Props, State> {
 	    	selectedBillingCycle,
 			selectedProduct,
 			selectedProductType,
-			selectedQuantity
+			selectedQuantity,
+			selectedTag
 	    } = this.state;
+	    const { billingCycles } = this.props;
+	    const selectedProductTags = this.tagsByService;
 
         return (
             <section className="pricing section section--padding__bottom">
@@ -203,20 +229,30 @@ class Pricing extends React.Component<Props, State> {
 								<Switch
 									selectedOption={selectedProduct}
 									options={products}
-									onChange={this.handleChange.bind(this, 'selectedProduct')}
+									onChange={this.handleProductChange.bind(this, 'selectedProduct')}
 								/>
 
 								<Switch
 									selectedOption={selectedProductType}
 									options={productTypes}
-									onChange={this.handleChange.bind(this, 'selectedProductType')}
+									onChange={this.handleProductChange.bind(this, 'selectedProductType')}
 								/>
+
+								{
+									selectedProductTags && (
+										<Select
+											value={selectedTag}
+											options={selectedProductTags}
+											onChange={this.handleChange.bind(this, 'selectedTag')}
+										/>
+									)
+								}
 
 								<div>
 									<Switch
 										className="billing-cycle-switch"
 										selectedOption={selectedBillingCycle}
-										options={this.billingCycleValues}
+										options={billingCycles}
 										onChange={this.handleChange.bind(this, 'selectedBillingCycle')}
 									/>
 								</div>
@@ -266,7 +302,8 @@ class Pricing extends React.Component<Props, State> {
 
 const mapStateToProps = (state) => ({
 	discounts: get(state, 'core.discounts', {}),
-	prices: get(state, 'core.prices', {})
+	prices: get(state, 'core.prices', {}),
+	billingCycles: get(state, 'core.billingCycles', [])
 });
 
 
