@@ -6,7 +6,7 @@ export const TOS_LAST_UPDATE = 'Apr-27-2018';
 export const TAWK_TO_WIDGET_URL = 'https://embed.tawk.to/5b61937de21878736ba285c5/default';
 
 // API config
-export const BACKEND_URL = 'http://localhost:8000';
+export const BACKEND_URL = 'https://756f6f57.ngrok.io';
 export const PRICES_URL = `${BACKEND_URL}/affiliate/prices/`;
 export const LOCATIONS_URL = `${BACKEND_URL}/datacenters/locations/`;
 export const SUPPORT_URL = `${BACKEND_URL}/support/`;

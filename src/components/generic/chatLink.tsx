@@ -38,11 +38,11 @@ class ChatLink extends React.Component<Props, State> {
 			};
 
 			// TODO handle document undefined in gatsby...the if is not ok
-			if (typeof document !== 'undefined') {
+			/*if (typeof document !== 'undefined') {
 				getScript(TAWK_TO_WIDGET_URL, () => {
 					doSetTawkToScriptLoaded();
 				});
-			}
+			}*/
 		}
 	}
 
