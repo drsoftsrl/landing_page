@@ -11,9 +11,10 @@
   border-radius: 1.5rem;
   margin: 0 5px;
 
-  @media (max-width: 767px) {
+  @media (max-width: 991px) {
     display: block;
     border-radius: 0.5rem;
+    margin-bottom: 1rem;
   }
 
   li {
@@ -26,7 +27,7 @@
     color: $blue-2;
     user-select: none;
 
-    @media (max-width: 767px) {
+    @media (max-width: 991px) {
       display: block;
       border-radius: 0.5rem;
     }

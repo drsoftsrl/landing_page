@@ -31,7 +31,7 @@ import '../../styles/components/footer.scss';
 import Refunds from '../../pages/refunds';
 
 const Reviews = () => (
-    <footer className="footer section section--gradient__6">
+    <footer className="footer section section--gradient__2">
         <Container>
             <Preamble light title={SITE_NAME}>
                 We offer highly secure, (Dedicated or Shared) SOCKSv5 and Proxies.

@@ -62,4 +62,13 @@
       padding-bottom: 0;
     }
   }
+
+  @media (max-width: 991px) {
+    display: block;
+    margin-bottom: 1rem;
+
+    .react-select__control {
+      border-radius: 0.5rem !important;
+    }
+  }
 }

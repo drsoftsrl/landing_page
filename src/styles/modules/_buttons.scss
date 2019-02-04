@@ -9,71 +9,25 @@
     padding: 14px 40px;
   }
 
-  &.btn--md {
-    padding: 12px 25px;
-  }
+  &.btn-secondary {
 
-  &.btn--secondary {
-    background: $dark-blue;
-    border-color: $dark-blue;
-    color: $white;
-
-    &:hover {
-      background: darken($dark-blue, 5%)
-    }
-  }
-
-  &.btn--primary {
-    background: $light-blue;
-    border-color: $light-blue;
-    color: $blue;
-
-    &:hover {
-      background: lighten($light-blue, 1.5%);
-      color: lighten($blue, 2%);
-    }
-  }
-
-  &.btn-third {
-    background: transparent;
-    border: 2px solid $white;
-    color: $white;
-
-    &:hover {
-      background: $white;
-      color: $green;
+    &:focus,
+    &:active {
+      box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25) !important;
     }
   }
 
   &.btn--green {
-    background: $green;
-    border-color: $green;
-    color: $white;
+    background: $green !important;
+    border-color: $green !important;
+    color: $white !important;
 
-    &:hover {
-      background: darken($green, 5%)
-    }
-  }
+    &:hover,
+    &:active {
 
-  &.btn--blue {
-    background: $blue-2;
-    border: 2px solid $blue-2;
-    color: $white;
-
-    &:hover {
-      background: darken($blue-2, 2%);
-      color: $white;
-    }
-  }
-
-  &.btn--white {
-    background: transparent;
-    border: 2px solid $white;
-    color: $white;
-
-    &:hover {
-      background: $white;
-      color: $green;
+      &:not(:disabled) {
+        background: darken($green, 5%) !important;
+      }
     }
   }
 }

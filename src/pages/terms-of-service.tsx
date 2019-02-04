@@ -17,7 +17,7 @@ const Tos = () => (
 
 			<section className="section section--padding">
 				<Preamble light title="Terms of Service" secondaryTitle={`Last updated ${TOS_LAST_UPDATE}`}>
-					<div id="tos">
+					<div>
 						Your use of any of the services offered by &nbsp;
 						<u>{TOS_SITE_NAME}</u>&nbsp;, is contingent upon your
 						adherence to the following terms of service, which we refer

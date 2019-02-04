@@ -188,31 +188,6 @@
           margin-left: 0;
         }
 
-        &.dropdown {
-
-          .dropdown-menu {
-            top: 80%;
-            border: none;
-            border-radius: $border-radius;
-            box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.08);
-
-            @media (max-width: 991px) {
-              padding-top: 0;
-              box-shadow: none;
-            }
-
-            .dropdown-item {
-              font-size: 14px;
-              font-weight: 400;
-
-              &:hover {
-                color: $blue;
-                background: $white;
-              }
-            }
-          }
-        }
-
         .nav-link {
           padding: 32px 0;
           color: $white;
