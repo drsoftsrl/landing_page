@@ -10,6 +10,7 @@
 
 .chat-link {
   cursor: pointer;
+  user-select: none;
   transition: all 350ms;
 }
 
