@@ -1,97 +1,75 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's default starter
-</h1>
+## Affiliates landing page
+These informations will help you customize and deploy your own landing page !
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+####:vertical_traffic_light: Deploy your site
+- navigate to [GitHub](https://github.com) and *sign in/up*
+- click the button below
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Alin13/landing_page)
+- follow onscreen instructions:
+    - Connect to GitHub - **log in** with you GitHub account
+    - Configure your site - change the repository name if you want
+    - wait until your site is deployed
+    - click **Set up a custom domain**
+    - click **Secure your site with HTTPS**
+- any change you commit on GitHub after you deploy your site for the first time will trigger a build on Netlify and your site will be updated automatically
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
+####:key: How to download the source code
+- navigate to [GitHub](https://github.com) and **sign in/up**
+- browse and open your repository(from the left menu) created when you clicked on **Deploy to Netlify** - or open **https://github.com/`YOUR_USERNAME`/`PROJECT_NAME`**
+- click the **Clone or download** button
+- from there you can **Download a ZIP** file or clone the repository using **Clone with HTTPS**
+- you can then either *install & use git* on your computer or you can change the files one by one directly from your repository
+- for more details, read [Help section](https://help.github.com/articles/set-up-git/)
 
-## 🚀 Quick start
+####:star2: Change site logo and hero image
+- the site logo has two versions: light (used on site enter, when the background is darker) and dark (used when the navigation bar is white - on scroll or on small devices)
+    - to change the light version, save your logo to `src/images/logo600x332light.png`
+    - to change the dark version, save your logo to `src/images/logo600x332dark.png`
+    - keep in mind that you can use the same logo - but you must be sure that is looks ok on the both cases
+    - for the best fit, try to use logos with the same size: *600x332*
+- for hero image (the image that appears on the first section of the site, on the background, save the new image in `src/images/hero.png`.
+    - for the best result, try to use an image with almost the same size as the original one (*1645x1398*) and transparent background.
+- you can also change the favicon from `src/images/icon.png` - this is also used on mobile phones as an icon.
+    - make sure that the image is big enough and square formatted, so that the quality is good everywhere.
 
-1.  **Create a Gatsby site.**
+####:rainbow: Edit site colors
+- open file from `src/styles/modules/_variables.scss` and edit the variables as follows:
+    - **$nav-bar-default-color** - default background color for the navigation bar
+    - **$nav-bar-light-color** - background color of the navigation bar when the page is scrolled down
+    - **$header-color** - color used for headings/subtitles
+    - **$text-color-dark** - text color for light backgrounds
+    - **$text-color-light** - text color for dark backgrounds
+    - **$pricing-card-bg-color** - pricing card background color
+    - **$primary-color** - the primary color - used as background for some buttons and widgets
+    - **$primary-light-color** - a lighter primary color - used for some borders or effects
+    - **$secondary-color** - the secondary color - used on some secondary buttons
+    - **$intent-success** - success notification background color
+    - **$intent-error** - error notification background color
+    - **$bar-btn-hover-text-color** - hover text color for the "Buy now" button from the app bar
+    - **$bar-btn-hover-bg-color** - hover background color for the "Buy now" button from the app bar
+    - **$hero-gradient** - background color used in the first section of each page
+    - **$footer-gradient** - background gradient used in footer
+    - **$pricing-gradient** - background gradient for pricing section
+    - **$sections-gradient** - background gradient for all other sections (which are not transparent)
+    - **$reviews-bg-color** - background color for reviews bubbles
+    - *... more details in the file*
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
+####:hammer: Change site settings
+- open file from `src/settings.js` and edit the constants as follows:
+    - **SITE_URL** - your domain url
+    - **SITE_NAME** - site name that appears in the footer
+    - **TOS_SITE_NAME** - site/company name that appears in terms of service
+    - **TOS_LAST_UPDATE** - last update of terms of service
+    - **TAWK_TO_WIDGET_URL** - the link of your chat widget
+    - **BACKEND_URL** - your backend services url
+    - *... more details in the file*
 
-    ```sh
-    # create a new Gatsby site using the default starter
-    npx gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
-    ```
-
-1.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
-
-    ```sh
-    cd my-default-starter/
-    gatsby develop
-    ```
-
-1.  **Open the source code and start editing!**
-
-    Your site is now running at `http://localhost:8000`!
-
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
-
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
-
-## 🧐 What's inside?
-
-A quick look at the top-level files and directories you'll see in a Gatsby project.
-
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
-
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
-
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
-
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
-
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
-
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.org/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
-
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
-
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.org/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
-
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
-
-9.  **`LICENSE`**: Gatsby is licensed under the MIT license.
-
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
-
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
-
-12. **`README.md`**: A text file containing useful reference information about your project.
-
-## 🎓 Learning Gatsby
-
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
-
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
-
-## 💫 Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
-
-<!-- AUTO-GENERATED-CONTENT:END -->
+####:telephone_receiver: Add your personal chat
+- navigate to [Tawk To](https://www.tawk.to/)
+- click on **Sign up** button and create a new account
+- after you **sign in**, in the left menu you will find a *cog* icon with a tooltip **Admin**
+- you should have a default widget which can be customized as you wish: you just have to click on **Widget Settings** and change the settings as you need
+- make sure that `Hide widget on load` is checked...so that it fits the app settings
+- save the settings and copy the chat link from **Widget Code**. It should look similar to this one `https://embed.tawk.to/5be5f1470ff598a7a61dba7/default`
+- in `src/settings.js` paste the new link in **TAWK_TO_WIDGET_URL** constant
+- you can now receive messages in the chat. You will find all your messages under the **Messages** menu

@@ -7,7 +7,7 @@
   display: inline-block;
   text-transform: uppercase;
   padding: 0.3rem;
-  border: 2px solid $light-blue;
+  border: 2px solid $primary-light-color;
   border-radius: 1.5rem;
   margin: 0 5px;
 
@@ -24,7 +24,7 @@
     border-radius: 1.5rem;
     transition: all 200ms;
     background-color: transparent;
-    color: $blue-2;
+    color: $primary-color;
     user-select: none;
 
     @media (max-width: 991px) {
@@ -33,8 +33,8 @@
     }
 
     &.selected {
-      background-color: $blue-2;
-      color: $white;
+      background-color: $primary-color;
+      color: $text-color-light;
     }
   }
 }

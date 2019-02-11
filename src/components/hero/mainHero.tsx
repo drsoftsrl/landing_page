@@ -9,7 +9,7 @@ import {
 } from 'reactstrap';
 
 // Constants
-import { SITE_URL } from '../../constants';
+import { SITE_URL } from '../../settings';
 
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

@@ -7,7 +7,7 @@ import {
 import Preamble from '../generic/preamble';
 
 // Constants
-import { SITE_URL } from '../../constants';
+import { SITE_URL } from '../../settings';
 
 // Scss
 import '../../styles/components/extra.scss';

@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment} from '@fortawesome/free-solid-svg-icons';
 
 // Constants
-import { TAWK_TO_WIDGET_URL } from '../../constants';
+import { TAWK_TO_WIDGET_URL } from '../../settings';
 
 // Utils
 import get from 'lodash/get';

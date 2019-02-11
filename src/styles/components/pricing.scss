@@ -4,7 +4,7 @@
 
 .pricing {
   position: relative;
-  background: linear-gradient(-180deg, $body-bg 60%, #FFFFFF 100%);
+  background: $pricing-gradient;
   z-index: 99;
 
   .pricing-card {
@@ -12,8 +12,8 @@
     margin-top: -20%;
     text-align: center;
     transform: scale(1);
-    background: $white;
-    border-radius: $border-radius;
+    background: $pricing-card-bg-color;
+    border-radius: 6px;
     box-shadow: 0 4px 9px 0 rgba(23, 28, 33, .06);
 
     .preamble {
@@ -30,7 +30,7 @@
       }
 
       .rc-slider-track {
-        background-color: $blue-2;
+        background-color: $primary-color;
       }
 
       .rc-slider-handle {
@@ -65,12 +65,12 @@
         line-height: 2rem;
 
         &.pricing-total {
-          color: $blue-2;
+          color: $primary-color;
         }
       }
 
       &-label {
-        color: lighten($text-color, 30%);
+        color: lighten($text-color-dark, 30%);
         font-size: 0.9rem;
       }
 
@@ -121,7 +121,7 @@
 
       .icon {
         margin-right: 0.5rem;
-        color: $green;
+        color: $secondary-color;
         font-size: 18px;
         font-weight: bold;
       }

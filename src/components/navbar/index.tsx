@@ -20,14 +20,18 @@ import '../../styles/components/navbar.scss';
 // Utils
 import classnames from 'classnames';
 
+// Images
+import logoLightSrc from '../../images/logo600x332light.png';
+import logoDarkSrc from '../../images/logo600x332dark.png';
+
 // Constants
 import {
     SCROLL_DATACENTERS,
     SCROLL_FEATURES,
     SCROLL_SUPPORT,
-    SITE_URL,
 	PRICING_ROUTE
 } from '../../constants';
+import { SITE_URL } from '../../settings';
 
 interface Props {
 	MenuItem: any
@@ -79,8 +83,8 @@ class NavBar extends React.Component<Props, State> {
             <Navbar expand="lg" light className={navClasses}>
                 <Container>
                     <NavbarBrand href="/">
-                        <img src="http://via.placeholder.com/600x332" alt="Logo" className="light" />
-                        <img src="http://via.placeholder.com/600x332" alt="Logo" className="dark" />
+                        <img src={logoLightSrc} alt="Logo" className="light" />
+                        <img src={logoDarkSrc} alt="Logo" className="dark" />
                     </NavbarBrand>
                     <NavbarToggler onClick={this.toggleNav} />
                     <Collapse isOpen={isOpen} navbar>

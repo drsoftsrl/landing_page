@@ -45,7 +45,7 @@ const IndexPage = () => (
 
 		<Extra />
 
-		<Footer />
+		<Footer main />
 	</React.Fragment>
 );
 

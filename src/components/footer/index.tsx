@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'gatsby';
+import { connect } from "react-redux";
 
 // Constants
-import { SITE_NAME } from '../../constants';
+import { SITE_NAME } from '../../settings';
 
 // Components
 import {
@@ -10,8 +12,13 @@ import {
 } from 'reactstrap';
 import Preamble from '../generic/preamble';
 import FooterColumn from './footerColumn';
-import { Link } from 'react-scroll';
 import ChatLink from '../generic/chatLink';
+
+// Actions
+import { setScrollElement } from '../../actions';
+
+// Scroll
+import Scroll, { Link as ScrollLink } from 'react-scroll';
 
 // Constants
 import {
@@ -28,69 +35,104 @@ import {
 
 // Scss
 import '../../styles/components/footer.scss';
-import Refunds from '../../pages/refunds';
 
-const Reviews = () => (
-    <footer className="footer section section--gradient__2">
-        <Container>
-            <Preamble light title={SITE_NAME}>
-                We offer highly secure, (Dedicated or Shared) SOCKSv5 and Proxies.
-            </Preamble>
-            <Row>
-                <FooterColumn
-                    title="Our products"
-                    links={[
-                        {
-                            label: 'HTTP Proxy',
-                            url: HTTPS_PROXY_ROUTE
-                        }, {
-                            label: 'SOCKSv5 Proxy',
-                            url: SOCKS_PROXY_ROUTE
-                        }, {
-                            label: 'Dedicated Proxy',
-                            url: DEDICATED_PROXY_ROUTE
-                        }, {
-                            label: 'Shared Proxy',
-                            url: SHARED_PROXY_ROUTE
-                        }
-                    ]}
-                />
-                <FooterColumn
-                    title="Resources"
-                    links={[{
-							label: 'Pricing',
-							url: PRICING_ROUTE
-						}, {
-							label: 'Privacy policy',
-							url: PRIVACY_ROUTE
-						}, {
-							label: 'Terms of Service',
-							url: TOS_ROUTE
-						}, {
-							label: 'Refunds',
-							url: REFUNDS_ROUTE
-						}, {
-							label: 'Restrictions',
-							url: REFUNDS_ROUTE
-						}
-                    ]}
-                />
-				<FooterColumn title="Support">
-					<ul>
-						<li className="link">
-							<Link to={SCROLL_SUPPORT} smooth offset={-85}>
-								Contact Us
-							</Link>
-						</li>
-						<li className="link">
-							<ChatLink />
-						</li>
-					</ul>
-				</FooterColumn>
-                <img src="http://via.placeholder.com/350x150" alt="" className="footer__logo" />
-            </Row>
-        </Container>
-    </footer>
-);
+interface Props {
+	main: boolean,
+	doSetScrollElement(el: any): void
+}
 
-export default Reviews;
+interface State {
+
+}
+
+class Reviews extends React.Component<Props, State> {
+	static defaultProps = {
+		main: false
+	};
+
+	handleContactClick = () => {
+		const { doSetScrollElement } = this.props;
+		doSetScrollElement(SCROLL_SUPPORT);
+	};
+
+	render() {
+		const { main } = this.props;
+
+		return (
+			<footer className="footer section section--gradient__2">
+				<Container>
+					<Preamble light title={SITE_NAME}>
+						We offer highly secure, (Dedicated or Shared) SOCKSv5 and Proxies.
+					</Preamble>
+					<Row>
+						<FooterColumn
+							title="Our products"
+							links={[
+								{
+									label: 'HTTP Proxy',
+									url: HTTPS_PROXY_ROUTE
+								}, {
+									label: 'SOCKSv5 Proxy',
+									url: SOCKS_PROXY_ROUTE
+								}, {
+									label: 'Dedicated Proxy',
+									url: DEDICATED_PROXY_ROUTE
+								}, {
+									label: 'Shared Proxy',
+									url: SHARED_PROXY_ROUTE
+								}
+							]}
+						/>
+						<FooterColumn
+							title="Resources"
+							links={[{
+								label: 'Pricing',
+								url: PRICING_ROUTE
+							}, {
+								label: 'Privacy policy',
+								url: PRIVACY_ROUTE
+							}, {
+								label: 'Terms of Service',
+								url: TOS_ROUTE
+							}, {
+								label: 'Refunds',
+								url: REFUNDS_ROUTE
+							}, {
+								label: 'Restrictions',
+								url: REFUNDS_ROUTE
+							}
+							]}
+						/>
+						<FooterColumn title="Support">
+							<ul>
+								<li className="link">
+									{
+										main ? (
+											<ScrollLink to={SCROLL_SUPPORT} smooth offset={-85}>
+												Contact Us
+											</ScrollLink>
+											) : (
+											<Link to="/" onClick={this.handleContactClick}>
+												Contact Us
+											</Link>
+										)
+									}
+								</li>
+								<li className="link">
+									<ChatLink/>
+								</li>
+							</ul>
+						</FooterColumn>
+						<img src="http://via.placeholder.com/350x150" alt="" className="footer__logo"/>
+					</Row>
+				</Container>
+			</footer>
+		);
+	}
+}
+
+const mapDispatchToProps = (dispatch) => ({
+	doSetScrollElement: (el: any) => dispatch(setScrollElement(el))
+});
+
+export default connect(null, mapDispatchToProps)(Reviews);

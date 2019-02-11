@@ -1,3 +1,5 @@
+@import './variables';
+
 .fill-flex {
   flex: 1;
 }
@@ -13,14 +15,7 @@
   }
 
   &--color {
-    color: $blue-2;
-  }
-}
-
-.color {
-
-  &--white {
-    color: $white;
+    color: $primary-color;
   }
 }
 
@@ -95,10 +90,10 @@
   }
 
   &--gradient__1 {
-    background-image: radial-gradient(ellipse farthest-side at 100% 100%, #ffb29b 10%, #e56699 30%, #341e7e 109%);
+    background-image: $sections-gradient;
   }
 
   &--gradient__2 {
-    background-image: radial-gradient(ellipse farthest-side at 100% 100%,#97c9d5 5%,#1b5494 60%,#1f2e5a 120%);
+    background-image: $footer-gradient;
   }
 }

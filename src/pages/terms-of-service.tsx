@@ -8,7 +8,7 @@ import Extra from '../components/extra';
 import Preamble from '../components/generic/preamble';
 
 // Constants
-import { TOS_SITE_NAME, TOS_LAST_UPDATE } from '../constants';
+import { TOS_SITE_NAME, TOS_LAST_UPDATE } from '../settings';
 
 const Tos = () => (
 	<React.Fragment>

@@ -10,7 +10,7 @@ import {
 import '../../styles/components/hero.scss';
 
 // Images & icons
-import heroImage from '../../images/hero-illustration-4.png';
+import heroImage from '../../images/hero.png';
 
 interface Props {
 	minPrice: string,

@@ -1,12 +1,90 @@
 $white: #fff;
-$dark-blue: #425672;
-$border-radius: 6px;
-$blue: #1a65b4;
-$light-blue: #e3ebf7;
-$body-bg: #f2f7fb;
+
+/* The default background color for the navigation bar */
+$nav-bar-default-color: transparent;
+
+/*
+ The background color of the navigation bar when the page is scrolled down or the viewport size is small
+*/
+$nav-bar-light-color: $white;
+
+/*
+ Color used for headings/subtitles, or for navigation's text color when the background is white
+*/
 $header-color: #47495a;
-$green: #3ECF8E;
-$red: #ff7677;
-$text-color: #6b7c93;
-$blue-2: #00b4ff;
+
+/*
+ The text color for light backgrounds.
+*/
+$text-color-dark: #6b7c93;
+
+/*
+ The text color for dark backgrounds - the ones that have gradient values
+*/
+$text-color-light: $white;
+
+/*
+ Pricing card background color
+*/
+$pricing-card-bg-color: $white;
+
+/*
+ This is the primary color. It is used as a background color for the "Buy now" button from the navigation bar (when it is white),
+ also for the pricing and datacenters filters, the map, or the border color of testimonials.
+*/
+$primary-color: #00b4ff;
+
+/*
+ A lighter primary color - it depend on the primary color, but you can change this as you need. It is used for pricing and datacenters filters,
+ for the border color and the select hover effect
+*/
+$primary-light-color: lighten($primary-color, 43%);
+
+/*
+ This is the secondary color. It is used as background on some buttons in the app.
+*/
+$secondary-color: #3ECF8E;
+
+/*
+ Background color used on the notifications - success / fail (when sending a message to support).
+*/
+$intent-success: $secondary-color;
+$intent-error: #ff7677;
+
+/*
+ The hover text color for the "Buy now" button from the app bar, when the bar background color is transparent (not scrolled, big viewport size)
+*/
+$bar-btn-hover-text-color: #1a65b4;
+
+/*
+ The hover background color for the "Buy now" button from the app bar, when the bar background color is transparent
+*/
+$bar-btn-hover-bg-color: $white;
+
+/*
+ This is the background color used in the first section of each page. You can change the colors as you wish,
+ or you can use a gradient generator like http://www.colorzilla.com/gradient-editor/ and just copy paste the background value.
+*/
 $hero-gradient: linear-gradient(to right bottom, #131c47, #192152, #474c9a, #ac93d2);
+
+/*
+ Background gradient for footer section. You can change the colors as you wish,
+ or you can use a gradient generator like http://www.colorzilla.com/gradient-editor/ and just copy paste the background value.
+*/
+$footer-gradient: radial-gradient(ellipse farthest-side at 100% 100%,#97c9d5 5%,#1b5494 60%,#1f2e5a 120%);
+
+/*
+ Background gradient used for the pricing section
+*/
+$pricing-gradient: linear-gradient(-180deg, #f2f7fb 60%, #FFFFFF 100%);
+
+/*
+ Background gradient for all other sections. You can change the colors as you wish,
+ or you can use a gradient generator like http://www.colorzilla.com/gradient-editor/ and just copy paste the background value.
+*/
+$sections-gradient: radial-gradient(ellipse farthest-side at 100% 100%, #ffb29b 10%, #e56699 30%, #341e7e 109%);
+
+/*
+ The background color for reviews bubbles
+*/
+$reviews-bg-color: $white;

@@ -5,29 +5,29 @@
 .react-select {
   display: inline-block;
   min-width: 200px;
-  color: $blue-2;
+  color: $primary-color;
 
   .react-select__single-value {
-    color: $blue-2;
+    color: $primary-color;
   }
 
   .react-select__option {
 
     &--is-selected {
-      background-color: $blue-2 !important;
+      background-color: $primary-color !important;
     }
 
     &--is-focused {
-      background-color: $light-blue;
+      background-color: $primary-light-color;
 
       &:active {
-        background-color: $light-blue;
+        background-color: $primary-light-color;
       }
     }
   }
 
   .react-select__control {
-    border: 2px solid $light-blue !important;
+    border: 2px solid $primary-light-color !important;
     padding: 0.8rem;
     border-radius: 1.5rem !important;
     margin: 0 5px;

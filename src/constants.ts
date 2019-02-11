@@ -1,12 +1,5 @@
-// Site config
-export const SITE_URL = "https://site.url.goes.here";
-export const SITE_NAME = "Site name goes here";
-export const TOS_SITE_NAME = 'anonymous-proxies.net';
-export const TOS_LAST_UPDATE = 'Apr-27-2018';
-export const TAWK_TO_WIDGET_URL = 'https://embed.tawk.to/5b61937de21878736ba285c5/default';
-
 // API config
-export const BACKEND_URL = 'https://7c426a24.ngrok.io';
+import { BACKEND_URL } from './settings';
 export const PRICES_URL = `${BACKEND_URL}/affiliate/prices/`;
 export const LOCATIONS_URL = `${BACKEND_URL}/datacenters/locations/`;
 export const SUPPORT_URL = `${BACKEND_URL}/support/`;

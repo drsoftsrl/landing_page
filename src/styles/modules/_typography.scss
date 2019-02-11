@@ -10,7 +10,7 @@ body {
   font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif;
   font-size: 1em;
   line-height: 1.6em;
-  color: $text-color;
+  color: $text-color-dark;
   font-weight: 400;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -153,7 +153,7 @@ h6, .h6 {
 
     .title,
     .secondaryTitle {
-      color: $white;
+      color: $text-color-light;
     }
 
     p, div {
@@ -164,7 +164,7 @@ h6, .h6 {
 
 a,
 .link {
-  color: $white;
+  color: $text-color-light;
   transition: .2s ease-in;
 }
 

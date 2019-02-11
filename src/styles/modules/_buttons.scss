@@ -18,15 +18,15 @@
   }
 
   &.btn--green {
-    background: $green !important;
-    border-color: $green !important;
-    color: $white !important;
+    background: $secondary-color !important;
+    border-color: $secondary-color !important;
+    color: $text-color-light !important;
 
     &:hover,
     &:active {
 
       &:not(:disabled) {
-        background: darken($green, 5%) !important;
+        background: darken($secondary-color, 5%) !important;
       }
     }
   }
