@@ -1,8 +1,8 @@
-## Affiliates landing page
+# Affiliates landing page
 These informations will help you customize and deploy your own landing page !
 
-#### :vertical_traffic_light: Deploy your site
-- navigate to [GitHub](https://github.com) and *sign in/up*
+### :vertical_traffic_light: Deploy your site
+- navigate to [GitHub](https://github.com) and **sign in/up**
 - click the button below  
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Alin13/landing_page)
 - follow onscreen instructions:
@@ -13,15 +13,15 @@ These informations will help you customize and deploy your own landing page !
     - click **Secure your site with HTTPS**
 - any change you commit on GitHub after you deploy your site for the first time will trigger a build on Netlify and your site will be updated automatically
 
-#### :key: How to download the source code
+### :key: How to download the source code
 - navigate to [GitHub](https://github.com) and **sign in/up**
-- browse and open your repository(from the left menu) created when you clicked on **Deploy to Netlify** - or open **https://github.com/`YOUR_USERNAME`/`PROJECT_NAME`**
+- browse and open your repository(from the left menu) created when you clicked on **Deploy to Netlify** - or open **https://github.com/YOUR_USERNAME/PROJECT_NAME**
 - click the **Clone or download** button
 - from there you can **Download a ZIP** file or clone the repository using **Clone with HTTPS**
 - you can then either *install & use git* on your computer or you can change the files one by one directly from your repository
 - for more details, read [Help section](https://help.github.com/articles/set-up-git/)
 
-#### :star2: Change site logo and hero image
+### :star2: Change site logo and hero image
 - the site logo has two versions: light (used on site enter, when the background is darker) and dark (used when the navigation bar is white - on scroll or on small devices)
     - to change the light version, save your logo to `src/images/logo600x332light.png`
     - to change the dark version, save your logo to `src/images/logo600x332dark.png`
@@ -32,7 +32,7 @@ These informations will help you customize and deploy your own landing page !
 - you can also change the favicon from `src/images/icon.png` - this is also used on mobile phones as an icon.
     - make sure that the image is big enough and square formatted, so that the quality is good everywhere.
 
-#### :rainbow: Edit site colors
+### :rainbow: Edit site colors
 - open file from `src/styles/modules/_variables.scss` and edit the variables as follows:
     - **$nav-bar-default-color** - default background color for the navigation bar
     - **$nav-bar-light-color** - background color of the navigation bar when the page is scrolled down
@@ -54,7 +54,7 @@ These informations will help you customize and deploy your own landing page !
     - **$reviews-bg-color** - background color for reviews bubbles
     - *... more details in the file*
 
-#### :hammer: Change site settings
+### :hammer: Change site settings
 - open file from `src/settings.js` and edit the constants as follows:
     - **SITE_URL** - your domain url
     - **SITE_NAME** - site name that appears in the footer
@@ -64,7 +64,7 @@ These informations will help you customize and deploy your own landing page !
     - **BACKEND_URL** - your backend services url
     - *... more details in the file*
 
-#### :telephone_receiver: Add your personal chat
+### :telephone_receiver: Add your personal chat
 - navigate to [Tawk To](https://www.tawk.to/)
 - click on **Sign up** button and create a new account
 - after you **sign in**, in the left menu you will find a *cog* icon with a tooltip **Admin**
