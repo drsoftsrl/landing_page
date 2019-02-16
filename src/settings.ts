@@ -27,6 +27,6 @@ export const TOS_LAST_UPDATE = 'Apr-27-2018';
 export const TAWK_TO_WIDGET_URL = 'https://embed.tawk.to/5b61937de21878736ba285c5/default';
 
 /*
- This is the link to your backend services. It is used to get the data for prices and datacenters
+ This is the link to your backend services. It is used to get the data for prices and datacenters. Normally, you shouldn't touch this one
 */
-export const BACKEND_URL = 'http://localhost:8000';
+export const BACKEND_URL = 'https://backend.changemyip.com/affiliate/';
