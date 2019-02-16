@@ -4,7 +4,7 @@ These informations will help you customize and deploy your own landing page !
 ### :vertical_traffic_light: Deploy your site
 - navigate to [GitHub](https://github.com) and **sign in/up**
 - click the button below  
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Alin13/landing_page)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/drsoftsrl/landing_page)
 - follow onscreen instructions:
     - Connect to GitHub - **log in** with you GitHub account
     - Configure your site - change the repository name if you want
