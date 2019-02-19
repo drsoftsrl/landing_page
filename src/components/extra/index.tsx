@@ -7,7 +7,7 @@ import {
 import Preamble from '../generic/preamble';
 
 // Constants
-import { SITE_URL } from '../../settings';
+import { MEMBERS_URL } from '../../settings';
 
 // Scss
 import '../../styles/components/extra.scss';
@@ -23,7 +23,7 @@ const Extra = () => (
 
 			<div className="text-center">
 				<a
-					href={SITE_URL}
+					href={MEMBERS_URL}
 					className="btn btn--green btn--lg">
 					Order now
 				</a>

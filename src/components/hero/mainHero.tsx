@@ -9,7 +9,7 @@ import {
 } from 'reactstrap';
 
 // Constants
-import { SITE_URL } from '../../settings';
+import { MEMBERS_URL } from '../../settings';
 
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -40,7 +40,7 @@ const MainHero = ({ minPrice }: Props) => (
 					(shared or dedicated) starting at just ${minPrice}
 				</p>
 				<a
-					href={SITE_URL}
+					href={MEMBERS_URL}
 					className="btn btn--green btn--lg mb-0 mt-4">
 					Members
 					<FontAwesomeIcon icon={faArrowRight} className="ml-2" />

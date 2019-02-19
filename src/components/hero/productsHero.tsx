@@ -6,7 +6,7 @@ import MenuItem from '../navbar/secondaryMenuItem';
 import Preamble from '../generic/preamble';
 
 // Constants
-import { SITE_URL } from '../../settings';
+import { MEMBERS_URL } from '../../settings';
 
 interface Props {
 	children: any,
@@ -25,7 +25,7 @@ const ProductsHero = ({ children, title, btnText }: Props) => (
 
 			<div className="text-center">
 				<a
-					href={SITE_URL}
+					href={MEMBERS_URL}
 					className="btn btn--green btn--lg">
 					{btnText}
 				</a>

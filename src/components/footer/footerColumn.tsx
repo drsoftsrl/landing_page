@@ -9,7 +9,8 @@ import {
 interface Link {
     label: string,
     url: string,
-    children: any
+    children: any,
+	native: boolean
 }
 
 interface Props {
@@ -22,9 +23,20 @@ const FooterColumn: React.FunctionComponent<Props> = ({ title, links, children }
         <h5>{title}</h5>
         {children || (
 			<ul>
-				{links.map((link, index) => (
+				{links.map(({ url, label, native }, index) => (
 					<li key={index}>
-						<Link to={link.url}>{link.label}</Link>
+                        {
+							native ? (
+                                <a href={url}>
+                                    {label}
+                                </a>
+                            ) : (
+                                <Link to={url}>
+                                    {label}
+                                </Link>
+                            )
+                        }
+
 					</li>
 				))}
 			</ul>

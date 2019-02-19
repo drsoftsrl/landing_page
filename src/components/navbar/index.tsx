@@ -31,7 +31,7 @@ import {
     SCROLL_SUPPORT,
 	PRICING_ROUTE
 } from '../../constants';
-import { SITE_URL } from '../../settings';
+import { MEMBERS_URL } from '../../settings';
 
 interface Props {
 	MenuItem: any
@@ -100,10 +100,16 @@ class NavBar extends React.Component<Props, State> {
 							<MenuItem scrollComponent={SCROLL_DATACENTERS} text="Datacenters" />
                             <MenuItem scrollComponent={SCROLL_FEATURES} text="Features" />
                             <MenuItem scrollComponent={SCROLL_SUPPORT} text="Support" />
+
+							<NavItem>
+								<NavLink tag="a" className="text-uppercase" href={MEMBERS_URL}>
+									Members
+								</NavLink>
+							</NavItem>
                         </Nav>
                         <Nav className="ml-auto justify-content-end align-items-start align-items-lg-center" navbar>
                             <NavItem>
-                                <NavLink href={SITE_URL} className="text-uppercase nav-link__cta rounded">Buy now</NavLink>
+                                <NavLink href={MEMBERS_URL} className="text-uppercase nav-link__cta rounded">Buy now</NavLink>
                             </NavItem>
                         </Nav>
 

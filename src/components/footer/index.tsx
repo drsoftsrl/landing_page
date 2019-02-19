@@ -32,6 +32,7 @@ import {
 	SCROLL_SUPPORT,
 	PRICING_ROUTE
 } from '../../constants';
+import { MEMBERS_URL } from '../../settings';
 
 // Scss
 import '../../styles/components/footer.scss';
@@ -100,6 +101,10 @@ class Reviews extends React.Component<Props, State> {
 							}, {
 								label: 'Restrictions',
 								url: REFUNDS_ROUTE
+							}, {
+								label: 'Members',
+								url: MEMBERS_URL,
+								native: true
 							}
 							]}
 						/>

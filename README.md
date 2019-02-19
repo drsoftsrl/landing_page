@@ -56,7 +56,7 @@ These informations will help you customize and deploy your own landing page !
 
 ### :hammer: Change site settings
 - open file from `src/settings.js` and edit the constants as follows:
-    - **SITE_URL** - your domain url
+    - **MEMBERS_URL** - your domain url
     - **SITE_NAME** - site name that appears in the footer
     - **TOS_SITE_NAME** - site/company name that appears in terms of service
     - **TOS_LAST_UPDATE** - last update of terms of service
