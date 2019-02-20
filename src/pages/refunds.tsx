@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 
 // Components
 import NavBar from '../components/navbar';
@@ -7,8 +8,20 @@ import Footer from '../components/footer';
 import Extra from '../components/extra';
 import Preamble from '../components/generic/preamble';
 
+// Constants
+import {
+	SEO_DESCRIPTION,
+	SEO_KEYWORDS
+} from '../settings';
+
 const Refunds = () => (
 	<React.Fragment>
+		<Helmet>
+			<title>Refunds</title>
+			<meta name="description" content={SEO_DESCRIPTION} />
+			<meta name="keywords" content={SEO_KEYWORDS} />
+		</Helmet>
+
 		<main className="policy-hero">
 			<NavBar MenuItem={MenuItem} />
 

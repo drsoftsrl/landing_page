@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 
 // Components
 import NavBar from '../components/navbar';
@@ -10,10 +11,21 @@ import Preamble from '../components/generic/preamble';
 // Scss
 import '../styles/components/policy.scss';
 
+// Constants
+import {
+	SEO_DESCRIPTION,
+	SEO_KEYWORDS
+} from '../settings';
+
 const PrivacyPolicy = () => (
 	<React.Fragment>
 		<main className="policy-hero">
 			<NavBar MenuItem={MenuItem} />
+			<Helmet>
+				<title>Privacy policy</title>
+				<meta name="description" content={SEO_DESCRIPTION} />
+				<meta name="keywords" content={SEO_KEYWORDS} />
+			</Helmet>
 
 			<section className="section section--padding">
 				<Preamble light title="Privacy Policy">

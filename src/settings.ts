@@ -30,3 +30,10 @@ export const TAWK_TO_WIDGET_URL = 'https://embed.tawk.to/5b61937de21878736ba285c
  This is the link to your backend services. It is used to get the data for prices and datacenters. Normally, you shouldn't touch this one
 */
 export const BACKEND_URL = 'https://backend.changemyip.com';
+
+/*
+ Meta tags for SEO - description and keywords for this site
+*/
+export const SEO_DESCRIPTION = 'Fully anonymous private proxies (shared or dedicated)';
+// The keywords need to be separated by comma
+export const SEO_KEYWORDS = 'proxy, socks, shared proxies, dedicated proxies, residential proxies, socksv5';

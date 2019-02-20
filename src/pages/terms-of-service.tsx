@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 
 // Components
 import NavBar from '../components/navbar';
@@ -8,10 +9,21 @@ import Extra from '../components/extra';
 import Preamble from '../components/generic/preamble';
 
 // Constants
-import { TOS_SITE_NAME, TOS_LAST_UPDATE } from '../settings';
+import {
+	TOS_SITE_NAME,
+	TOS_LAST_UPDATE,
+	SEO_KEYWORDS,
+	SEO_DESCRIPTION
+} from '../settings';
 
 const Tos = () => (
 	<React.Fragment>
+		<Helmet>
+			<title>Terms of Service</title>
+			<meta name="description" content={SEO_DESCRIPTION} />
+			<meta name="keywords" content={SEO_KEYWORDS} />
+		</Helmet>
+
 		<main className="policy-hero">
 			<NavBar MenuItem={MenuItem} />
 

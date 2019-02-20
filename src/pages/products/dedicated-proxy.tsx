@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 
 // Components
 import Footer from '../../components/footer';
@@ -8,8 +9,20 @@ import ProductsHero from '../../components/hero/productsHero';
 // Scss
 import '../../styles/components/products.scss';
 
+// Constants
+import {
+	SEO_DESCRIPTION,
+	SEO_KEYWORDS
+} from '../../settings';
+
 const DedicatedProxy = () => (
 	<React.Fragment>
+		<Helmet>
+			<title>Dedicated proxies</title>
+			<meta name="description" content={SEO_DESCRIPTION} />
+			<meta name="keywords" content={SEO_KEYWORDS} />
+		</Helmet>
+
 		<ProductsHero title="Dedicated HTTP proxies" btnText="Buy dedicated proxies">
 			Our entire infrastructure is built from the ground-up to ensure that our dedicated proxies are owned
 			by a single entity making it impossible to allow any mistakes or accidental sharing.

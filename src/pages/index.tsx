@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Helmet from 'react-helmet';
 
 // Scroll
 import Scroll from 'react-scroll';
@@ -12,6 +13,12 @@ import get from 'lodash/get';
 
 // Actions
 import { setScrollElement } from '../actions';
+
+// Constants
+import {
+	SEO_DESCRIPTION,
+	SEO_KEYWORDS
+} from '../settings';
 
 interface Props {
 	doClearScrollElement(): void,
@@ -42,7 +49,15 @@ class MainPage extends React.Component<Props, State> {
 
 	render() {
 		return (
-			<MainRoute />
+			<React.Fragment>
+				<Helmet>
+					<title>Anonymous proxies and SOCKSv5</title>
+					<meta name="description" content={SEO_DESCRIPTION} />
+					<meta name="keywords" content={SEO_KEYWORDS} />
+				</Helmet>
+
+				<MainRoute />
+			</React.Fragment>
 		);
 	}
 }

@@ -62,6 +62,8 @@ These informations will help you customize and deploy your own landing page !
     - **TOS_LAST_UPDATE** - last update of terms of service
     - **TAWK_TO_WIDGET_URL** - the link of your chat widget
     - **BACKEND_URL** - your backend services url
+    - **SEO_DESCRIPTION** - your site description - used by search engines
+    - **SEO_KEYWORDS** - your site keywords - used by search engines
     - *... more details in the file*
 
 ### :telephone_receiver: Add your personal chat
