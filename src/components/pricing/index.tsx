@@ -256,16 +256,6 @@ class Pricing extends React.Component<Props, State> {
 									onChange={this.handleProductChange.bind(this, 'selectedProductType')}
 								/>
 
-								{/*{*/}
-								{/*	selectedProductTags && (*/}
-								{/*		<Select*/}
-								{/*			value={selectedTag}*/}
-								{/*			options={selectedProductTags}*/}
-								{/*			onChange={this.handleChange.bind(this, 'selectedTag')}*/}
-								{/*		/>*/}
-								{/*	)*/}
-								{/*}*/}
-
 								{
 									selectedProductTags && (
 										<Switch
