@@ -33,7 +33,7 @@ import { setLocationsData } from '../../actions';
 import '../../styles/components/datacenters.scss';
 
 // Constants
-import { LOCATIONS_URL } from '../../constants';
+import {DEFAULT_TAG, LOCATIONS_URL} from '../../constants';
 
 // Interfaces
 import { ILocationsResponse, ICountries } from '../../interfaces';
@@ -80,7 +80,7 @@ class Datacenters extends React.Component<Props, State> {
 		this.state = {
 			selectedProduct: 'proxy',
 			selectedProductType: 'dedicated',
-			selectedTag: null
+			selectedTag: DEFAULT_TAG
 		};
 
 		this.mapContainer = React.createRef();
@@ -152,6 +152,25 @@ class Datacenters extends React.Component<Props, State> {
 		});
 	}
 
+	handleTagChange(field, value) {
+		const { selectedTag } = this.state;
+		const { allAvailableTags } = this.props;
+		const tagOptions = allAvailableTags.map((tag) => ({
+			value: tag,
+			label: tag
+		}));
+		const newSelectedTag = tagOptions.filter(tag => tag.value === value)[0];
+		if (selectedTag.value === newSelectedTag.value) {
+			this.setState({
+				[field]: DEFAULT_TAG
+			});
+		} else {
+			this.setState({
+				[field]: newSelectedTag
+			});
+		}
+	}
+
 	handleMove(geography, evt) {
 		if (!this.countryHasSelectedProducts(geography.properties.ISO_A3)) return;
 
@@ -177,6 +196,8 @@ class Datacenters extends React.Component<Props, State> {
 			value: tag,
 			label: tag
 		}));
+		const selectedTagsWithoutDefault = tagOptions ? [...tagOptions] : [];
+		selectedTagsWithoutDefault.shift();
 
         return (
             <section className="datacenters section section--padding__bottom">
@@ -249,12 +270,10 @@ class Datacenters extends React.Component<Props, State> {
 									onChange={this.handleChange.bind(this, 'selectedProductType')}
 								/>
 
-								<Select
-									value={selectedTag}
-									options={tagOptions}
-									onChange={this.handleChange.bind(this, 'selectedTag')}
-									isClearable
-									placeholder="All tags"
+								<Switch
+									selectedOption={selectedTag.value}
+									options={selectedTagsWithoutDefault}
+									onChange={this.handleTagChange.bind(this, 'selectedTag')}
 								/>
 							</div>
                         </Col>

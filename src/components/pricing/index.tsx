@@ -172,7 +172,7 @@ class Pricing extends React.Component<Props, State> {
 
 	get priceWithoutDiscount(): number {
 		const { selectedBillingCycle, selectedQuantity, selectedTag } = this.state;
-		return this.basePrice * selectedBillingCycle * selectedQuantity * parseFloat(selectedTag.multiplier);
+		return this.basePrice * selectedBillingCycle * selectedQuantity;
 	}
 
 	get priceWithDiscount(): string {
@@ -231,8 +231,8 @@ class Pricing extends React.Component<Props, State> {
 	    } = this.state;
 	    const { billingCycles } = this.props;
 	    const selectedProductTags = this.tagsByService;
-	    const newS = selectedProductTags ? [...selectedProductTags] : [];
-	    newS.shift();
+	    const selectedTagsWithoutDefault = selectedProductTags ? [...selectedProductTags] : [];
+		selectedTagsWithoutDefault.shift();
         return (
             <section className="pricing section section--padding__bottom">
                 <Container>
@@ -260,7 +260,7 @@ class Pricing extends React.Component<Props, State> {
 									selectedProductTags && (
 										<Switch
 											selectedOption={selectedTag.value}
-											options={newS}
+											options={selectedTagsWithoutDefault}
 											onChange={this.handleTagChange.bind(this, 'selectedTag')}
 										/>
 									)
