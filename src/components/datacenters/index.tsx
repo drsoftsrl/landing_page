@@ -110,14 +110,24 @@ class Datacenters extends React.Component<Props, State> {
 
 		for (let i = 0; i < countries.length; i++) {
 			const cty = countries[i];
-
-			if (getCountryISO3(cty.iso.toUpperCase()) === iso3) {
+			const cI3Upper = getCountryISO3(cty.iso.toUpperCase());
+			if (cI3Upper === iso3) {
 				const countryData = this.getCountryData(iso3);
 
 				if (countryData) {
 					const product = selectedProductType === 'shared' ? `shared_${selectedProduct}` : selectedProduct;
 
-					if (countryData.products.includes(product) && (!selectedTag || countryData.tags.includes(selectedTag.value))) {
+					if (
+						countryData.products.includes(product)
+						&&
+						(
+							!selectedTag
+							||
+							selectedTag.value === DEFAULT_TAG.value
+							||
+							countryData.tags.includes(selectedTag.value)
+						)
+					) {
 						return true;
 					}
 				}
@@ -148,7 +158,8 @@ class Datacenters extends React.Component<Props, State> {
 
 	handleChange(field, value) {
 		this.setState({
-			[field]: value
+			[field]: value,
+			selectedTag: DEFAULT_TAG
 		});
 	}
 
