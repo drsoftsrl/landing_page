@@ -13,13 +13,8 @@ These informations will help you customize and deploy your own landing page !
     - click **Secure your site with HTTPS**
 - any change you commit on GitHub after you deploy your site for the first time will trigger a build on Netlify and your site will be updated automatically
 
-### :key: How to download the source code
-- navigate to [GitHub](https://github.com) and **sign in/up**
-- browse and open your repository(from the left menu) created when you clicked on **Deploy to Netlify** - or open **https://github.com/YOUR_USERNAME/PROJECT_NAME**
-- click the **Clone or download** button
-- from there you can **Download a ZIP** file or clone the repository using **Clone with HTTPS**
-- you can then either *install & use git* on your computer or you can change the files one by one directly from your repository
-- for more details, read [Help section](https://help.github.com/articles/set-up-git/)
+
+## Customize your site
 
 ### :star2: Change site logo and hero image
 - the site logo has two versions: light (used on site enter, when the background is darker) and dark (used when the navigation bar is white - on scroll or on small devices)
