@@ -1,12 +1,6 @@
 language: node_js
-before_script:
-  - npm install -g gatsby-cli
+before_install: npm install -g gatsby-cli
 node_js:
   - "10"
-deploy:
-  provider: script
-  # Note: change "docs" to the directory where your gatsby-site lives, if necessary
-  script: yarn install && yarn run deploy && sh .travis/push.sh
-  skip_cleanup: true
-  on:
-    branch: master
+install: npm install
+script: yarn install && yarn run deploy && sh .travis/push.sh
