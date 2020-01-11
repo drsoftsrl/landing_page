@@ -1,6 +1,5 @@
 // TODO UPDATE THIS
 module.exports = {
-  pathPrefix: "/landing_page",
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
