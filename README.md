@@ -1,4 +1,4 @@
-# Affiliates landing page
+# Affiliates landing pagee
 These informations will help you customize and deploy your own landing page !
 
 ### :vertical_traffic_light: Deploy your site
