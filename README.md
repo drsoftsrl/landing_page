@@ -1,17 +1,9 @@
 # Affiliates landing page
 These informations will help you customize and deploy your own landing page !
 
-### :vertical_traffic_light: Deploy your site
-- navigate to [GitHub](https://github.com) and **sign in/up**
-- click the button below  
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/drsoftsrl/landing_page)
-- follow onscreen instructions:
-    - Connect to GitHub - **log in** with you GitHub account
-    - Configure your site - change the repository name if you want
-    - wait until your site is deployed
-    - click **Set up a custom domain**
-    - click **Secure your site with HTTPS**
-- any change you commit on GitHub after you deploy your site for the first time will trigger a build on Netlify and your site will be updated automatically
+### Landing page notice
+
+We offer a free landing page template that you can use as a starter and deploy it to Gihub Pages or any other CDN (except Netlify). You can use this landing page or create your own custom one. We do not offer support for this part. The design of your website is your own responsibility
 
 
 ## Customize your site
