@@ -1,5 +1,5 @@
 # Affiliates landing page
-These informations will help you customize and deploy your own landing page !
+These informations will help you customize your own landing page !
 
 ### Landing page notice
 
