@@ -8,6 +8,7 @@ These informations will help you customize and deploy your own landing page !
 - follow onscreen instructions:
     - Connect to GitHub - **log in** with you GitHub account
     - Configure your site - change the repository name if you want
+    - Ensure that the build command is set, navigate to **Site Settings** than **Build & Deploy**, on the right **Biuld command** should be **gatsby build** and **Publish directory** should be **public/**. If you make this changes navigate to **Deploys** and click on **Trigger deploy**
     - wait until your site is deployed
     - click **Set up a custom domain**
     - click **Secure your site with HTTPS**
