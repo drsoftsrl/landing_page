@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 // Constants
 import { SITE_NAME } from '../../settings';
+import footerImage from '../../images/footer.png';
 
 // Components
 import {
@@ -128,7 +129,7 @@ class Reviews extends React.Component<Props, State> {
 								</li>
 							</ul>
 						</FooterColumn>
-						<img src="http://via.placeholder.com/350x150" alt="" className="footer__logo"/>
+						<img src={footerImage} alt="" className="footer__logo"/>
 					</Row>
 				</Container>
 			</footer>
