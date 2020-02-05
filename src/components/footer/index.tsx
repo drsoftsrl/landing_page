@@ -30,6 +30,7 @@ import {
 	TOS_ROUTE,
 	REFUNDS_ROUTE,
 	PRIVACY_ROUTE,
+	SITEMAP_ROUTE,
 	SCROLL_SUPPORT,
 	PRICING_ROUTE
 } from '../../constants';
@@ -105,6 +106,11 @@ class Reviews extends React.Component<Props, State> {
 							}, {
 								label: 'Members',
 								url: MEMBERS_URL,
+								native: true
+							}
+							, {
+								label: 'Sitemap',
+								url: SITEMAP_ROUTE,
 								native: true
 							}
 							]}

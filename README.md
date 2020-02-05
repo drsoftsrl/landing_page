@@ -52,6 +52,10 @@ These informations will help you customize and deploy your own landing page !
     - **$reviews-bg-color** - background color for reviews bubbles
     - *... more details in the file*
 
+### :hammer: Add Sitemap for SEO
+- open file from `gatsby-config.js` and edit the following constant:
+    - **THIS_SITE_DOMAIN** - the current domain name of this site
+
 ### :hammer: Change site settings
 - open file from `src/settings.js` and edit the constants as follows:
     - **MEMBERS_URL** - your domain url

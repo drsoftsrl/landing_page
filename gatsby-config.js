@@ -1,5 +1,13 @@
 // TODO UPDATE THIS
+/*
+ The name of this site that we are current on.
+*/
+const THIS_SITE_DOMAIN = 'http://your.site.domain';
+
 module.exports = {
+  siteMetadata: {
+    siteUrl: `${THIS_SITE_DOMAIN}`,
+  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
@@ -27,6 +35,7 @@ module.exports = {
     // To learn more, visit: https://gatsby.app/offline
     'gatsby-plugin-offline',
     'gatsby-plugin-sass',
-    'gatsby-plugin-typescript'
+    'gatsby-plugin-typescript',
+    `gatsby-plugin-sitemap`
   ]
 };
