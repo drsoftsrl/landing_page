@@ -27,6 +27,8 @@ These informations will help you customize and deploy your own landing page !
     - for the best result, try to use an image with almost the same size as the original one (*1645x1398*) and transparent background.
 - you can also change the favicon from `src/images/icon.png` - this is also used on mobile phones as an icon.
     - make sure that the image is big enough and square formatted, so that the quality is good everywhere.
+- for footer image (the image that appears on the bottom of the page, replace the next new image from `src/images/footer.png`.
+    - for the best result, try to use an image with almost the same size as the original one (*350x150*).
 
 ### :rainbow: Edit site colors
 - open file from `src/styles/modules/_variables.scss` and edit the variables as follows:
