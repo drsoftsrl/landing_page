@@ -13,6 +13,7 @@ export const SHARED_PROXY_ROUTE = `${PRODUCTS_BASE}/shared-proxy`;
 export const TOS_ROUTE = '/terms-of-service';
 export const REFUNDS_ROUTE = '/refunds';
 export const PRIVACY_ROUTE = '/privacy-policy';
+export const SITEMAP_ROUTE = '/sitemap.xml';
 export const PRICING_ROUTE = '/pricing';
 
 // App config
