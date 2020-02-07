@@ -78,7 +78,7 @@ These informations will help you customize and deploy your own landing page !
 - in `src/settings.js` paste the new link in **TAWK_TO_WIDGET_URL** constant
 - you can now receive messages in the chat. You will find all your messages under the **Messages** menu
 
-### :hammer: Update yours landing page with the newest changes
+### :hammer: Update your landing page with the newest changes
 - install git
 - clone your repository in your local machine `git clone "github_url"`
 - go to the project's folder on your local machine
