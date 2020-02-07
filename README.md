@@ -86,6 +86,6 @@ These informations will help you customize and deploy your own landing page !
 ```
 git remote add upstream https://github.com/drsoftsrl/landing_page
 git fetch upstream
-git pull --rebase upstream master
-git push origin master
+git pull upstream master
+git push
 ```
