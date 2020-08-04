@@ -9,26 +9,26 @@ module.exports = {
     siteUrl: `${THIS_SITE_DOMAIN}`,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    'gatsby-plugin-react-helmet',
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `images`,
+        name: 'images',
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        name: `affiliates-landing-page`,
-        short_name: `landing`,
-        start_url: `/`,
-        background_color: `#474c9a`,
-        theme_color: `#474c9a`,
-        display: `minimal-ui`,
-        icon: `src/images/icon.png` // This path is relative to the root of the site.
+        name: 'affiliates-landing-page',
+        short_name: 'landing',
+        start_url: '/',
+        background_color: '#474c9a',
+        theme_color: '#474c9a',
+        display: 'minimal-ui',
+        icon: 'src/images/icon.png' // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
@@ -36,6 +36,22 @@ module.exports = {
     'gatsby-plugin-offline',
     'gatsby-plugin-sass',
     'gatsby-plugin-typescript',
-    `gatsby-plugin-sitemap`
+    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-i18n',
+      options: {
+        langKeyDefault: 'en',
+        useLangKeyLayout: true
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-intl',
+      options: {
+        path: `${__dirname}/src/intl`,
+        languages: ['en', 'ro'],
+        defaultLanguage: 'en',
+        redirect: true,
+      },
+    },
   ]
 };

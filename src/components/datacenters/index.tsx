@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from "react-redux";
+import { injectIntl } from "gatsby-plugin-intl";
+
+
 
 // Map utils
 import getCountryISO3 from 'country-iso-2-to-3';
@@ -201,7 +204,7 @@ class Datacenters extends React.Component<Props, State> {
 
 	render() {
 		const { selectedProduct, selectedProductType, selectedTag } = this.state;
-		const { allAvailableTags } = this.props;
+		const { allAvailableTags, intl } = this.props;
 		const self = this;
 		const tagOptions = allAvailableTags.map((tag) => ({
 			value: tag,
@@ -214,8 +217,7 @@ class Datacenters extends React.Component<Props, State> {
             <section className="datacenters section section--padding__bottom">
                 <Container>
                     <Preamble title="Global Datacenter Coverage">
-						Our datacenters are spread across the globe and we're constantly refreshing our lists to ensure
-						a rich set of countries and locations that you can chose from.
+						{intl.formatMessage({ id: "title" })}
 					</Preamble>
                     <Row>
                         <Col lg={{ size: 12 }}>
@@ -306,4 +308,4 @@ const mapDispatchToProps = (dispatch) => ({
 	hide: () => dispatch(hide())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Datacenters);
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(Datacenters));
