@@ -1,4 +1,5 @@
-import React from 'react';
+import * as React from 'react';
+import { injectIntl } from "gatsby-plugin-intl";
 
 // Components
 import {
@@ -11,27 +12,25 @@ import Review from './review';
 // Scss
 import '../../styles/components/reviews.scss';
 
-const Reviews = () => (
+const Reviews = (props) => (
     <section className="reviews section section--padding">
         <Container>
-            <Preamble title="What Our Customers Say">
-                With almost a decade in the business and tens of thousands of happy
-                customers, you are in the best of hands.
+            <Preamble title={props.intl.formatMessage({ id: 'customer.opinion.title' })}>
+                {props.intl.formatMessage({ id: 'customer.opinion.desc' })}
             </Preamble>
             <Row className="d-flex align-items-center justify-content-center">
                 <Review author="Constance W." authorDepartment="Marketing">
-                    I'm a customer for 4 years+. My no.1 go-to provider of fast proxies.
+                    {props.intl.formatMessage({ id: 'customer.opinion.1' })}
                 </Review>
                 <Review author="Floyd L." authorDepartment="SEO">
-                    The whole experience is...something different.
-                    I tried many providers but these guys know what they're doing.
+                    {props.intl.formatMessage({ id: 'customer.opinion.2' })}
                 </Review>
                 <Review author="Keith C." authorDepartment="Marketing">
-                    The most reliable proxy seller out there. Excellent experience overall!
+                    {props.intl.formatMessage({ id: 'customer.opinion.3' })}
                 </Review>
             </Row>
         </Container>
     </section>
 );
 
-export default Reviews;
+export default injectIntl(Reviews);

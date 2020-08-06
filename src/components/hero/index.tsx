@@ -13,11 +13,10 @@ import '../../styles/components/hero.scss';
 import heroImage from '../../images/hero.png';
 
 interface Props {
-	minPrice: string,
 	children: any
 }
 
-const Hero = ({ minPrice, children }: Props) => (
+const Hero = ({ children }: Props) => (
     <div className="main-content">
         <Container fluid>
 			{children}

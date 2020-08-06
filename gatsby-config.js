@@ -38,13 +38,6 @@ module.exports = {
     'gatsby-plugin-typescript',
     'gatsby-plugin-sitemap',
     {
-      resolve: 'gatsby-plugin-i18n',
-      options: {
-        langKeyDefault: 'en',
-        useLangKeyLayout: true
-      }
-    },
-    {
       resolve: 'gatsby-plugin-intl',
       options: {
         path: `${__dirname}/src/intl`,

@@ -1,5 +1,6 @@
 import React from 'react';
 import { toast } from 'react-toastify';
+import { injectIntl } from "gatsby-plugin-intl";
 
 // Components
 import {
@@ -52,6 +53,7 @@ class Support extends React.Component<Props, State> {
 
 	handleSendAction() {
 		const { email, message } = this.state;
+		const { intl } = this.props;
 		const notifierOptions = {
 			position: toast.POSITION.BOTTOM_CENTER
 		};
@@ -66,29 +68,30 @@ class Support extends React.Component<Props, State> {
 					return;
 				}
 
-				toast.success('Message sent!', notifierOptions);
+				toast.success(intl.formatMessage({ id: 'message.sent' }), notifierOptions);
 			})
 			.catch((e) => {
-				toast.error('Sending the message failed. Please try again!', notifierOptions);
+				toast.error(intl.formatMessage({ id: 'message.failed' }), notifierOptions);
 			});
 	}
 
 	render() {
 		const { email, message } = this.state;
+		const { intl } = this.props;
 
 		return (
 			<section className="support section section--gradient__1">
 				<Container>
-					<Preamble light title="Support">
-						We offer various layers of support.
+					<Preamble light title={intl.formatMessage({ id: 'common.support' })}>
+						{intl.formatMessage({ id: 'support.desc.1' })}
 						<br />
-						Please pick one that is more appropriate to your needs.
+						{intl.formatMessage({ id: 'support.desc.2' })}
 					</Preamble>
 
 					<div className="support-container text-center">
 						<ChatLink />
 
-						<div className="support-separator">or</div>
+						<div className="support-separator">{intl.formatMessage({ id: 'common.or' })}</div>
 					</div>
 
 					<Form>
@@ -97,7 +100,7 @@ class Support extends React.Component<Props, State> {
 								<Input
 									type="email"
 									name="email"
-									placeholder="Your email"
+									placeholder={intl.formatMessage({ id: 'email.placeholder' })}
 									onChange={this.handleChange.bind(this, 'email')}
 								/>
 							</Col>
@@ -108,7 +111,7 @@ class Support extends React.Component<Props, State> {
 								<Input
 									type="textarea"
 									name="text"
-									placeholder="Your message"
+									placeholder={intl.formatMessage({ id: 'message.placeholder' })}
 									onChange={this.handleChange.bind(this, 'message')}
 								/>
 							</Col>
@@ -121,7 +124,7 @@ class Support extends React.Component<Props, State> {
 									className="btn--green btn--lg"
 									onClick={this.handleSendAction}
 								>
-									Send Message
+									{intl.formatMessage({ id: 'send.message' })}
 								</Button>
 							</Col>
 						</Row>
@@ -132,4 +135,4 @@ class Support extends React.Component<Props, State> {
 	}
 }
 
-export default Support;
+export default injectIntl(Support);

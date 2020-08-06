@@ -1,6 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
+import { injectIntl } from "gatsby-plugin-intl";
 
 // Scroll
 import Scroll from 'react-scroll';
@@ -51,7 +52,7 @@ class MainPage extends React.Component<Props, State> {
 		return (
 			<React.Fragment>
 				<Helmet>
-					<title>Anonymous proxies and SOCKSv5</title>
+					<title>{this.props.intl.formatMessage({ id: 'services.anonymous.proxies.socks' })}</title>
 					<meta name="description" content={SEO_DESCRIPTION} />
 					<meta name="keywords" content={SEO_KEYWORDS} />
 				</Helmet>
@@ -70,4 +71,4 @@ const mapDispatchToProps = (dispatch) => ({
 	doClearScrollElement: () => dispatch(setScrollElement(null))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(MainPage));

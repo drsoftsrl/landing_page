@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { connect } from "react-redux";
+import { injectIntl } from "gatsby-plugin-intl";
 
 // Constants
 import { SITE_NAME } from '../../settings';
@@ -19,7 +20,7 @@ import ChatLink from '../generic/chatLink';
 import { setScrollElement } from '../../actions';
 
 // Scroll
-import Scroll, { Link as ScrollLink } from 'react-scroll';
+import { Link as ScrollLink } from 'react-scroll';
 
 // Constants
 import {
@@ -59,29 +60,29 @@ class Reviews extends React.Component<Props, State> {
 	};
 
 	render() {
-		const { main } = this.props;
+		const { main, intl } = this.props;
 
 		return (
 			<footer className="footer section section--gradient__2">
 				<Container>
 					<Preamble light title={SITE_NAME}>
-						We offer highly secure, (Dedicated or Shared) SOCKSv5 and Proxies.
+						{intl.formatMessage({ id: 'site.description' })}
 					</Preamble>
 					<Row>
 						<FooterColumn
 							title="Our products"
 							links={[
 								{
-									label: 'HTTP Proxy',
+									label: intl.formatMessage({ id: 'services.httpproxy' }),
 									url: HTTPS_PROXY_ROUTE
 								}, {
-									label: 'SOCKSv5 Proxy',
+									label: intl.formatMessage({ id: 'services.socksv5' }),
 									url: SOCKS_PROXY_ROUTE
 								}, {
-									label: 'Dedicated Proxy',
+									label: intl.formatMessage({ id: 'services.dedicated' }),
 									url: DEDICATED_PROXY_ROUTE
 								}, {
-									label: 'Shared Proxy',
+									label: intl.formatMessage({ id: 'services.shared' }),
 									url: SHARED_PROXY_ROUTE
 								}
 							]}
@@ -89,27 +90,26 @@ class Reviews extends React.Component<Props, State> {
 						<FooterColumn
 							title="Resources"
 							links={[{
-								label: 'Pricing',
+								label: intl.formatMessage({ id: 'common.pricing' }),
 								url: PRICING_ROUTE
 							}, {
-								label: 'Privacy policy',
+								label: intl.formatMessage({ id: 'common.privacy' }),
 								url: PRIVACY_ROUTE
 							}, {
-								label: 'Terms of Service',
+								label: intl.formatMessage({ id: 'common.terms' }),
 								url: TOS_ROUTE
 							}, {
-								label: 'Refunds',
+								label: intl.formatMessage({ id: 'common.refunds' }),
 								url: REFUNDS_ROUTE
 							}, {
-								label: 'Restrictions',
+								label: intl.formatMessage({ id: 'common.restrictions' }),
 								url: REFUNDS_ROUTE
 							}, {
-								label: 'Members',
+								label: intl.formatMessage({ id: 'common.members' }),
 								url: MEMBERS_URL,
 								native: true
-							}
-							, {
-								label: 'Sitemap',
+							}, {
+								label: intl.formatMessage({ id: 'common.sitemap' }),
 								url: SITEMAP_ROUTE,
 								native: true
 							}
@@ -121,11 +121,11 @@ class Reviews extends React.Component<Props, State> {
 									{
 										main ? (
 											<ScrollLink to={SCROLL_SUPPORT} smooth offset={-85}>
-												Contact Us
+												{intl.formatMessage({ id: 'common.contact' })}
 											</ScrollLink>
 											) : (
 											<Link to="/" onClick={this.handleContactClick}>
-												Contact Us
+												{intl.formatMessage({ id: 'common.contact' })}
 											</Link>
 										)
 									}
@@ -147,4 +147,4 @@ const mapDispatchToProps = (dispatch) => ({
 	doSetScrollElement: (el: any) => dispatch(setScrollElement(el))
 });
 
-export default connect(null, mapDispatchToProps)(Reviews);
+export default connect(null, mapDispatchToProps)(injectIntl(Reviews));

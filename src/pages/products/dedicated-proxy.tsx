@@ -1,5 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import Helmet from 'react-helmet';
+import { injectIntl } from "gatsby-plugin-intl";
 
 // Components
 import Footer from '../../components/footer';
@@ -15,21 +16,21 @@ import {
 	SEO_KEYWORDS
 } from '../../settings';
 
-const DedicatedProxy = () => (
+const DedicatedProxy = (props) => (
 	<React.Fragment>
 		<Helmet>
-			<title>Dedicated proxies</title>
+			<title>{props.intl.formatMessage({ id: 'dedicated.proxies.title' })}</title>
 			<meta name="description" content={SEO_DESCRIPTION} />
 			<meta name="keywords" content={SEO_KEYWORDS} />
 		</Helmet>
 
-		<ProductsHero title="Dedicated HTTP proxies" btnText="Buy dedicated proxies">
-			Our entire infrastructure is built from the ground-up to ensure that our dedicated proxies are owned
-			by a single entity making it impossible to allow any mistakes or accidental sharing.
+		<ProductsHero
+			title={props.intl.formatMessage({ id: 'dedicated.proxies.products.title' })}
+			btnText={props.intl.formatMessage({ id: 'dedicated.proxies.products.next' })}
+		>
+			{props.intl.formatMessage({ id: 'dedicated.proxies.products.desc.1' })}
 			<br />
-			We do not share dedicated proxies nor do we re-sell or re-use them for other purposes.
-			In almost a decade of selling proxies we never had a single complaint on this matter and this is trully
-			aligned with the level of respect we have for our customers and the way we do business.
+			{props.intl.formatMessage({ id: 'dedicated.proxies.products.desc.2' })}
 		</ProductsHero>
 
 		<Extra />
@@ -38,4 +39,4 @@ const DedicatedProxy = () => (
 	</React.Fragment>
 );
 
-export default DedicatedProxy;
+export default injectIntl(DedicatedProxy);

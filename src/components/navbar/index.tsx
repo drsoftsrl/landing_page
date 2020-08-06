@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import { injectIntl } from "gatsby-plugin-intl";
 
 // Components
 import {
@@ -13,6 +14,8 @@ import {
 	NavLink
 } from 'reactstrap';
 import ChatLink from '../generic/chatLink';
+import Language from '../language';
+
 
 // Scss
 import '../../styles/components/navbar.scss';
@@ -76,7 +79,7 @@ class NavBar extends React.Component<Props, State> {
 
     render() {
         const { scrollY, isOpen } = this.state;
-        const { MenuItem } = this.props;
+        const { MenuItem, intl } = this.props;
         const navClasses = classnames("justify-content-center", scrollY > 250 ? "top-fixed" : "");
 
         return (
@@ -92,24 +95,30 @@ class NavBar extends React.Component<Props, State> {
 							<NavItem>
 								<Link to={PRICING_ROUTE}>
 									<NavLink tag="div" className="text-uppercase">
-										Pricing
+										{intl.formatMessage({ id: 'common.pricing' })}
 									</NavLink>
 								</Link>
 							</NavItem>
 
-							<MenuItem scrollComponent={SCROLL_DATACENTERS} text="Datacenters" />
-                            <MenuItem scrollComponent={SCROLL_FEATURES} text="Features" />
-                            <MenuItem scrollComponent={SCROLL_SUPPORT} text="Support" />
+							<MenuItem scrollComponent={SCROLL_DATACENTERS} text={intl.formatMessage({ id: 'common.datacenters' })} />
+                            <MenuItem scrollComponent={SCROLL_FEATURES} text={intl.formatMessage({ id: 'common.features' })} />
+                            <MenuItem scrollComponent={SCROLL_SUPPORT} text={intl.formatMessage({ id: 'common.support' })} />
 
 							<NavItem>
 								<NavLink tag="a" className="text-uppercase" href={MEMBERS_URL}>
-									Members
+									{intl.formatMessage({ id: 'common.members' })}
 								</NavLink>
 							</NavItem>
                         </Nav>
                         <Nav className="ml-auto justify-content-end align-items-start align-items-lg-center" navbar>
-                            <NavItem>
-                                <NavLink href={MEMBERS_URL} className="text-uppercase nav-link__cta rounded">Buy now</NavLink>
+							<NavItem>
+								<Language/>
+							</NavItem>
+
+							<NavItem>
+                                <NavLink href={MEMBERS_URL} className="text-uppercase nav-link__cta rounded">
+									{intl.formatMessage({ id: 'common.buy.now' })}
+								</NavLink>
                             </NavItem>
                         </Nav>
 
@@ -121,4 +130,4 @@ class NavBar extends React.Component<Props, State> {
     }
 }
 
-export default NavBar;
+export default injectIntl(NavBar);

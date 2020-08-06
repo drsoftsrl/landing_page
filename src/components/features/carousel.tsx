@@ -1,4 +1,5 @@
 import React from 'react';
+import { injectIntl } from "gatsby-plugin-intl";
 
 // Components
 import Slider from "react-slick";
@@ -22,12 +23,11 @@ interface Props {
 
 }
 
-const Carousel: React.FunctionComponent<Props> = () => {
+const Carousel: React.FunctionComponent<Props> = (props) => {
 	const settings = {
 		dots: true,
         arrows: false,
 		infinite: true,
-		speed: 500,
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		autoplay: true,
@@ -37,34 +37,28 @@ const Carousel: React.FunctionComponent<Props> = () => {
 
 	const slides = [{
 		icon: faUserSecret,
-		title: 'Fully Anonymous',
-		details: `All our proxies are carefully set and monitored in order to
-		 ensure they are 100% anonymous and without any sort of ip or dns leaks.`
+		title: props.intl.formatMessage({ id: 'fully.autonomous.title' }),
+		details: props.intl.formatMessage({ id: 'fully.autonomous.desc' })
 	}, {
 		icon: faLifeRing,
-		title: '24/7 Heroic Support',
-		details: `Sometimes the kind of support you offer means more than your product and we know that. 
-		We're always available and you can give us a try.`
+		title: props.intl.formatMessage({ id: '24.support.title' }),
+		details: props.intl.formatMessage({ id: '24.support.desc' })
 	}, {
 		icon: faGlobe,
-		title: 'Multiple Datacenters',
-		details: `We're offering more than 100 locations for our proxies and we constantly refresh our 
-		list to add more locations from all over the world.`
+		title: props.intl.formatMessage({ id: 'multiple.datacenters.title' }),
+		details: props.intl.formatMessage({ id: 'multiple.datacenters.desc' })
 	}, {
 		icon: faFighterJet,
-		title: 'Instant Activation',
-		details: `Your proxies are activated instantly once your payment enters our system and we really stand 
-		behind this word which is not just for marketing.`
+		title: props.intl.formatMessage({ id: 'instant.activation.title' }),
+		details: props.intl.formatMessage({ id: 'instant.activation.desc' })
 	}, {
 		icon: faSignal,
-		title: 'High Speed Connections',
-		details: `All our servers are attached to 1Gbps and 10Gbps connections and we constantly update our 
-		networking stacks to maintain a top position in terms of speed.`
+		title: props.intl.formatMessage({ id: 'high.speed.title' }),
+		details: props.intl.formatMessage({ id: 'high.speed.desc' })
 	}, {
 		icon: faTerminal,
-		title: 'Powerful Automation',
-		details: `From status checkers to supervisors and service testers we have it all. Our stack is fully 
-		automated and self-healing without any intervention.`
+		title: props.intl.formatMessage({ id: 'powerfull.automation.title' }),
+		details: props.intl.formatMessage({ id: 'powerfull.automation.desc' })
 	}];
 
 	return (
@@ -81,4 +75,4 @@ const Carousel: React.FunctionComponent<Props> = () => {
 	);
 };
 
-export default Carousel;
+export default injectIntl(Carousel);

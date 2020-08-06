@@ -1,5 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import Helmet from 'react-helmet';
+import { injectIntl } from "gatsby-plugin-intl";
 
 // Components
 import Footer from '../../components/footer';
@@ -15,19 +16,19 @@ import {
 	SEO_KEYWORDS
 } from '../../settings';
 
-const SocksProxy = () => (
+const SocksProxy = (props) => (
 	<React.Fragment>
 		<Helmet>
-			<title>SOCKSv5 proxies</title>
+			<title>{props.intl.formatMessage({ id: 'socks.proxies.title' })}</title>
 			<meta name="description" content={SEO_DESCRIPTION} />
 			<meta name="keywords" content={SEO_KEYWORDS} />
 		</Helmet>
 
-		<ProductsHero title="SOCKSv5 proxies" btnText="Buy SocksV5 proxies">
-			A SOCKSv5 proxy is a server that sits between your HTTP requests, securing and anonymizing them.
-			A client connects to the proxy server, then requests a connection, file, or other resource available on a different server.
-			The SOCKS proxy is considered to be more versatile/capable than the HTTP proxy because it can be used for
-			any protocol or port while the HTTP proxy can only be used for HTTP traffic.
+		<ProductsHero
+			title={props.intl.formatMessage({ id: 'socks.proxies.products.title' })}
+			btnText={props.intl.formatMessage({ id: 'socks.proxies.products.next' })}
+		>
+			{props.intl.formatMessage({ id: 'socks.proxies.products.desc.1' })}
 		</ProductsHero>
 
 		<Extra />
@@ -36,4 +37,4 @@ const SocksProxy = () => (
 	</React.Fragment>
 );
 
-export default SocksProxy;
+export default injectIntl(SocksProxy);

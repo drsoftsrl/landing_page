@@ -1,5 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
+import { injectIntl } from "gatsby-plugin-intl";
 
 // Components
 import Hero from './index';
@@ -19,10 +20,11 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import get from 'lodash/get';
 
 interface Props {
-	minPrice: string
+	minPrice: string,
+	intl: any,
 }
 
-const MainHero = ({ minPrice }: Props) => (
+const MainHero = ({ minPrice, intl }: Props) => (
 	<Hero>
 		<Row>
 			<Col
@@ -30,19 +32,19 @@ const MainHero = ({ minPrice }: Props) => (
 				lg={{ size: 10, offset: 1 }}
 			>
 				<h1 className="main-content__title mb-3 mb-lg-4 h2">
-					Anonymous
+					{intl.formatMessage({ id: 'common.anonymous' })}
 					<br />
-					HTTP & SOCKSv5 Proxies
+					{intl.formatMessage({ id: 'services.proxies.socks' })}
 				</h1>
 				<p className="main-content__lead lead mb-4">
-					Fully anonymous private proxies
+					{intl.formatMessage({ id: 'anonymous.proxies.desc.1' })}
 					<br />
-					(shared or dedicated) starting at just ${minPrice}
+					{intl.formatMessage({ id: 'anonymous.proxies.desc.2' })}
 				</p>
 				<a
 					href={MEMBERS_URL}
 					className="btn btn--green btn--lg mb-0 mt-4">
-					Members
+					{intl.formatMessage({ id: 'common.members' })}
 					<FontAwesomeIcon icon={faArrowRight} className="ml-2" />
 				</a>
 			</Col>
@@ -55,4 +57,4 @@ const mapStateToProps = (state) => ({
 	minPrice: get(state, 'core.minPrice', ''),
 });
 
-export default connect(mapStateToProps)(MainHero);
+export default connect(mapStateToProps)(injectIntl(MainHero));

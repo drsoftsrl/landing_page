@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from "react-redux";
 import { injectIntl } from "gatsby-plugin-intl";
-
+import * as get from 'lodash/get';
 
 
 // Map utils
@@ -17,7 +17,6 @@ import requestHandler from '../../utils/request';
 // Utils
 import shadeColor from '../../utils/shadeColor';
 import WorldMap from "../../utils/world-50m.json";
-import get from 'lodash/get';
 
 // Components
 import {
@@ -61,7 +60,7 @@ interface Props {
     doSetLocationsData(data: object): void,
 	hide(): void,
 	show(any): void,
-	countries: ICountries,
+	countries: Array<ICountries>,
 	allAvailableTags: Array<string>
 }
 
@@ -216,8 +215,8 @@ class Datacenters extends React.Component<Props, State> {
         return (
             <section className="datacenters section section--padding__bottom">
                 <Container>
-                    <Preamble title="Global Datacenter Coverage">
-						{intl.formatMessage({ id: "title" })}
+                    <Preamble title={intl.formatMessage({ id: 'datacenters.title.description' })}>
+						{intl.formatMessage({ id: 'datacenters.title' })}
 					</Preamble>
                     <Row>
                         <Col lg={{ size: 12 }}>

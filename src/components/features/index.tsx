@@ -1,4 +1,5 @@
-import React from 'react';
+import * as React from 'react';
+import { injectIntl } from "gatsby-plugin-intl";
 
 // Components
 import {
@@ -27,74 +28,62 @@ import {
     faChartLine
 } from '@fortawesome/free-solid-svg-icons';
 
-const Features = () => (
+const Features = (props) => (
     <section className="features section section--gradient__1">
         <Container>
-            <Preamble light title="Unique proxy features">
-                Our infrastructure is unique, battle-tested and carefully monitored by
+            <Preamble light title={props.intl.formatMessage({ id: 'unique.proxy.title' })}>
+                {props.intl.formatMessage({ id: 'unique.proxy.desc.1' })}
                 <br />
-                supervisors 24/7. There is no other proxy provider even close to
+                {props.intl.formatMessage({ id: 'unique.proxy.desc.2' })}
                 <br />
-                operating at the same level and standards that we do.
+                {props.intl.formatMessage({ id: 'unique.proxy.desc.3' })}
             </Preamble>
             <Row>
-                <Feature icon={faUserSecret} title="Fully anonymous">
-                    All our proxies are carefully set and monitored in
-                    order to ensure they are 100% anonymous and without any sort of ip or dns leaks.
+                <Feature icon={faUserSecret} title={props.intl.formatMessage({ id: 'fully.autonomous.title' })}>
+                    {props.intl.formatMessage({ id: 'fully.autonomous.desc' })}
                 </Feature>
-                <Feature icon={faLifeRing} title="24/7 Heroic support">
-                    Sometimes the kind of support you offer means more than your product and we
-                    know that. We're always available and you can give us a try.
+                <Feature icon={faLifeRing} title={props.intl.formatMessage({ id: '24.support.title' })}>
+                    {props.intl.formatMessage({ id: '24.support.desc' })}
                 </Feature>
-                <Feature icon={faGlobe} title="Multiple datacenters">
-                    We're offering more than 100 locations for our proxies and we constantly refresh our
-                    list to add more locations from all over the world.
+                <Feature icon={faGlobe} title={props.intl.formatMessage({ id: 'multiple.datacenters.title' })}>
+                    {props.intl.formatMessage({ id: 'multiple.datacenters.desc' })}
                 </Feature>
             </Row>
             <Row>
-                <Feature icon={faFighterJet} title="Instant activation">
-                    Your proxies are activated instantly once your payment enters our system and
-                    we really stand behind this word which is not just for marketing.
+                <Feature icon={faFighterJet} title={props.intl.formatMessage({ id: 'instant.activation.title' })}>
+                    {props.intl.formatMessage({ id: 'instant.activation.title' })}
                 </Feature>
-                <Feature icon={faSignal} title="High speed connections">
-                    All our servers are attached to 1Gbps and 10Gbps connections and we constantly
-                    update our networking stacks to maintain a top position in terms of speed.
+                <Feature icon={faSignal} title={props.intl.formatMessage({ id: 'high.speed.title' })}>
+                    {props.intl.formatMessage({ id: 'high.speed.title' })}
                 </Feature>
-                <Feature icon={faTerminal} title="Powerful automation">
-                    From status checkers to supervisors and service testers we have it all.
-                    Our stack is fully automated and self-healing without any intervention.
+                <Feature icon={faTerminal} title={props.intl.formatMessage({ id: 'powerfull.automation.title' })}>
+                    {props.intl.formatMessage({ id: 'powerfull.automation.desc' })}
                 </Feature>
             </Row>
             <Row>
-                <Feature icon={faPiggyBank} title="Affordable pricing">
-                    Given the performance and services we provide we can proudly say that our prices are very
-                    small and fair. Check out our pricing page and we promise you won't be disappointed.
+                <Feature icon={faPiggyBank} title={props.intl.formatMessage({ id: 'affordable.pricing.title' })}>
+                    {props.intl.formatMessage({ id: 'affordable.pricing.desc' })}
                 </Feature>
-                <Feature icon={faUsers} title="Dual authentication">
-                    Don't wanna use a username and password combo to authenticate to your proxies?
-                    No problem, you can use your ip address instead.
+                <Feature icon={faUsers} title={props.intl.formatMessage({ id: 'dual.authentication.title' })}>
+                    {props.intl.formatMessage({ id: 'dual.authentication.desc' })}
                 </Feature>
-                <Feature icon={faRetweet} title="Monthly list refresh">
-                    Each month you can replace your proxies without our intervention.
-                    Our control-panel allows you to achieve such advanced operations.
+                <Feature icon={faRetweet} title={props.intl.formatMessage({ id: 'monthly.refresh.title' })}>
+                    {props.intl.formatMessage({ id: 'monthly.refresh.desc' })}
                 </Feature>
             </Row>
             <Row>
-                <Feature icon={faChartLine} title="Unlimited bandwidth">
-                    We're not placing any sorts of limits on your bandwith so you can enjoy really fast
-                    and responsive proxies for your applications.
+                <Feature icon={faChartLine} title={props.intl.formatMessage({ id: 'unlimited.bandwidth.title' })}>
+                    {props.intl.formatMessage({ id: 'unlimited.bandwidth.title' })}
                 </Feature>
-                <Feature icon={faCrosshairs} title="Pick your proxy">
-                    We don't sell you packages. You can pick each proxy IP individually by subnet, city,
-                    state or country. You're in full control.
+                <Feature icon={faCrosshairs} title={props.intl.formatMessage({ id: 'pick.proxy.title' })}>
+                    {props.intl.formatMessage({ id: 'pick.proxy.desc' })}
                 </Feature>
-                <Feature icon={faCircle} title="No leaks">
-                    Our automation suite constantly monitors and checks the proxies against IP leaks or
-                    DNS leaks to ensure elite anonymity for our customers.
+                <Feature icon={faCircle} title={props.intl.formatMessage({ id: 'no.leaks.title' })}>
+                    {props.intl.formatMessage({ id: 'no.leaks.desc' })}
                 </Feature>
             </Row>
         </Container>
     </section>
     );
 
-export default Features;
+export default injectIntl(Features);

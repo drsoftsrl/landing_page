@@ -1,5 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import Helmet from 'react-helmet';
+import { injectIntl } from "gatsby-plugin-intl";
 
 // Components
 import Footer from '../../components/footer';
@@ -15,17 +16,19 @@ import {
 	SEO_KEYWORDS
 } from '../../settings';
 
-const SharedProxy = () => (
+const SharedProxy = (props) => (
 	<React.Fragment>
 		<Helmet>
-			<title>Shared proxies</title>
+			<title>{props.intl.formatMessage({ id: 'shared.proxies.title' })}</title>
 			<meta name="description" content={SEO_DESCRIPTION} />
 			<meta name="keywords" content={SEO_KEYWORDS} />
 		</Helmet>
 
-		<ProductsHero title="Shared HTTP proxies" btnText="Buy Shared proxies">
-			As part of our stack we also offer shared proxies at lower prices. Most of our shared proxies are close
-			to the dedicated ones in quality because we don't "crowd" the IP addresses with too many clients.
+		<ProductsHero
+			title={props.intl.formatMessage({ id: 'shared.proxies.products.title' })}
+			btnText={props.intl.formatMessage({ id: 'shared.proxies.products.next' })}
+		>
+			{props.intl.formatMessage({ id: 'shared.proxies.products.desc.1' })}
 		</ProductsHero>
 
 		<Extra />
@@ -34,4 +37,4 @@ const SharedProxy = () => (
 	</React.Fragment>
 );
 
-export default SharedProxy;
+export default injectIntl(SharedProxy);

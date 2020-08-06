@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { injectIntl } from "gatsby-plugin-intl";
 
 // Components
 import {
@@ -229,7 +230,7 @@ class Pricing extends React.Component<Props, State> {
 			selectedQuantity,
 			selectedTag
 	    } = this.state;
-	    const { billingCycles } = this.props;
+	    const { billingCycles, intl } = this.props;
 	    const selectedProductTags = this.tagsByService;
 	    const selectedTagsWithoutDefault = selectedProductTags ? [...selectedProductTags] : [];
 		selectedTagsWithoutDefault.shift();
@@ -239,10 +240,8 @@ class Pricing extends React.Component<Props, State> {
                     <Row>
                         <Col xs={{ size: 12 }}>
 							<div className="pricing-card">
-								<Preamble title="Lowest prices in the industry">
-									Our prices have always been competitive and we plan on keeping them that way.
-									On top of that, we always have discounts based on quantity or billing period so
-									make sure you play with our pricing calculator below to estimate your expenses.
+								<Preamble title={intl.formatMessage({ id: 'business.desc.title' })}>
+									{intl.formatMessage({ id: 'business.desc' })}
 								</Preamble>
 								<Switch
 									selectedOption={selectedProduct}
@@ -289,22 +288,22 @@ class Pricing extends React.Component<Props, State> {
 								<footer className="pricing-card__footer d-flex">
 									<div>
 										<div className="pricing-card__footer-value text-left">{selectedQuantity}</div>
-										<div className="pricing-card__footer-label text-left">Quantity</div>
+										<div className="pricing-card__footer-label text-left">{intl.formatMessage({ id: 'common.quantity' })}</div>
 									</div>
 									<div>
 										<div className="pricing-card__footer-value text-left">${this.basePrice}</div>
-										<div className="pricing-card__footer-label text-left">Base price</div>
+										<div className="pricing-card__footer-label text-left">{intl.formatMessage({ id: 'common.base.price' })}</div>
 									</div>
 									<div>
 										<div className="pricing-card__footer-value text-left">{this.totalDiscount}%</div>
-										<div className="pricing-card__footer-label text-left">Discount</div>
+										<div className="pricing-card__footer-label text-left">{intl.formatMessage({ id: 'common.discount' })}</div>
 									</div>
 									<div className="d-flex pricing-card__footer-total">
 										<div>
 											<div className="pricing-card__footer-value pricing-total text-left">${this.priceWithDiscount}</div>
 											<div className="pricing-card__footer-label text-left">{BILLING_CYCLES[selectedBillingCycle]}</div>
 										</div>
-										<Button href={MEMBERS_URL} className="btn--green">Order now</Button>
+										<Button href={MEMBERS_URL} className="btn--green">{intl.formatMessage({ id: 'common.order.now' })}</Button>
 									</div>
 								</footer>
 							</div>
@@ -329,4 +328,4 @@ const mapDispatchToProps = (dispatch) => ({
 	doSetPrices: (pricing: IPricingResponse) => dispatch(setPricingData(pricing))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Pricing);
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(Pricing));

@@ -1,5 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import Helmet from 'react-helmet';
+import { injectIntl } from "gatsby-plugin-intl";
 
 // Constants
 import NavBar from '../components/navbar';
@@ -29,7 +30,7 @@ class PricingPage extends React.Component<Props, State> {
 		return (
 			<React.Fragment>
 				<Helmet>
-					<title>Pricing</title>
+					<title>{this.props.intl.formatMessage({ id: 'common.pricing' })}</title>
 					<meta name="description" content={SEO_DESCRIPTION} />
 					<meta name="keywords" content={SEO_KEYWORDS} />
 				</Helmet>
@@ -51,4 +52,4 @@ class PricingPage extends React.Component<Props, State> {
 	}
 }
 
-export default PricingPage;
+export default injectIntl(PricingPage);

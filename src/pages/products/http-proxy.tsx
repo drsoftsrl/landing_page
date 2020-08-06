@@ -1,5 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import Helmet from 'react-helmet';
+import { injectIntl } from "gatsby-plugin-intl";
 
 // Components
 import Footer from '../../components/footer';
@@ -15,20 +16,18 @@ import {
 	SEO_KEYWORDS
 } from '../../settings';
 
-const HttpProxy = () => (
+const HttpProxy = (props) => (
 	<React.Fragment>
 		<Helmet>
-			<title>Http proxies</title>
+			<title>{props.intl.formatMessage({ id: 'http.proxies.title' })}</title>
 			<meta name="description" content={SEO_DESCRIPTION} />
 			<meta name="keywords" content={SEO_KEYWORDS} />
 		</Helmet>
-
-		<ProductsHero title="Anonymous HTTP proxies" btnText="Buy HTTP proxies">
-			A HTTP proxy is a server that sits between your HTTP requests, securing and anonymizing them.
-			A client connects to the proxy server, then requests a connection, file, or other resource available
-			on a different server. The proxy provides the resource either by connecting to the specified server or
-			by serving it from a cache. Our proxies also change your IP address making it impossible to trace the
-			request to the original caller (you).
+		<ProductsHero
+			title={props.intl.formatMessage({ id: 'http.proxies.products.title' })}
+			btnText={props.intl.formatMessage({ id: 'http.proxies.products.next' })}
+		>
+			{props.intl.formatMessage({ id: 'http.proxies.products.desc.1' })}
 		</ProductsHero>
 
 		<Extra />
@@ -37,4 +36,4 @@ const HttpProxy = () => (
 	</React.Fragment>
 );
 
-export default HttpProxy;
+export default injectIntl(HttpProxy);
