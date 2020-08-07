@@ -1,5 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import Helmet from 'react-helmet';
+import { injectIntl } from "gatsby-plugin-intl";
 
 // Components
 import NavBar from '../components/navbar';
@@ -14,10 +15,10 @@ import {
 	SEO_KEYWORDS
 } from '../settings';
 
-const Refunds = () => (
+const Refunds = (props) => (
 	<React.Fragment>
 		<Helmet>
-			<title>Refunds</title>
+			<title>{props.intl.formatMessage({ id: 'refunds.title' })}</title>
 			<meta name="description" content={SEO_DESCRIPTION} />
 			<meta name="keywords" content={SEO_KEYWORDS} />
 		</Helmet>
@@ -26,42 +27,30 @@ const Refunds = () => (
 			<NavBar MenuItem={MenuItem} />
 
 			<section className="section section--padding">
-				<Preamble light title="Refunds">
-					Since our website is offering intangible goods refunds are
-					honored for the following reasons:
+				<Preamble light title={props.intl.formatMessage({ id: 'refunds.title' })}>
+					{props.intl.formatMessage({ id: 'refunds.content.1' })}
 					<br />
 					<br />
 					<strong>
-						* non-delivery of the product: in case we fail to
-						deliver the purchased goods you are entitled for a full
-						refund
-						<br />* service issues: in case our service is not
-						functioning as advertised you are entitled for a full
-						refund
+						{props.intl.formatMessage({ id: 'refunds.content.2' })}
+						<br />
+						{props.intl.formatMessage({ id: 'refunds.content.3' })}
 					</strong>
 					<br />
 					<br />
-					Please note that we do not bear any responsibility and
-					therefore we do not satisfy any refund/return/exchange
-					requests based on incompatibility of our products with some
-					third-party software (plug-ins, add-ons, modules, search
-					engines, scripts, extensions etc). We don't guarantee that
-					our products are fully compatible with any third-party
-					programs and we do not provide support for third-party
-					applications.
+					{props.intl.formatMessage({ id: 'refunds.content.4' })}
 					<br />
 					<br />
-					Our Technical Support Team is always eager to assist you and
-					deliver highly professional support in a timely manner.
+					{props.intl.formatMessage({ id: 'refunds.content.5' })}
 				</Preamble>
 
 				<Preamble light title="Restrictions">
-					When using out services, the following restrictions apply:
+					{props.intl.formatMessage({ id: 'refunds.content.6' })}
 					<ul>
-						<li>GSA</li>
-						<li>Xrumer</li>
-						<li>Torrent downloading/uploading</li>
-						<li>Scrapebox</li>
+						<li>{props.intl.formatMessage({ id: 'refunds.content.7' })}</li>
+						<li>{props.intl.formatMessage({ id: 'refunds.content.8' })}</li>
+						<li>{props.intl.formatMessage({ id: 'refunds.content.9' })}</li>
+						<li>{props.intl.formatMessage({ id: 'refunds.content.10' })}</li>
 					</ul>
 				</Preamble>
 			</section>
@@ -73,4 +62,4 @@ const Refunds = () => (
 	</React.Fragment>
 );
 
-export default Refunds;
+export default injectIntl(Refunds);
