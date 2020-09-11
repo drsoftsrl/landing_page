@@ -1,6 +1,10 @@
 # Affiliates landing page
 These informations will help you customize and deploy your own landing page !
 
+### Landing page notice
+
+We offer a free landing page template that you can use as a starter and deploy it to Netlify. You can use this landing page or create your own custom one. We do not offer support for this part. The design of your website is your own responsibility!
+
 ### :vertical_traffic_light: Deploy your site
 - navigate to [GitHub](https://github.com) and **sign in/up**
 - click the button below  
