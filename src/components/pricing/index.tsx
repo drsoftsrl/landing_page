@@ -140,7 +140,7 @@ class Pricing extends React.Component<Props, State> {
 		const multiplier = selectedTag ? parseInt(selectedTag.multiplier) : 1;
 		const selectedProductBasePrice = prices[selectedProductKey] && prices[selectedProductKey].price * multiplier || 0;
 
-		return parseFloat(selectedProductBasePrice);
+		return parseFloat(selectedProductBasePrice).toFixed(2);
 	}
 
 	get quantityDiscount(): number {
