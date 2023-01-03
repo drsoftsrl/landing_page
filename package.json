@@ -3,11 +3,10 @@
   "private": true,
   "description": "A simple landing page for affiliates",
   "version": "0.0.1",
-  "author": "Alin Petrusca <alinpetrusca91@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Alin13/landing_page"
+    "url": "https://github.com/drsoftsrl/landing_page"
   },
   "scripts": {
     "build": "gatsby build",
