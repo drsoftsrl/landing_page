@@ -9,7 +9,6 @@ import {
   TAB_ROTATING_IP,
   TAB_STATIC_IP
 } from "@/utils/constants";
-import ButtonMain from "@/components/common/buttonMain";
 import PricingCard from "@/components/pricing/pricingCard";
 
 const getPrice = (basePrice, priceMultiplier, quantity, months, discountsQuantity, discountsInterval) => {

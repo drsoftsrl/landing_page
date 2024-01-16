@@ -1,7 +1,6 @@
 "use client";
 import { setCookie, getCookie } from "cookies-next";
 import { useState, useEffect } from "react";
-import {BaseContent} from "@/projectSettings/colors";
 
 export const CookieConsent = () => {
   const [showConsent, setShowConsent] = useState(false);
