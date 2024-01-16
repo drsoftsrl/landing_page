@@ -41,3 +41,8 @@
     @apply text-2xl;
   }
 }
+
+#__next {
+  width: 100%;
+  height: calc(100% - 13rem);
+}

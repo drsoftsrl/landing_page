@@ -7,9 +7,9 @@ export default function Document() {
       <Head />
 
       <body className="h-full w-full m-0">
-      <Main />
+        <Main />
 
-      <NextScript />
+        <NextScript />
       </body>
     </Html>
   );

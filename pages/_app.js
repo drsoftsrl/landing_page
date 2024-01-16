@@ -4,7 +4,7 @@ import React from "react";
 import { Lato } from "next/font/google";
 import { CookieConsent } from "@/components/cookieConsent";
 import Script from "next/script";
-import { GOOGLE_TRACKING_ID } from "@/utils/constants";
+import { GOOGLE_TRACKING_ID } from "@/projectSettings/website";
 
 const lato = Lato({
   weight: ["400", "700"],
@@ -15,7 +15,6 @@ const lato = Lato({
 });
 
 function MyApp({ Component, pageProps }) {
-
   return (
     <>
       <style jsx global>{`

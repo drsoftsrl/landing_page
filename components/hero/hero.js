@@ -1,18 +1,17 @@
 import ButtonMain from "@/components/common/buttonMain";
 import Image from "next/image";
 
-export default function Hero({minPrice}) {
+export default function Hero({ minPrice }) {
   return (
-    <div
-      className="hero min-h-screen relative bg-gradient1 overflow-hidden">
-        <Image
-          src="/images/hero/hero.webp"
-          alt="#"
-          width={1645}
-          height={1498}
-          priority
-          className="absolute -bottom-[10%] max-w-[600px] md:max-w-[700px] lg:max-w-[800px] xl:max-w-[900px]"
-        />
+    <div className="hero min-h-screen relative bg-gradient1 overflow-hidden">
+      <Image
+        src="/images/hero/hero.webp"
+        alt="#"
+        width={1645}
+        height={1498}
+        priority
+        className="absolute -bottom-[10%] max-w-[600px] md:max-w-[700px] lg:max-w-[800px] xl:max-w-[900px]"
+      />
 
       <div className="hero-content text-center text-neutral-content">
         <div className="max-w-lg">

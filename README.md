@@ -1,40 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Affiliates landing page
+These informations will help you customize and deploy your own landing page !
 
-## Getting Started
+### Landing page notice
 
-First, run the development server:
+We offer a free landing page template that you can use as a starter and deploy it to Netlify. You can use this landing page or create your own custom one. We do not offer support for this part. The design of your website is your own responsibility!
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### :vertical_traffic_light: Deploy your site
+- navigate to [GitHub](https://github.com) and **sign in/up**
+- click the button below  
+- [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/drsoftsrl/landing_page)
+- follow onscreen instructions:
+    - Connect to GitHub - **log in** with you GitHub account
+    - Configure your site - change the repository name if you want
+    - wait until your site is deployed
+    - click **Assigning Custom Domains** and set your custom domain
+- any change you commit on GitHub after you deploy your site for the first time will trigger a build on Netlify and your site will be updated automatically
+
+
+## Customize your site
+
+### :star2: Change site Setting
+All the settings which you need to change you can find them in the folder projectSettings
+- in `projectSettings/website.js` change the values for the 3 variables.
+- in `projectSettings/seo.js` add seo title, description and keywords for all your pages
+- in `projectSettings/colors.js` you can change the colors of your website
+- in `next-sitemap.config.js` add your domain at `siteUrl`
+- you will also need to replace the following images :
+    - `/public/logo.webp`
+    - `/public/favicon.ico`
+
+### :hammer: Update your landing page with the newest changes
+- install git
+- clone your repository in your local machine `git clone "github_url"`
+- go to the project's folder on your local machine
+- run the following commands in terminal:
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+git remote add upstream https://github.com/drsoftsrl/landing_page
+git fetch upstream
+git pull upstream master
+git push
+```

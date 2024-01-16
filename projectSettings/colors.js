@@ -11,7 +11,7 @@ export const Neutral = "#060a0d";
 export const NeutralContent = "#ffffff";
 
 export const Base = "#ffffff";
-export const BaseContent = "#060a0d"
+export const BaseContent = "#47495a"
 
 
 // Gradients

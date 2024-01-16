@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import ButtonMain from "@/components/common/buttonMain";
 import Link from "next/link";
 import Image from "next/image";
-import {LINK_DATACENTERS, LINK_FEATURES, LINK_HOME, LINK_PRICING, LINK_SUPPORT} from "@/utils/constants";
+import {LINK_HOME, LINK_LOCATIONS, LINK_PRICING, LINK_SERVICES} from "@/utils/constants";
+import ButtonMain from "@/components/common/buttonMain";
 
-export default function Navbar({ }) {
+export default function Navbar({}) {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -28,8 +28,8 @@ export default function Navbar({ }) {
   return (
     <div className={`navbar fixed z-50 transition-colors duration-300 top-0 ${backgroundClass}`}>
       <div className="navbar-start">
-        <div className="dropdown text-neutral">
-          <label tabIndex="0" className="btn btn-ghost lg:hidden text-neutral-content">
+        <div className="dropdown">
+          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -39,98 +39,58 @@ export default function Navbar({ }) {
             >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
             </svg>
-          </label>
-
-          <ul
-            tabIndex="0"
-            className="menu menu-compact dropdown-content mt-3 z-50 p-2 shadow bg-altBase rounded-box w-52 text-sm"
-          >
+          </div>
+          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
             <li>
-              <Link
-                href={LINK_PRICING.url}
-                className="text-neutral-content"
-              >
-                {LINK_PRICING.name}
-              </Link>
+              <Link href={LINK_PRICING.url}>{LINK_PRICING.name}</Link>
             </li>
-
             <li>
-              <Link
-                href={LINK_DATACENTERS.url}
-                className="text-neutral-content"
-              >
-                {LINK_DATACENTERS.name}
-              </Link>
+              <Link href={LINK_LOCATIONS.url}>{LINK_LOCATIONS.name}</Link>
             </li>
-
             <li>
-              <Link
-                href={LINK_FEATURES.url}
-                className="text-neutral-content"
-              >
-                {LINK_FEATURES.name}
-              </Link>
+              <a>Services</a>
+              <ul className="p-2">
+                {
+                  LINK_SERVICES.map((lnk, i) => (
+                      <li key={i}>
+                        <Link href={lnk.url}>{lnk.name}</Link>
+                      </li>
+                  ))
+                }
+              </ul>
             </li>
-
-            <li>
-              <Link
-                href={LINK_SUPPORT.url}
-                className="text-neutral-content"
-              >
-                {LINK_SUPPORT.name}
-              </Link>
-            </li>
-
           </ul>
         </div>
-
         <Link className="btn btn-ghost w-fit p-0 h-fit" href={LINK_HOME.url}>
           <Image src="/logo.webp" alt="logo" width={300} height={70} priority />
         </Link>
       </div>
-
-      <div className="navbar-center hidden lg:flex text-neutral">
-        <ul className="menu menu-horizontal px-1">
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1 text-neutral-content">
           <li>
-            <Link
-              href={LINK_PRICING.url}
-              className="text-neutral-content"
-            >
-              {LINK_PRICING.name}
-            </Link>
+            <Link href={LINK_PRICING.url}>{LINK_PRICING.name}</Link>
           </li>
-
           <li>
-            <Link
-              href={LINK_DATACENTERS.url}
-              className="text-neutral-content"
-            >
-              {LINK_DATACENTERS.name}
-            </Link>
+            <Link href={LINK_LOCATIONS.url}>{LINK_LOCATIONS.name}</Link>
           </li>
-
           <li>
-            <Link
-              href={LINK_FEATURES.url}
-              className="text-neutral-content"
-            >
-              {LINK_FEATURES.name}
-            </Link>
-          </li>
-
-          <li>
-            <Link
-              href={LINK_SUPPORT.url}
-              className="text-neutral-content"
-            >
-              {LINK_SUPPORT.name}
-            </Link>
+            <details>
+              <summary>Serices</summary>
+              <ul className="p-2 text-base-content">
+                {
+                  LINK_SERVICES.map((lnk, i) => (
+                      <li key={i}>
+                        <Link href={lnk.url}>{lnk.name}</Link>
+                      </li>
+                  ))
+                }
+              </ul>
+            </details>
           </li>
         </ul>
       </div>
-
-      <div className="navbar-end lg:w-1/3">
-        <ButtonMain text="Buy Now" />
+      <div className="navbar-end">
+        <ButtonMain text="Buy Now" buttonClass="btn-secondary" />
       </div>
     </div>
   );

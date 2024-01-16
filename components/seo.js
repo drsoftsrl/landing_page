@@ -1,45 +1,44 @@
 import React from "react";
 import Head from "next/head";
-import {BASE_SITE_URL, SITE_NAME} from "@/utils/constants";
+import { BASE_SITE_URL } from "@/utils/constants";
+import { SITE_NAME } from "@/projectSettings/website";
+import { usePathname } from "next/navigation";
 
 const siteName = ` | ${SITE_NAME}`;
-
 
 function truncateString(str, maxLength) {
   if (str.length <= maxLength) {
     return str;
   }
 
-  let words = str.split(' ');
+  let words = str.split(" ");
 
-  while (words.join(' ').length > maxLength) {
+  while (words.join(" ").length > maxLength) {
     words.pop();
   }
 
-  return words.join(' ');
+  return words.join(" ");
 }
 
-
-const Seo = ({ seo, structuredData }) => {
-
-  if (seo.title && seo.title.length <= 60 - siteName.length){
-    seo.title += siteName
-  }else if (seo.title.length > 60){
-    seo.title = truncateString(seo.title, 60)
+const Seo = ({ seo }) => {
+  if (seo.title && seo.title.length <= 60 - siteName.length) {
+    seo.title += siteName;
+  } else if (seo.title.length > 60) {
+    seo.title = truncateString(seo.title, 60);
   }
 
-  if (seo.description && seo.description.length <= 158 - siteName.length){
-    seo.description += siteName
-  }else if (seo.description.length > 158){
-    seo.description = truncateString(seo.description, 158)
+  if (seo.description && seo.description.length <= 158 - siteName.length) {
+    seo.description += siteName;
+  } else if (seo.description.length > 158) {
+    seo.description = truncateString(seo.description, 158);
   }
 
   const fullSeo = {
     ...seo,
-    metaTitle: (seo.title || ""),
+    metaTitle: seo.title || "",
     metaDescription: seo.description || "",
     metaKeywords: seo.keywords || "",
-    canonical: BASE_SITE_URL + seo.canonical
+    canonical: BASE_SITE_URL + usePathname()
   };
 
   return (
@@ -62,9 +61,6 @@ const Seo = ({ seo, structuredData }) => {
       <meta name="twitter:description" content={fullSeo.metaDescription} />
 
       <meta name="og:url" content={fullSeo.canonical} />
-
-
-
     </Head>
   );
 };

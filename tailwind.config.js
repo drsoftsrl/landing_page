@@ -53,6 +53,7 @@ module.exports = {
   plugins: [
     require('@tailwindcss/typography'),
     require("tailwind-scrollbar-hide"),
+    require('tailwindcss-animated'),
     require("daisyui"),
   ],
 }
